@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduzione}{1}{section.1}%
+\contentsline {section}{\numberline {2}Fondamenti della crittografia classica e delle minacce quantistiche}{1}{section.2}%
+\contentsline {section}{\numberline {3}Principali algoritmi della crittografia quantistica}{1}{section.3}%
+\contentsline {section}{\numberline {4}Protocolli post-quantum}{1}{section.4}%
+\contentsline {section}{\numberline {5}Sfide e considerazioni pratiche}{1}{section.5}%
+\contentsline {section}{\numberline {6}Stato attuale delle ricerche e delle implementazioni}{1}{section.6}%
+\contentsline {section}{\numberline {7}Applicazioni e scenari futuri}{1}{section.7}%
+\contentsline {section}{\numberline {8}Conclusioni}{1}{section.8}%
