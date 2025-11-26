@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  26 NOV 2025 13:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  26 NOV 2025 18:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,36 +277,33 @@ Package hyperref Info: Link coloring OFF on input line 11.
 
 
 [2]
-No file relazione.bbl.
-
-Overfull \hbox (5.0458pt too wide) in paragraph at lines 58--58
-[]\OT1/cmr/bx/n/17.28 Fondamenti della crit-tografia clas-sica e delle
- []
-
-
 
 [3]
+No file relazione.bbl.
 
-[4] (relazione.aux)
+
+[4]
+
+[5] (relazione.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: F4FD6797D5C1150CAA7418B46AEC4F80;1796.
+(rerunfilecheck)             Checksum: 669891FD2593CAE09315579E97DD85D4;2874.
  ) 
 Here is how much of TeX's memory you used:
- 9175 strings out of 473899
- 141630 string characters out of 5732122
- 539586 words of memory out of 5000000
- 31950 multiletter control sequences out of 15000+600000
- 560943 words of font info for 46 fonts, out of 8000000 for 9000
+ 9207 strings out of 473899
+ 142009 string characters out of 5732122
+ 539592 words of memory out of 5000000
+ 31968 multiletter control sequences out of 15000+600000
+ 564362 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,520b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,530b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on relazione.pdf (4 pages, 57183 bytes).
+Output written on relazione.pdf (5 pages, 65073 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 114 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 
