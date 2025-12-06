@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  26 NOV 2025 18:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  6 DEC 2025 12:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -91,7 +91,16 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (D:\utenti\michele\Programs\LaTeX\tex/latex/graphics\graphicx.sty
+) (D:\utenti\michele\Programs\LaTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (D:\utenti\michele\Programs\LaTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (D:\utenti\michele\Programs\LaTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (D:\utenti\michele\Programs\LaTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
@@ -224,24 +233,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (relazione.aux)
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
  (D:\utenti\michele\Programs\LaTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count293
@@ -261,12 +270,19 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (D:\utenti\michele\Programs\LaTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 12.
  (relazione.out) (relazione.out)
 \@outlinefile=\write3
 \openout3 = `relazione.out'.
 
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
+ (D:\utenti\michele\Programs\LaTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
+ (D:\utenti\michele\Programs\LaTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 [1
 
@@ -279,31 +295,75 @@ Package hyperref Info: Link coloring OFF on input line 11.
 [2]
 
 [3]
+
+[4]
+Overfull \hbox (10.93195pt too wide) in paragraph at lines 80--83
+\OT1/cmr/m/n/12 putazional-mente in-trat-ta-bili da in-ver-tire senza la conoscenza di un'informazione
+ []
+
+
+
+[5]
+Overfull \hbox (52.61282pt too wide) in paragraph at lines 110--111
+ []\OT1/cmr/bx/n/12 Sicurezza e di-men-sioni delle chi-avi[] \OT1/cmr/m/n/12 La si-curezza di RSA dipende dall'impossibilit^^Ra
+ []
+
+
+Overfull \hbox (2.8885pt too wide) in paragraph at lines 110--111
+\OT1/cmr/m/n/12 prat-ica di fat-tor-iz-zare $\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 quando questo ^^Re suf-fi-cien-te-mente grande. Conoscendo
+ []
+
+
+
+[6]
+Overfull \hbox (3.87982pt too wide) in paragraph at lines 131--132
+[]\OT1/cmr/m/n/12 La molti-pli-cazione scalare $\OML/cmm/m/it/12 Q \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 kP$ \OT1/cmr/m/n/12 ^^Re com-putazional-mente ef-fi-ciente (tempo
+ []
+
+
+
+[7]
+Overfull \hbox (4.33896pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/12 crypt later" rap-p-re-senta una pre-oc-cu-pazione conc-reta: un at-tac-cante potrebbe
+ []
+
+
+
+[8]
+Overfull \hbox (3.29453pt too wide) in paragraph at lines 182--183
+\OT1/cmr/m/n/12 pi-ani-fi-cazione per sos-ti-tuire l'infrastruttura crit-tografica es-istente man-te-nendo
+ []
+
+
+
+[9]
+Overfull \hbox (173.06648pt too wide) in paragraph at lines 188--191
+\OT1/cmr/m/n/12 Quan-tum Com-puter" NIST Post-Quantum Cryp-tog-ra-phy Standardization:https://csrc.nist.gov/Projects/post-
+ []
+
 No file relazione.bbl.
 
 
-[4]
-
-[5] (relazione.aux)
+[10] (relazione.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 669891FD2593CAE09315579E97DD85D4;2874.
+(rerunfilecheck)             Checksum: C943F18A333B665ED7B0A9C9164A0CC2;4126.
  ) 
 Here is how much of TeX's memory you used:
- 9207 strings out of 473899
- 142009 string characters out of 5732122
- 539592 words of memory out of 5000000
- 31968 multiletter control sequences out of 15000+600000
- 564362 words of font info for 58 fonts, out of 8000000 for 9000
+ 9774 strings out of 473899
+ 148681 string characters out of 5732122
+ 543208 words of memory out of 5000000
+ 32497 multiletter control sequences out of 15000+600000
+ 567169 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,530b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on relazione.pdf (5 pages, 65073 bytes).
+ 75i,6n,79p,602b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\michele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on relazione.pdf (10 pages, 155436 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

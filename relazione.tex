@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
 
@@ -29,38 +30,26 @@ La crittografia classica, come visto a lezione, pone le sue fondamenta su proble
 per i quali non esistono algoritmi efficienti in grado di risolverli in tempi polinomiali.
 
 Tuttavia, l'emergere dei computer quantistici ha introdotto una nuova dimensione nel panorama della sicurezza informatica.
-Questi dispositivi sfruttano i principi della meccanica quantistica per eseguire calcoli in modo radicalmente diverso 
+Questi dispositivi sfruttando i principi della meccanica quantistica sono in grado di eseguire calcoli in modo radicalmente diverso 
 rispetto ai computer classici, rendendoli potenzialmente capaci di risolvere in tempi polinomiali quei problemi matematici 
 che risultano intrattabili per le macchine convenzionali.
 
 \subsection[Minaccia dei computer quantistici]{Minaccia dei computer quantistici: Perché è necessaria?}
 
-Il rapido sviluppo nel settore del calcolo quantistico, che fino a due decenni anni fa sembrava lontano dall'essere una minaccia concreta,
-ha destato crescente preoccupazione riguardo alla sicurezza dei sistemi attualmente in uso. La necessità di sviluppare nuovi sistemi 
-crittografici nasce proprio dalla vulnerabilità degli algoritmi attuali di fronte a questa tecnologia emergente.
+L’ipotesi di una minaccia quantistica emerge già nel ventesimo secolo, quando nel 1994 l’algoritmo di Shor dimostra che un 
+computer quantistico sufficientemente potente potrebbe fattorizzare grandi numeri interi e calcolare logaritmi discreti 
+in tempo polinomiale. Questo rende vulnerabili algoritmi come RSA, ECC e DSA, che costituiscono la base della sicurezza 
+informatica moderna.
 
-Sebbene i computer quantistici siano ancora in una fase sperimentale, i loro potenziali avanzamenti rappresentano una minaccia concreta 
-per gli algoritmi crittografici classici su cui si basa gran parte della sicurezza informatica moderna. In particolare, algoritmi come 
-RSA (Rivest-Shamir-Adleman), ECC (Elliptic Curve Cryptography) e DSA (Digital Signature Algorithm) potrebbero essere 
-facilmente compromessi dall'uso di potenti computer quantistici grazie all'algoritmo di Shor, che è infatti capace di risolvere in 
-tempi polinomiali il problema della fattorizzazione e del logaritmo discreto su cui si basano gli algoritmi citati.
+Per molti anni il problema è rimasto solo teorico, perché il calcolo quantistico non aveva applicazioni pratiche. 
+Lo scenario è cambiato con i recenti progressi nel settore e con lo sviluppo dei primi prototipi di calcolatori quantistici 
+da parte di aziende come Google e Microsoft, che hanno riportato risultati significativi con i loro progetti: Myorana 1 e Willow. 
+Questi sviluppi hanno aumentato le preoccupazioni sulla solidità degli schemi crittografici attuali.
 
-Questa vulnerabilità mette a rischio non solo la riservatezza delle comunicazioni attuali, ma anche l'integrità e l'autenticità dei dati, ponendo una seria minaccia a lungo termine per la sicurezza delle infrastrutture digitali globali.
-
-Molti scienziati ritengono che la costruzione di computer quantistici su larga scala sia ormai solo una sfida ingegneristica, con alcuni ingegneri che prevedono il loro sviluppo entro i prossimi vent'anni. Considerando che storicamente ci sono voluti quasi due decenni per implementare l'attuale infrastruttura crittografica, è necessario iniziare ora a preparare sistemi in grado di resistere al calcolo quantistico.
-
-\subsection*{upgrade}
-
-L'algoritmo di Shor, sviluppato nel 1994, ha dimostrato teoricamente che un computer quantistico sufficientemente potente potrebbe 
-fattorizzare grandi numeri interi e calcolare logaritmi discreti in tempo polinomiale. Questo significa che algoritmi come RSA, ECC e DSA, 
-pilastri della sicurezza informatica moderna, potrebbero essere compromessi, mettendo a rischio non solo la riservatezza 
-delle comunicazioni, ma anche l'integrità e l'autenticità dei dati scambiati attraverso le infrastrutture digitali globali.
-
-Sebbene i computer quantistici siano ancora in una fase sperimentale, molti scienziati ritengono che la loro realizzazione su larga scala 
-sia ormai solo una questione ingegneristica. Alcuni esperti prevedono che entro i prossimi vent'anni potrebbero essere disponibili 
-computer quantistici sufficientemente potenti da violare gli schemi crittografici attualmente in uso. Considerando che l'implementazione 
-dell'attuale infrastruttura crittografica ha richiesto quasi due decenni, risulta evidente l'urgenza di iniziare ora la transizione 
-verso sistemi resistenti al calcolo quantistico.
+Sebbene le macchine quantistiche siano ancora in fase sperimentale, diversi scienziati ritengono che la loro costruzione 
+su larga scala sia ormai una sfida principalmente ingegneristica, e alcuni prevedono la loro maturazione entro i prossimi vent’anni. 
+Considerando che l’attuale infrastruttura crittografica ha richiesto quasi due decenni per essere implementata, risulta necessario 
+iniziare da subito la transizione verso sistemi progettati per resistere al calcolo quantistico.
 
 \subsection{Obiettivi della crittografia post-quantistica}
 
@@ -73,13 +62,132 @@ ma mira a costruire un'infrastruttura di sicurezza robusta e duratura,
 capace di adattarsi alle sfide tecnologiche future mantenendo la compatibilità con 
 i protocolli e le reti esistenti.
 
+\newpage
+
 \section{Fondamenti della crittografia classica}
+
+Per comprendere le sfide poste dai computer quantistici alla crittografia moderna, è fondamentale 
+conoscerne i principi di base dietro i principali algoritmi crittografici attualmente in uso.
 
 \subsection{Crittografia a chiave pubblica: RSA, ECC}
 
+La crittografia a chiave pubblica costituisce una svolta fondamentale nel panorama della 
+sicurezza informatica moderna. A differenza dei sistemi simmetrici, che vincolano mittente 
+e destinatario alla condivisione di un unico segreto, i protocolli asimmetrici impiegano 
+una coppia di chiavi: una pubblica, liberamente distribuibile, e una privata, 
+custodita gelosamente dal proprietario.
+
+Il funzionamento di questo sistema si basa sulle funzioni one-way trapdoor: operazioni matematiche 
+semplici da eseguire in una direzione, ma computazionalmente intrattabili da invertire senza 
+la conoscenza di un'informazione specifica (la "trappola"). 
+
+La teoria dei numeri e l'algebra modulare forniscono il substrato matematico necessario per 
+generare tali funzioni; a seconda del problema matematico sottostante, si distinguono i 
+vari algoritmi di crittografia asimmetrica oggi in uso.
+
+\paragraph{Principi Matematici} 
+
+Algebra modulare: ... continua da qui
+
+\subsubsection{RSA} //todo
+
+Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978, è il sistema crittografico a chiave pubblica più diffuso e studiato. La sua sicurezza si fonda sulla difficoltà computazionale della fattorizzazione di numeri interi molto grandi.
+
+\paragraph{Principi matematici} Il funzionamento di RSA si basa su proprietà della teoria dei numeri e dell'algebra modulare. Ogni utente genera la propria coppia di chiavi attraverso i seguenti passaggi:
+
+\begin{enumerate}
+    \item Scelta di due numeri primi $p$ e $q$ molto grandi
+    \item Calcolo di $n = pq$ e della funzione di Eulero $\phi(n) = (p-1)(q-1)$
+    \item Scelta di un intero $e$ minore di $\phi(n)$ e coprimo con esso
+    \item Calcolo dell'intero $d$, inverso moltiplicativo di $e$ modulo $\phi(n)$
+\end{enumerate}
+
+La chiave pubblica è la coppia $(e, n)$, mentre la chiave privata è $d$. La cifratura di un messaggio $m$ avviene calcolando $c = m^e \bmod n$, mentre la decifratura richiede il calcolo di $m = c^d \bmod n$.
+
+La correttezza dell'algoritmo è garantita dal teorema di Eulero: poiché $ed \equiv 1 \pmod{\phi(n)}$, si ha $ed = 1 + k\phi(n)$ per qualche intero $k$, e quindi:
+$$m^{ed} \bmod n = m^{1+k\phi(n)} \bmod n = m \cdot (m^{\phi(n)})^k \bmod n = m \bmod n$$
+
+\paragraph{Sicurezza e dimensioni delle chiavi} La sicurezza di RSA dipende dall'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. Conoscendo la fattorizzazione $n = pq$, un attaccante potrebbe infatti calcolare $\phi(n)$ e di conseguenza la chiave privata $d$.
+
+Attualmente, le dimensioni delle chiavi considerate sicure sono di almeno 2048 bit, con raccomandazioni crescenti verso 4096 bit per applicazioni che richiedono sicurezza a lungo termine. Chiavi di 1024 bit sono considerate obsolete e vulnerabili ad attacchi con risorse computazionali moderne.
+
+\subsubsection{Crittografia su Curve Ellittiche (ECC)}
+
+La crittografia su curve ellittiche, sviluppata indipendentemente da Neal Koblitz e Victor Miller nel 1985, offre un'alternativa matematicamente elegante e computazionalmente efficiente a RSA.
+
+\paragraph{Fondamenti matematici} Una curva ellittica su un campo finito $\mathbb{Z}_p$ (con $p$ primo e $p > 3$) è definita dall'equazione di Weierstrass in forma normale:
+$$y^2 = x^3 + ax + b$$
+dove $a, b \in \mathbb{Z}_p$ soddisfano la condizione $4a^3 + 27b^2 \bmod p \neq 0$, che garantisce l'assenza di punti singolari sulla curva.
+
+L'insieme dei punti $(x, y)$ che soddisfano questa equazione, insieme al punto all'infinito $\mathcal{O}$, forma un gruppo abeliano additivo. È possibile definire un'operazione di addizione tra punti della curva tale che, dati due punti $P$ e $Q$, la loro somma $P + Q$ sia ancora un punto della curva.
+
+Per punti distinti $P = (x_P, y_P)$ e $Q = (x_Q, y_Q)$, con $P \neq -Q$, si ha:
+$$\lambda = \frac{y_Q - y_P}{x_Q - x_P}, \quad x_S = \lambda^2 - x_P - x_Q, \quad y_S = -y_P + \lambda(x_P - x_S)$$
+
+dove $S = P + Q = (x_S, y_S)$. Nel caso di raddoppio di un punto ($P = Q$), il coefficiente angolare diventa $\lambda = \frac{3x_P^2 + a}{2y_P}$.
+
+\paragraph{Il problema del logaritmo discreto} La sicurezza di ECC si basa sulla difficoltà del problema del logaritmo discreto su curve ellittiche (ECDLP): dati due punti $P$ e $Q$ sulla curva, trovare l'intero $k$ tale che $Q = kP$, dove $kP$ denota l'addizione di $P$ con se stesso $k$ volte.
+
+La moltiplicazione scalare $Q = kP$ è computazionalmente efficiente (tempo polinomiale), mentre il problema inverso è considerato intrattabile: tutti gli algoritmi classici noti hanno complessità esponenziale nella dimensione della chiave.
+
+\paragraph{Vantaggi rispetto a RSA} ECC offre lo stesso livello di sicurezza di RSA con chiavi significativamente più corte. Una chiave ECC di 256 bit fornisce una sicurezza paragonabile a una chiave RSA di 3072 bit. Questo si traduce in:
+\begin{itemize}
+    \item Minore occupazione di memoria e larghezza di banda
+    \item Operazioni crittografiche più veloci
+    \item Minore consumo energetico, cruciale per dispositivi mobili e IoT
+\end{itemize}
+
+\subsubsection{Sicurezza classica}
+
+Entrambi gli algoritmi sono considerati sicuri nell'ambito del calcolo classico per dimensioni di chiave appropriate. La loro robustezza deriva dalla complessità computazionale dei problemi matematici sottostanti:
+
+\begin{itemize}
+    \item \textbf{Fattorizzazione per RSA}: il miglior algoritmo classico noto è il General Number Field Sieve (GNFS), con complessità sub-esponenziale $O(e^{(64/9)^{1/3}(\ln n)^{1/3}(\ln \ln n)^{2/3}})$
+    \item \textbf{ECDLP per ECC}: gli algoritmi più efficienti, come il metodo rho di Pollard, hanno complessità completamente esponenziale $O(\sqrt{n})$, dove $n$ è l'ordine del gruppo
+\end{itemize}
+
+Questa differenza nella complessità degli attacchi spiega perché ECC richiede chiavi più corte per garantire lo stesso livello di sicurezza.
+
+RSA e ECC costituiscono oggi la base dell'infrastruttura di sicurezza digitale globale, utilizzati in TLS/SSL per la sicurezza web, in SSH per l'accesso remoto sicuro, nella firma digitale di documenti e software, e in numerose altre applicazioni critiche.
+
 \subsection{Limiti rispetto ai computer quantistici}
 
+L'avvento dei computer quantistici rappresenta una minaccia fondamentale per la sicurezza di RSA e ECC. La differenza sostanziale tra calcolo classico e quantistico risiede nell'unità fondamentale di informazione: mentre i computer classici utilizzano bit che possono trovarsi negli stati 0 o 1, i computer quantistici operano con qubit che, grazie al principio di sovrapposizione quantistica, possono esistere simultaneamente in una combinazione di entrambi gli stati.
+
+\subsubsection{Vulnerabilità di RSA e ECC}
+
+Nel 1994, Peter Shor sviluppò un algoritmo quantistico in grado di fattorizzare numeri interi e risolvere il problema del logaritmo discreto in tempo polinomiale. Più precisamente, l'algoritmo di Shor ha complessità $O((\log N)^3)$ per la fattorizzazione di un numero $N$, rendendo vulnerabili sia RSA che ECC.
+
+Per RSA, un computer quantistico sufficientemente potente potrebbe:
+\begin{itemize}
+    \item Fattorizzare $n = pq$ in tempo polinomiale
+    \item Calcolare $\phi(n) = (p-1)(q-1)$
+    \item Determinare la chiave privata $d$ dall'equazione $ed \equiv 1 \pmod{\phi(n)}$
+\end{itemize}
+
+Per ECC, l'algoritmo di Shor si estende naturalmente al problema del logaritmo discreto su curve ellittiche, permettendo di calcolare $k$ da $Q = kP$ con la stessa efficienza.
+
+\subsubsection{Requisiti pratici e tempistiche}
+
+Sebbene la minaccia sia teoricamente dimostrata, la realizzazione pratica di computer quantistici capaci di violare RSA ed ECC richiede risorse considerevoli. Secondo stime del NIST, per compromettere una chiave RSA-2048 sarebbero necessari diversi milioni di qubit logici affidabili, mentre le implementazioni attuali (2024) operano con centinaia di qubit fisici caratterizzati da elevati tassi di errore.
+
+La transizione da qubit fisici a qubit logici richiede tecniche di correzione degli errori quantistici che impongono un overhead significativo: potrebbero essere necessari da centinaia a migliaia di qubit fisici per realizzare un singolo qubit logico stabile.
+
+Nonostante queste difficoltà tecnologiche, il principio "harvest now, decrypt later" rappresenta una preoccupazione concreta: un attaccante potrebbe intercettare e archiviare oggi comunicazioni cifrate con RSA o ECC, per decifrarle in futuro quando disporrà di computer quantistici sufficientemente potenti. Questa considerazione è particolarmente rilevante per dati che richiedono riservatezza a lungo termine, come informazioni mediche, segreti industriali o comunicazioni governative.
+
+\subsubsection{La risposta: crittografia post-quantistica}
+
+Di fronte a questa minaccia emergente, il National Institute of Standards and Technology (NIST) ha avviato nel 2016 un processo di standardizzazione per identificare algoritmi crittografici resistenti agli attacchi quantistici. Nel luglio 2022, il NIST ha annunciato i primi algoritmi selezionati per la standardizzazione, basati su problemi matematici ritenuti difficili anche per computer quantistici, come i reticoli algebrici e i codici correttori di errori.
+
+La migrazione verso la crittografia post-quantistica rappresenta una delle sfide più urgenti per la sicurezza informatica moderna, richiedendo un'attenta pianificazione per sostituire l'infrastruttura crittografica esistente mantenendo retrocompatibilità e garantendo una transizione graduale e sicura.
+
+\newpage
+
 \section{Principali algoritmi della crittografia quantistica}
+
+DOVE TROVARE RISORSE:
+Paper originale di Shor (1997): "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer"
+NIST Post-Quantum Cryptography Standardization:https://csrc.nist.gov/Projects/post-quantum-cryptography
 
 \section{Protocolli post-quantum}
 
