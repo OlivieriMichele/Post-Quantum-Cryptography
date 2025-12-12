@@ -71,29 +71,57 @@ conoscerne i principi di base dietro i principali algoritmi crittografici attual
 
 \subsection{Crittografia a chiave pubblica: RSA, ECC}
 
-La crittografia a chiave pubblica costituisce una svolta fondamentale nel panorama della 
-sicurezza informatica moderna. A differenza dei sistemi simmetrici, che vincolano mittente 
-e destinatario alla condivisione di un unico segreto, i protocolli asimmetrici impiegano 
-una coppia di chiavi: una pubblica, liberamente distribuibile, e una privata, 
-custodita gelosamente dal proprietario.
+La crittografia a chiave pubblica, introdotta nel 1976 da Diffie, Hellman e Merkle, costituisce 
+una svolta fondamentale nel panorama della sicurezza informatica moderna. A differenza dei sistemi 
+simmetrici, che vincolano mittente e destinatario alla condivisione di un unico segreto, i protocolli 
+asimmetrici impiegano una coppia di chiavi: una pubblica $k_{\text{pub}}$, liberamente distribuibile, 
+e una privata $k_{\text{prv}}$, mantenuta segreta dal proprietario. 
+La sicurezza di questo sistema si basa sulla difficoltà di risalire alla chiave privata a partire 
+da quella pubblica. Le funzioni di cifratura $C$ e decifratura $D$ sono note a tutti, e 
+per ogni messaggio $m$ deve valere:
+\[
+D(C(m;k_{\text{pub}});k_{\text{prv}})=m.
+\]
 
 Il funzionamento di questo sistema si basa sulle funzioni one-way trapdoor: operazioni matematiche 
 semplici da eseguire in una direzione, ma computazionalmente intrattabili da invertire senza 
-la conoscenza di un'informazione specifica (la "trappola"). 
+la conoscenza di un'informazione specifica (la "trappola").
 
 La teoria dei numeri e l'algebra modulare forniscono il substrato matematico necessario per 
 generare tali funzioni; a seconda del problema matematico sottostante, si distinguono i 
 vari algoritmi di crittografia asimmetrica oggi in uso.
 
-\paragraph{Principi Matematici} 
+\paragraph{Richiami di algebra modulare}
 
-Algebra modulare: ... continua da qui
+L'aritmetica modulare è un sistema in cui i numeri si riavvolgono entro un intervallo fissato da un modulo $n$. 
+Quando un valore supera (o scende sotto) questo intervallo, viene riportato all’interno prendendo 
+il resto della divisione per $n$.
 
-\subsubsection{RSA} //todo
+Un esempio quotidiano è l’orologio: in un sistema a 12 ore il modulo è $12$. Se sono le
+$10$ e aggiungo $4$ ore, il risultato non è $14$, ma $2$, perché:
+\[
+14 \equiv 2 \pmod{12}.
+\]
 
-Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978, è il sistema crittografico a chiave pubblica più diffuso e studiato. La sua sicurezza si fonda sulla difficoltà computazionale della fattorizzazione di numeri interi molto grandi.
+Per calcolare $c = a \bmod b$ si considera il resto della divisione intera tra $a$ e $b$,
+ottenendo un valore sempre compreso tra $0$ e $b-1$, esempio: $6 \bmod 4 = 2$.
 
-\paragraph{Principi matematici} Il funzionamento di RSA si basa su proprietà della teoria dei numeri e dell'algebra modulare. Ogni utente genera la propria coppia di chiavi attraverso i seguenti passaggi:
+\paragraph{Problemi difficili}
+\begin{itemize}
+    \item \textbf{Fattorizzazione:} dati $p,q$ è facile calcolare $n=pq$; dato $n$ è difficile trovare $p$ e $q$.
+    \item \textbf{Radice modulare:} dato $y=x^z \bmod s$ invertire la potenza è difficile senza conoscere $\varphi(s)$.
+    \item \textbf{Logaritmo discreto:} data $y=x^z \bmod s$ trovare $z$ è computazionalmente difficile.
+\end{itemize}
+
+\subsubsection{RSA}
+
+Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978, è il sistema crittografico a 
+chiave pubblica più diffuso e studiato. La sua sicurezza si fonda sulla difficoltà computazionale 
+della fattorizzazione di numeri interi molto grandi.
+
+\paragraph{Generazione delle chiavi} 
+
+Ogni utente genera la propria coppia di chiavi attraverso i seguenti passaggi:
 
 \begin{enumerate}
     \item Scelta di due numeri primi $p$ e $q$ molto grandi
@@ -102,12 +130,18 @@ Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978, è il sistema cr
     \item Calcolo dell'intero $d$, inverso moltiplicativo di $e$ modulo $\phi(n)$
 \end{enumerate}
 
-La chiave pubblica è la coppia $(e, n)$, mentre la chiave privata è $d$. La cifratura di un messaggio $m$ avviene calcolando $c = m^e \bmod n$, mentre la decifratura richiede il calcolo di $m = c^d \bmod n$.
+La chiave pubblica è la coppia $(e, n)$, mentre la chiave privata è $d$. 
+La cifratura di un messaggio $m$ avviene calcolando $c = m^e \bmod n$, 
+mentre la decifratura richiede il calcolo di $m = c^d \bmod n$.
 
-La correttezza dell'algoritmo è garantita dal teorema di Eulero: poiché $ed \equiv 1 \pmod{\phi(n)}$, si ha $ed = 1 + k\phi(n)$ per qualche intero $k$, e quindi:
+La correttezza dell'algoritmo è garantita dal teorema di Eulero: 
+poiché $ed \equiv 1 \pmod{\phi(n)}$, si ha $ed = 1 + k\phi(n)$ per qualche intero $k$, e quindi:
 $$m^{ed} \bmod n = m^{1+k\phi(n)} \bmod n = m \cdot (m^{\phi(n)})^k \bmod n = m \bmod n$$
 
-\paragraph{Sicurezza e dimensioni delle chiavi} La sicurezza di RSA dipende dall'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. Conoscendo la fattorizzazione $n = pq$, un attaccante potrebbe infatti calcolare $\phi(n)$ e di conseguenza la chiave privata $d$.
+\paragraph{Sicurezza e dimensioni delle chiavi} 
+
+La sicurezza di RSA dipende dall'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. 
+Conoscendo la fattorizzazione $n = pq$, un attaccante potrebbe infatti calcolare $\phi(n)$ e di conseguenza la chiave privata $d$.
 
 Attualmente, le dimensioni delle chiavi considerate sicure sono di almeno 2048 bit, con raccomandazioni crescenti verso 4096 bit per applicazioni che richiedono sicurezza a lungo termine. Chiavi di 1024 bit sono considerate obsolete e vulnerabili ad attacchi con risorse computazionali moderne.
 
@@ -183,21 +217,7 @@ La migrazione verso la crittografia post-quantistica rappresenta una delle sfide
 
 \newpage
 
-\section{Principali algoritmi della crittografia quantistica}
-
-DOVE TROVARE RISORSE:
-Paper originale di Shor (1997): "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer"
-NIST Post-Quantum Cryptography Standardization:https://csrc.nist.gov/Projects/post-quantum-cryptography
-
-\section{Protocolli post-quantum}
-
-\section{Sfide e considerazioni pratiche}
-
-\section{Stato attuale delle ricerche e delle implementazioni}
-
-\section{Applicazioni e scenari futuri}
-
-\section{Conclusioni}
+\section{Computazione quantistica e impatto sulla crittografia classica}
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
