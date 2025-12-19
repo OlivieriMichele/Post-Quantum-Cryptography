@@ -1,6 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{braket}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -19,6 +20,7 @@
 
 \newpage
 
+%Capitolo 1
 \section{Introduzione}
 
 \subsection{Contesto e motivazioni} 
@@ -188,7 +190,7 @@ RSA e ECC costituiscono oggi la base dell'infrastruttura di sicurezza digitale g
 
 L'avvento dei computer quantistici rappresenta una minaccia fondamentale per la sicurezza di RSA e ECC. La differenza sostanziale tra calcolo classico e quantistico risiede nell'unità fondamentale di informazione: mentre i computer classici utilizzano bit che possono trovarsi negli stati 0 o 1, i computer quantistici operano con qubit che, grazie al principio di sovrapposizione quantistica, possono esistere simultaneamente in una combinazione di entrambi gli stati.
 
-\subsubsection{Vulnerabilità di RSA e ECC}
+\paragraph{Vulnerabilità di RSA e ECC}
 
 Nel 1994, Peter Shor sviluppò un algoritmo quantistico in grado di fattorizzare numeri interi e risolvere il problema del logaritmo discreto in tempo polinomiale. Più precisamente, l'algoritmo di Shor ha complessità $O((\log N)^3)$ per la fattorizzazione di un numero $N$, rendendo vulnerabili sia RSA che ECC.
 
@@ -200,8 +202,80 @@ Per RSA, un computer quantistico sufficientemente potente potrebbe:
 \end{itemize}
 
 Per ECC, l'algoritmo di Shor si estende naturalmente al problema del logaritmo discreto su curve ellittiche, permettendo di calcolare $k$ da $Q = kP$ con la stessa efficienza.
+\newpage
 
-\subsubsection{Requisiti pratici e tempistiche}
+\section{Computazione quantistica e impatto sulla crittografia classica}
+
+\subsection{Nozioni base di computazione quantistica}
+
+\subsubsection{Richiami essenziali di meccanica quantistica}
+
+La computazione quantistica si basa su alcuni principi della meccanica quantistica che non hanno un analogo diretto nel calcolo classico.
+In questa sede non interessa una descrizione formale, ma l’introduzione dei concetti che verranno utilizzati nel seguito.
+
+Il primo concetto fondamentale è quello di \emph{stato quantistico}. A differenza del bit classico, che può assumere solo i valori 0 o 1, un sistema quantistico può trovarsi in una sovrapposizione di stati. Questo significa che lo stato di un qubit può essere descritto come una combinazione lineare di $\ket{0}$ e $\ket{1}$.
+
+Un secondo concetto chiave è l’\emph{entanglement}, una correlazione tra più qubit tale per cui lo stato di ciascun qubit non può essere descritto indipendentemente dagli altri. Questa proprietà consente di rappresentare informazioni distribuite su più qubit in modo non separabile.
+
+Infine, la \emph{misura} di uno stato quantistico provoca il collasso della sovrapposizione, restituendo un risultato classico. La probabilità dei diversi esiti dipende dallo stato quantistico prima della misura.
+
+Questi tre elementi — sovrapposizione, entanglement e misura — costituiscono la base della differenza tra computazione classica e computazione quantistica.
+
+\subsubsection{Qubit e operazioni quantistiche}
+
+L’unità fondamentale di informazione in un computer quantistico è il qubit.
+Dal punto di vista matematico, un qubit è rappresentato come un vettore in uno spazio di Hilbert bidimensionale, mentre un registro di $n$ qubit è descritto in uno spazio di dimensione $2^n$.
+
+Le operazioni sui qubit sono realizzate tramite \emph{porte quantistiche}, che corrispondono a trasformazioni lineari e reversibili. A differenza delle porte logiche classiche, le porte quantistiche agiscono su stati in sovrapposizione, trasformando simultaneamente tutte le componenti dello stato.
+
+Questa caratteristica permette di eseguire operazioni su un numero esponenziale di stati in modo parallelo, fenomeno noto come \emph{parallelismo quantistico}.
+
+\subsubsection{Modello di calcolo quantistico}
+
+Un computer quantistico segue un modello di calcolo diverso da quello classico.
+Un algoritmo quantistico è tipicamente composto da tre fasi:
+\begin{itemize}
+    \item preparazione dello stato iniziale;
+    \item applicazione di una sequenza di porte quantistiche;
+    \item misura finale.
+\end{itemize}
+
+Durante la fase di evoluzione, lo stato del sistema viene trasformato in modo deterministico, mentre l’osservazione del risultato è intrinsecamente probabilistica.
+
+La potenza del modello di calcolo quantistico non deriva dalla possibilità di ``provare tutte le soluzioni'', ma dalla capacità di \emph{interferenza}, che consente di amplificare le soluzioni corrette e sopprimere quelle errate.
+
+Questo aspetto è centrale per comprendere come algoritmi quantistici specifici, come l’algoritmo di Shor, riescano a risolvere problemi matematici ritenuti computazionalmente difficili nel modello classico.
+
+\subsubsection{Collegamento con la crittografia}
+
+I concetti introdotti in questa sezione costituiscono la base teorica necessaria per analizzare l’impatto della computazione quantistica sulla crittografia moderna.
+In particolare, la possibilità di sfruttare sovrapposizione e interferenza consente di affrontare in modo efficiente problemi come la fattorizzazione di interi e il calcolo del logaritmo discreto.
+
+Nel prossimo punto verrà analizzato l’algoritmo di Shor, mostrando come il modello di calcolo quantistico renda concretamente possibile la rottura dei protocolli crittografici asimmetrici descritti nei capitoli precedenti.
+
+\subsubsection{Computer quantistici reali e sfide di realizzazione}
+
+Un computer quantistico reale è un dispositivo composto da qubit fisici, ciascuno dei quali deve essere mantenuto in stato quantistico per durate sufficienti allo svolgimento delle operazioni. Le tecnologie più diffuse utilizzano qubit superconduttori, che operano a temperature estremamente basse, prossime allo zero assoluto, tipicamente dell’ordine di decine di millikelvin, al fine di ridurre il rumore termico e preservare la coerenza quantistica.
+
+Queste condizioni sono ottenute tramite refrigeratori a diluizione, dispositivi complessi e costosi che rendono difficile la scalabilità dei sistemi. Anche minime interferenze ambientali possono causare la decoerenza, ovvero la perdita delle proprietà quantistiche dei qubit, compromettendo il calcolo.
+
+Un’ulteriore sfida è rappresentata dal controllo delle operazioni quantistiche. Le porte devono essere applicate con estrema precisione, poiché errori anche molto piccoli si accumulano rapidamente all’aumentare del numero di qubit.
+
+Per ottenere un qubit logico affidabile sono necessari molti qubit fisici, sfruttando tecniche di correzione d’errore quantistica. Gli schemi attuali richiedono tipicamente centinaia o migliaia di qubit fisici per realizzare un singolo qubit logico utilizzabile.
+
+Inoltre, i tempi di coerenza dei qubit nei sistemi attuali sono limitati, rendendo impraticabile l’esecuzione di algoritmi complessi su larga scala, come quelli necessari per rompere RSA a 2048 bit.
+
+Per queste ragioni si ritiene che siano necessari ancora diversi anni, se non decenni, prima che computer quantistici in grado di compromettere concretamente i sistemi crittografici attuali diventino disponibili. Tuttavia, i progressi tecnologici e gli investimenti in corso rendono questa prospettiva rilevante dal punto di vista della sicurezza a lungo termine.
+
+
+\subsection{Algoritmi quantistici rilevanti: Shor, Grover}
+
+\subsection{Implicazioni per la sicurezza dei sistemi attuali}
+
+\section{Introduzione alla crittografia post-quantistica}
+
+\subsection{Definizione, requisiti e obiettivi}
+\paragraph{Requisiti pratici e tempistiche}
 
 Sebbene la minaccia sia teoricamente dimostrata, la realizzazione pratica di computer quantistici capaci di violare RSA ed ECC richiede risorse considerevoli. Secondo stime del NIST, per compromettere una chiave RSA-2048 sarebbero necessari diversi milioni di qubit logici affidabili, mentre le implementazioni attuali (2024) operano con centinaia di qubit fisici caratterizzati da elevati tassi di errore.
 
@@ -209,7 +283,8 @@ La transizione da qubit fisici a qubit logici richiede tecniche di correzione de
 
 Nonostante queste difficoltà tecnologiche, il principio "harvest now, decrypt later" rappresenta una preoccupazione concreta: un attaccante potrebbe intercettare e archiviare oggi comunicazioni cifrate con RSA o ECC, per decifrarle in futuro quando disporrà di computer quantistici sufficientemente potenti. Questa considerazione è particolarmente rilevante per dati che richiedono riservatezza a lungo termine, come informazioni mediche, segreti industriali o comunicazioni governative.
 
-\subsubsection{La risposta: crittografia post-quantistica}
+\subsection{Ruolo del Nist e processo di standardizzazione}
+\paragraph{La risposta: crittografia post-quantistica}
 
 Di fronte a questa minaccia emergente, il National Institute of Standards and Technology (NIST) ha avviato nel 2016 un processo di standardizzazione per identificare algoritmi crittografici resistenti agli attacchi quantistici. Nel luglio 2022, il NIST ha annunciato i primi algoritmi selezionati per la standardizzazione, basati su problemi matematici ritenuti difficili anche per computer quantistici, come i reticoli algebrici e i codici correttori di errori.
 
@@ -217,7 +292,7 @@ La migrazione verso la crittografia post-quantistica rappresenta una delle sfide
 
 \newpage
 
-\section{Computazione quantistica e impatto sulla crittografia classica}
+\section{Panorama sugli algoritmi post-quantistici}
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
