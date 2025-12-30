@@ -20,7 +20,6 @@
 
 \newpage
 
-%Capitolo 1
 \section{Introduzione}
 
 \subsection{Contesto e motivazioni} 
@@ -46,10 +45,12 @@ informatica moderna.
 Per molti anni il problema è rimasto solo teorico, perché il calcolo quantistico non aveva applicazioni pratiche. 
 Lo scenario è cambiato con i recenti progressi nel settore e con lo sviluppo dei primi prototipi di calcolatori quantistici 
 da parte di aziende come Google e Microsoft, che hanno riportato risultati significativi con i loro progetti: Myorana 1 e Willow. 
-Questi sviluppi hanno aumentato le preoccupazioni sulla solidità degli schemi crittografici attuali.
+Questi progetti hanno quindi portato alla luce dei veri calcolatori quantistici funzionanti e nonostante il limitato numero di qbit 
+stabili sia insufficiente per applicazioni pratiche su larga scala, questo segna una svolta nel settore.
 
 Sebbene le macchine quantistiche siano ancora in fase sperimentale, diversi scienziati ritengono che la loro costruzione 
 su larga scala sia ormai una sfida principalmente ingegneristica, e alcuni prevedono la loro maturazione entro i prossimi vent’anni. 
+
 Considerando che l’attuale infrastruttura crittografica ha richiesto quasi due decenni per essere implementata, risulta necessario 
 iniziare da subito la transizione verso sistemi progettati per resistere al calcolo quantistico.
 
@@ -70,6 +71,8 @@ i protocolli e le reti esistenti.
 
 Per comprendere le sfide poste dai computer quantistici alla crittografia moderna, è fondamentale 
 conoscerne i principi di base dietro i principali algoritmi crittografici attualmente in uso.
+Una volta capiti tali principi, procederemo ad analizzare Shor, il suo impatto sugli algoritmi ed
+infine le soluzioni proposte dalla crittografia post-quantistica.
 
 \subsection{Crittografia a chiave pubblica: RSA, ECC}
 
@@ -188,20 +191,11 @@ RSA e ECC costituiscono oggi la base dell'infrastruttura di sicurezza digitale g
 
 \subsection{Limiti rispetto ai computer quantistici}
 
-L'avvento dei computer quantistici rappresenta una minaccia fondamentale per la sicurezza di RSA e ECC. La differenza sostanziale tra calcolo classico e quantistico risiede nell'unità fondamentale di informazione: mentre i computer classici utilizzano bit che possono trovarsi negli stati 0 o 1, i computer quantistici operano con qubit che, grazie al principio di sovrapposizione quantistica, possono esistere simultaneamente in una combinazione di entrambi gli stati.
-
-\paragraph{Vulnerabilità di RSA e ECC}
-
-Nel 1994, Peter Shor sviluppò un algoritmo quantistico in grado di fattorizzare numeri interi e risolvere il problema del logaritmo discreto in tempo polinomiale. Più precisamente, l'algoritmo di Shor ha complessità $O((\log N)^3)$ per la fattorizzazione di un numero $N$, rendendo vulnerabili sia RSA che ECC.
-
-Per RSA, un computer quantistico sufficientemente potente potrebbe:
-\begin{itemize}
-    \item Fattorizzare $n = pq$ in tempo polinomiale
-    \item Calcolare $\phi(n) = (p-1)(q-1)$
-    \item Determinare la chiave privata $d$ dall'equazione $ed \equiv 1 \pmod{\phi(n)}$
-\end{itemize}
-
-Per ECC, l'algoritmo di Shor si estende naturalmente al problema del logaritmo discreto su curve ellittiche, permettendo di calcolare $k$ da $Q = kP$ con la stessa efficienza.
+Avendo introdotto i fondamenti della crittografia classica possiamo provare ora a comprendere 
+il funzionamento della crittografia quantistica. Infatti nei prossimi capitoli capiremo quali sono
+i vantaggi che i computer quantistici offrono rispetto a quelli classici e come questi
+possono compromettere la sicurezza degli algoritmi classici. in particolare esamineremo l'algoritmo 
+di Shor e il suo impatto su RSA ed ECC.
 \newpage
 
 \section{Computazione quantistica e impatto sulla crittografia classica}
@@ -270,9 +264,22 @@ Per queste ragioni si ritiene che siano necessari ancora diversi anni, se non de
 
 \subsection{Algoritmi quantistici rilevanti: Shor, Grover}
 
+\paragraph{Shor Introduzione}
+
+Nel 1994, Peter Shor sviluppò un algoritmo quantistico in grado di fattorizzare numeri interi e risolvere il problema del logaritmo discreto in tempo polinomiale. Più precisamente, l'algoritmo di Shor ha complessità $O((\log N)^3)$ per la fattorizzazione di un numero $N$, rendendo vulnerabili sia RSA che ECC.
+
+Per RSA, un computer quantistico sufficientemente potente potrebbe:
+\begin{itemize}
+    \item Fattorizzare $n = pq$ in tempo polinomiale
+    \item Calcolare $\phi(n) = (p-1)(q-1)$
+    \item Determinare la chiave privata $d$ dall'equazione $ed \equiv 1 \pmod{\phi(n)}$
+\end{itemize}
+
+Per ECC, l'algoritmo di Shor si estende naturalmente al problema del logaritmo discreto su curve ellittiche, permettendo di calcolare $k$ da $Q = kP$ con la stessa efficienza.
+
 \subsection{Implicazioni per la sicurezza dei sistemi attuali}
 
-\section{Introduzione alla crittografia post-quantistica}
+\section{Crittografia post quantistica}
 
 \subsection{Definizione, requisiti e obiettivi}
 \paragraph{Requisiti pratici e tempistiche}

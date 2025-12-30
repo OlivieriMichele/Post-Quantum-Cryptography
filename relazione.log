@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  18 DEC 2025 19:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  30 DEC 2025 17:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -297,26 +297,26 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [3]
 
 [4]
-Overfull \hbox (10.93195pt too wide) in paragraph at lines 88--91
+Overfull \hbox (10.93195pt too wide) in paragraph at lines 91--94
 \OT1/cmr/m/n/12 putazional-mente in-trat-ta-bili da in-ver-tire senza la conoscenza di un'informazione
  []
 
 
 
 [5]
-Overfull \hbox (52.61282pt too wide) in paragraph at lines 145--147
+Overfull \hbox (52.61282pt too wide) in paragraph at lines 148--150
  []\OT1/cmr/bx/n/12 Sicurezza e di-men-sioni delle chi-avi[] \OT1/cmr/m/n/12 La si-curezza di RSA dipende dall'impossibilit^^Ra
  []
 
 
-Overfull \hbox (2.8885pt too wide) in paragraph at lines 145--147
+Overfull \hbox (2.8885pt too wide) in paragraph at lines 148--150
 \OT1/cmr/m/n/12 prat-ica di fat-tor-iz-zare $\OML/cmm/m/it/12 n$ \OT1/cmr/m/n/12 quando questo ^^Re suf-fi-cien-te-mente grande. Conoscendo
  []
 
 
 
 [6]
-Overfull \hbox (3.87982pt too wide) in paragraph at lines 167--168
+Overfull \hbox (3.87982pt too wide) in paragraph at lines 170--171
 []\OT1/cmr/m/n/12 La molti-pli-cazione scalare $\OML/cmm/m/it/12 Q \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 kP$ \OT1/cmr/m/n/12 ^^Re com-putazional-mente ef-fi-ciente (tempo
  []
 
@@ -331,48 +331,41 @@ Overfull \hbox (3.87982pt too wide) in paragraph at lines 167--168
 [10]
 
 [11]
-Overfull \hbox (19.50575pt too wide) in paragraph at lines 275--275
-[]\OT1/cmr/bx/n/17.28 Introduzione alla crit-tografia post-quantistica 
- []
-
-
-Overfull \hbox (4.33896pt too wide) in paragraph at lines 284--285
+Overfull \hbox (4.33896pt too wide) in paragraph at lines 291--292
 \OT1/cmr/m/n/12 crypt later" rap-p-re-senta una pre-oc-cu-pazione conc-reta: un at-tac-cante potrebbe
  []
 
 
-
-[12]
-Overfull \hbox (3.29453pt too wide) in paragraph at lines 291--292
+Overfull \hbox (3.29453pt too wide) in paragraph at lines 298--299
 \OT1/cmr/m/n/12 pi-ani-fi-cazione per sos-ti-tuire l'infrastruttura crit-tografica es-istente man-te-nendo
  []
 
 
 
-[13]
+[12]
 No file relazione.bbl.
 
 
-[14] (relazione.aux)
+[13] (relazione.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: AD5AFC07CA4F845B98617D25D17EB4B5;5778.
+(rerunfilecheck)             Checksum: 44F16C465602EA2AA20EBEA95F2DC4AE;5685.
  ) 
 Here is how much of TeX's memory you used:
- 9832 strings out of 473899
- 149674 string characters out of 5732122
+ 9831 strings out of 473899
+ 149667 string characters out of 5732122
  543494 words of memory out of 5000000
  32538 multiletter control sequences out of 15000+600000
  567516 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,602b,511s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,602b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\michele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazione.pdf (14 pages, 184174 bytes).
+Output written on relazione.pdf (13 pages, 183744 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
+ 265 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
  185 words of extra memory for PDF output out of 10000 (max. 10000000)
 
