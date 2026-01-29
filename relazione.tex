@@ -90,7 +90,7 @@ D(C(m;k_{\text{pub}});k_{\text{prv}})=m.
 
 Il funzionamento di questo sistema si basa sulle funzioni one-way trapdoor: operazioni matematiche 
 semplici da eseguire in una direzione, ma computazionalmente intrattabili da invertire senza 
-la conoscenza di un'informazione specifica (la "trappola").
+la conoscenza di una informazione specifica (la "trappola").
 
 La teoria dei numeri e l'algebra modulare forniscono il substrato matematico necessario per 
 generare tali funzioni; a seconda del problema matematico sottostante, si distinguono i 
@@ -145,7 +145,7 @@ $$m^{ed} \bmod n = m^{1+k\phi(n)} \bmod n = m \cdot (m^{\phi(n)})^k \bmod n = m 
 
 \paragraph{Sicurezza e dimensioni delle chiavi} 
 
-La sicurezza di RSA dipende dall'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. 
+La sicurezza di RSA dipende da l'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. 
 Conoscendo la fattorizzazione $n = pq$, un attaccante potrebbe infatti calcolare $\phi(n)$ e di conseguenza la chiave privata $d$.
 
 Attualmente, le dimensioni delle chiavi considerate sicure sono di almeno 2048 bit, con raccomandazioni crescenti verso 4096 bit per applicazioni che richiedono sicurezza a lungo termine. Chiavi di 1024 bit sono considerate obsolete e vulnerabili ad attacchi con risorse computazionali moderne.
