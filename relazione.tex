@@ -191,14 +191,18 @@ RSA e ECC costituiscono oggi la base dell'infrastruttura di sicurezza digitale g
 
 \subsection{Limiti rispetto ai computer quantistici}
 
-Avendo introdotto i fondamenti della crittografia classica possiamo provare ora a comprendere 
-il funzionamento della crittografia quantistica. Infatti nei prossimi capitoli capiremo quali sono
+Avendo introdotto i fondamenti della crittografia classica possiamo provare ora ad analizzare
+le vulnerabilità di questi algoritmi in particolar modo rispetto al calcolo quantistico. Infatti nei prossimi capitoli capiremo quali sono
 i vantaggi che i computer quantistici offrono rispetto a quelli classici e come questi
 possono compromettere la sicurezza degli algoritmi classici. in particolare esamineremo l'algoritmo 
-di Shor e il suo impatto su RSA ed ECC.
+di Shor e il suo impatto su RSA.
 \newpage
 
 \section{Computazione quantistica e impatto sulla crittografia classica}
+
+Entriamo ora nel vivo della relazione, sviscerare i segreti dietro l'algoritmo di Shor per capire in che modo rompere il protocllo RSA appena descritto.
+Per farlo avremo prima bisogno di introdurre alcuni concetti di base della computazione quantistica che shor utilizza per ottenere i suoi risultati. 
+Una volta compresi questi concetti potremo procedere alla spiegazione dell'algoritmo vero e proprio.
 
 \input{capitolo3}
 
@@ -223,6 +227,25 @@ La migrazione verso la crittografia post-quantistica rappresenta una delle sfide
 \newpage
 
 \section{Panorama sugli algoritmi post-quantistici}
+
+\section{Considerazioni finali}
+
+\subsection{Stato attuale della tecnologia dei computer quantistici}
+
+Un computer quantistico reale è un sistema fisico composto da qubit che devono mantenere le loro proprietà quantistiche per tutta la durata del calcolo. Le tecnologie attualmente più diffuse si basano su qubit superconduttori, che operano a temperature estremamente basse, prossime allo zero assoluto, tipicamente dell'ordine di alcune decine di millikelvin, al fine di ridurre il rumore termico e preservare la coerenza quantistica.
+
+Il raggiungimento di tali condizioni richiede l'utilizzo di refrigeratori a diluizione, dispositivi complessi e costosi che rappresentano un primo limite alla scalabilità dei sistemi. Anche minime interferenze ambientali possono causare la \emph{decoerenza}, ovvero la perdita delle proprietà quantistiche dei qubit, compromettendo la correttezza del calcolo.
+
+Un'ulteriore difficoltà riguarda il controllo delle operazioni quantistiche. Le porte devono essere applicate con estrema precisione, poiché errori anche molto piccoli tendono ad accumularsi rapidamente con l'aumentare del numero di qubit e della profondità del circuito.
+
+Per mitigare questo problema si ricorre a tecniche di \emph{correzione d'errore quantistica}. Tuttavia, gli schemi attualmente noti richiedono l'impiego di un numero elevato di qubit fisici per realizzare un singolo qubit logico affidabile, tipicamente dell'ordine di centinaia o migliaia.
+
+A causa dei limiti tecnologici attuali, in particolare dei tempi di coerenza ridotti e dell'elevato tasso di errore, l'esecuzione di algoritmi quantistici complessi su larga scala, come quelli necessari per rompere RSA a 2048 bit, non è ancora praticabile.
+
+Per queste ragioni si ritiene che saranno necessari ancora diversi anni, se non decenni, prima che computer quantistici in grado di compromettere concretamente i sistemi crittografici attuali diventino disponibili. Nonostante ciò, i progressi tecnologici e gli investimenti in corso rendono questa prospettiva rilevante dal punto di vista della sicurezza a lungo termine.
+
+\subsection{Stato attuale dei protocolli post-quantistici}
+\newpage
 
 \bibliographystyle{plain}
 \bibliography{bibliography}

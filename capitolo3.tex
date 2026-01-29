@@ -1,28 +1,38 @@
 \subsection{Nozioni base di computazione quantistica}
 
+La computazione quantistica rappresenta un paradigma di calcolo che sfrutta i principi della meccanica quantistica per elaborare l'informazione in modi che non sono possibili con i computer classici.
+Di questi principi di meccanica quantistica non esiste un corrispettivo diretto nel modelli di calcolo classico, e proprio per questo motivo che ne analizziamo gli effetti e le conseguenze.
+
 \subsubsection{Richiami essenziali di meccanica quantistica}
 
-La computazione quantistica si fonda su alcuni principi della meccanica quantistica che non trovano un corrispettivo diretto nel modello di calcolo classico.
-In questa sezione non si fornisce una trattazione formale della teoria, ma si introducono i concetti essenziali necessari a comprendere il funzionamento dei computer quantistici e il loro impatto sulla crittografia.
+In questa sezione non si fornisce una trattazione formale della teoria, ma si introducono i concetti essenziali necessari a comprendere il funzionamento dei computer quantistici e dei meccanismi che consentono loro di superare i limiti della computazione classica.
 
-Il primo concetto fondamentale è quello di \emph{stato quantistico}. Mentre un bit classico può assumere esclusivamente i valori 0 o 1, un sistema quantistico può trovarsi in una \emph{sovrapposizione} di stati. In particolare, lo stato di un qubit può essere descritto come una combinazione lineare degli stati base $\ket{0}$ e $\ket{1}$, con coefficienti complessi che ne determinano le probabilità di osservazione.
+Il primo concetto fondamentale è quello di \textbf{\emph{stato quantistico}}. Mentre un bit classico può assumere esclusivamente i valori 0 o 1, un sistema quantistico può trovarsi in una \emph{sovrapposizione} di stati. Questo non significa che sia 0 e 1 "contemporaneamente" in senso magico ma semplicemente che lo stato di un qubit può essere descritto come una combinazione lineare degli stati base $\ket{0}$ e $\ket{1}$ : $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$$ con coefficienti complessi che ne determinano le probabilità di osservazione.
 
-Un secondo concetto chiave è l'\emph{entanglement}, una forma di correlazione quantistica tra più qubit per cui lo stato complessivo del sistema non può essere descritto come il prodotto degli stati dei singoli qubit. In presenza di entanglement, la misura di un qubit influisce istantaneamente sullo stato degli altri, indipendentemente dalla distanza che li separa. Questa proprietà consente di rappresentare e manipolare informazioni in modo non separabile.
+Un secondo concetto chiave è l'\textbf{\emph{entanglement}}, una forma di correlazione quantistica tra più qubit per cui lo stato complessivo del sistema non può essere descritto come il prodotto degli stati dei singoli qubit. In presenza di entanglement, la misura di un qubit influisce istantaneamente sullo stato degli altri, indipendentemente dalla distanza che li separa. Questa proprietà consente di rappresentare e manipolare informazioni in modo non separabile, ciò significa che le operazioni su un qubit possono avere effetti immediati sugli altri qubit entangled con esso.
 
-Il terzo elemento fondamentale è la \emph{misura}. Quando uno stato quantistico viene misurato, la sovrapposizione collassa e il risultato ottenuto è un valore classico. L'esito della misura è probabilistico e dipende dallo stato del sistema immediatamente prima dell'osservazione.
+Il terzo elemento fondamentale è la \textbf{\emph{misura}}. Quando uno stato quantistico viene misurato, la sovrapposizione collassa e il risultato ottenuto è un valore classico. L'esito della misura è probabilistico e dipende dallo stato del sistema immediatamente prima dell'osservazione.
 
 Sovrapposizione, entanglement e misura costituiscono i principi alla base della differenza concettuale tra computazione classica e computazione quantistica, e determinano il modo in cui l'informazione viene elaborata in un sistema quantistico.
 
-\subsubsection{Qubit e operazioni quantistiche}
+\subsubsection*{Qubit e operazioni quantistiche}
 
-L'unità fondamentale di informazione in un computer quantistico è il qubit.
+L'unità fondamentale di informazione in un computer quantistico è quindi il qubit.
 Dal punto di vista matematico, un qubit è rappresentato come un vettore unitario in uno spazio di Hilbert bidimensionale, mentre un registro composto da $n$ qubit è descritto in uno spazio di dimensione $2^n$.
 
 Le operazioni sui qubit sono realizzate mediante \emph{porte quantistiche}, che corrispondono a trasformazioni lineari e reversibili, descritte da operatori unitari. A differenza delle porte logiche classiche, le porte quantistiche agiscono su stati in sovrapposizione, modificando simultaneamente tutte le componenti dello stato quantistico.
 
-Questo comportamento consente di elaborare, in un singolo passo computazionale, un insieme di stati che cresce esponenzialmente con il numero di qubit. Tale fenomeno è noto come \emph{parallelismo quantistico} e rappresenta una delle principali fonti di vantaggio rispetto al calcolo classico, pur non traducendosi automaticamente in un'accelerazione per qualsiasi problema.
+Matematicamente, queste porte sono rappresentate come matrici unitarie, il che conferisce loro due proprietà cruciali: la somma delle probabilità dei possibili stati deve essere sempre pari a 1 e ogni operazione deve essere reversibile (ovvero, ogni porta ha una sua inversa che può annullare l'operazione).
+Le principali porte quantistiche:
+\begin{itemize}
+    \item porte a bit singolo come: la porta Hadamard (H), che viene usata per mettere i qubit in superposizioni, la porta Pauli-X (equivalente a una NOT classica), e le porte di Pauli(X, Y, Z) che ruotano il vettore.
+    \item porte a più bit che realizzano operazioni condizionate tra due qubit, fondamentali per creare entanglement.
+    \item porta SWAP che scambia lo stato di due qubit, la porta di Fase Controllata (Rk) utile per la QFT
+    \item porte specializzate costruite per specifici algoritmi a partire da queste.
+\end{itemize}
+L'uso combinato di queste porte consente di elaborare, in un singolo passo computazionale, un insieme di stati che cresce esponenzialmente con il numero di qubit. Tale fenomeno è noto come \emph{parallelismo quantistico} e rappresenta una delle principali fonti di vantaggio rispetto al calcolo classico, pur non traducendosi automaticamente in un'accelerazione per qualsiasi problema.
 
-\subsubsection{Modello di calcolo quantistico}
+\subsubsection*{Modello di calcolo quantistico}
 
 Il funzionamento di un computer quantistico segue un modello di calcolo specifico, distinto da quello deterministico utilizzato nei computer classici.
 Un algoritmo quantistico è generalmente articolato in tre fasi principali:
@@ -36,36 +46,22 @@ Durante la fase di evoluzione, lo stato quantistico del sistema viene trasformat
 
 La potenza del modello di calcolo quantistico non risiede nella possibilità di valutare esplicitamente tutte le soluzioni di un problema, bensì nella capacità di sfruttare il fenomeno dell'\emph{interferenza quantistica}. Attraverso opportune sequenze di operazioni, le ampiezze associate alle soluzioni corrette possono essere amplificate, mentre quelle delle soluzioni errate vengono attenuate.
 
-Questo meccanismo è alla base del funzionamento di algoritmi quantistici noti, come l'algoritmo di Shor, che riescono a risolvere efficientemente problemi matematici considerati intrattabili nel modello di calcolo classico.
-
 \subsubsection{Collegamento con la crittografia}
 
 I concetti introdotti in questa sezione costituiscono il fondamento teorico per analizzare l'impatto della computazione quantistica sulla crittografia moderna.
 In particolare, l'uso combinato di sovrapposizione, entanglement e interferenza consente di affrontare in modo efficiente problemi come la fattorizzazione di interi e il calcolo del logaritmo discreto.
 
-Poiché tali problemi sono alla base della sicurezza di numerosi sistemi crittografici asimmetrici, la computazione quantistica rappresenta una minaccia diretta per protocolli ampiamente utilizzati. Nel prossimo paragrafo verrà analizzato l'algoritmo di Shor, mostrando in che modo il modello di calcolo quantistico renda concretamente possibile la loro compromissione.
-
-\subsubsection{Computer quantistici reali e sfide di realizzazione}
-
-Un computer quantistico reale è un sistema fisico composto da qubit che devono mantenere le loro proprietà quantistiche per tutta la durata del calcolo. Le tecnologie attualmente più diffuse si basano su qubit superconduttori, che operano a temperature estremamente basse, prossime allo zero assoluto, tipicamente dell'ordine di alcune decine di millikelvin, al fine di ridurre il rumore termico e preservare la coerenza quantistica.
-
-Il raggiungimento di tali condizioni richiede l'utilizzo di refrigeratori a diluizione, dispositivi complessi e costosi che rappresentano un primo limite alla scalabilità dei sistemi. Anche minime interferenze ambientali possono causare la \emph{decoerenza}, ovvero la perdita delle proprietà quantistiche dei qubit, compromettendo la correttezza del calcolo.
-
-Un'ulteriore difficoltà riguarda il controllo delle operazioni quantistiche. Le porte devono essere applicate con estrema precisione, poiché errori anche molto piccoli tendono ad accumularsi rapidamente con l'aumentare del numero di qubit e della profondità del circuito.
-
-Per mitigare questo problema si ricorre a tecniche di \emph{correzione d'errore quantistica}. Tuttavia, gli schemi attualmente noti richiedono l'impiego di un numero elevato di qubit fisici per realizzare un singolo qubit logico affidabile, tipicamente dell'ordine di centinaia o migliaia.
-
-A causa dei limiti tecnologici attuali, in particolare dei tempi di coerenza ridotti e dell'elevato tasso di errore, l'esecuzione di algoritmi quantistici complessi su larga scala, come quelli necessari per rompere RSA a 2048 bit, non è ancora praticabile.
-
-Per queste ragioni si ritiene che saranno necessari ancora diversi anni, se non decenni, prima che computer quantistici in grado di compromettere concretamente i sistemi crittografici attuali diventino disponibili. Nonostante ciò, i progressi tecnologici e gli investimenti in corso rendono questa prospettiva rilevante dal punto di vista della sicurezza a lungo termine.
+\newpage
 
 \subsection{Algoritmi quantistici rilevanti: Shor}
 
-L'algoritmo di Shor rappresenta uno dei risultati più significativi nel campo della computazione quantistica, non solo per le sue implicazioni sulla crittografia, ma anche per la profondità delle idee matematiche che lo compongono. Per comprendere appieno il funzionamento di questo algoritmo, è necessario procedere con un'analisi rigorosa che parta dai fondamenti matematici, prescindendo inizialmente dagli aspetti quantistici. L'obiettivo di questa sezione è chiarire perché l'algoritmo funziona dal punto di vista matematico, riservando la discussione su come viene accelerato dal computer quantistico a una fase successiva dell'analisi.
+L'algoritmo di Shor rappresenta uno dei risultati più significativi nel campo della computazione quantistica, non solo per le sue implicazioni sulla crittografia, ma anche per la profondità delle idee matematiche che lo compongono. Infatti per comprendere appieno il funzionamento di questo algoritmo, è necessario procedere con un'analisi rigorosa che parta dai fondamenti matematici, prescindendo inizialmente dagli aspetti quantistici. 
 
-\subsubsection{Il problema della fattorizzazione}
+L'obiettivo quindi di questa sezione è chiarire perché l'algoritmo funziona dal punto di vista matematico, e solo in una fase successiva dell'analisi vedremo come viene accelerato dal computer quantistico.
 
-Il punto di partenza è il problema della fattorizzazione di interi. Dato un intero composto $N = p \cdot q$, dove $p$ e $q$ sono numeri primi di grandi dimensioni, il problema consiste nel determinare $p$ e $q$ conoscendo solamente $N$. Questo problema costituisce il fondamento della sicurezza di numerosi sistemi crittografici classici, in particolare del sistema RSA. La difficoltà computazionale della fattorizzazione deriva da due caratteristiche fondamentali: in primo luogo, non è noto alcun algoritmo classico in grado di fattorizzare un numero in tempo polinomiale rispetto alla dimensione dell'input; in secondo luogo, i tentativi diretti di fattorizzazione crescono rapidamente con l'aumentare della dimensione di $N$, rendendo il problema intrattabile per valori sufficientemente grandi.
+\subsubsection*{Il problema della fattorizzazione}
+
+Il punto di partenza è il problema della fattorizzazione di interi. Dato un intero composto $N = p \cdot q$, dove $p$ e $q$ sono numeri primi di grandi dimensioni, il problema consiste nel determinare $p$ e $q$ conoscendo solamente $N$. La difficoltà computazionale della fattorizzazione deriva da due caratteristiche fondamentali: in primo luogo, non è noto alcun algoritmo classico in grado di fattorizzare un numero in tempo polinomiale rispetto alla dimensione dell'input; in secondo luogo, i tentativi diretti di fattorizzazione crescono rapidamente con l'aumentare della dimensione di $N$, rendendo il problema intrattabile per valori sufficientemente grandi.
 
 L'intuizione fondamentale di Shor consiste nel trasformare il problema della fattorizzazione in un problema di natura diversa, caratterizzato da una struttura matematica più favorevole. Questa trasformazione permette di ricondurre la ricerca dei fattori primi a un problema di teoria dei numeri che, come vedremo, può essere risolto in modo efficiente sfruttando le peculiarità della computazione quantistica.
 
@@ -134,18 +130,17 @@ Osserviamo che il valore si ripete dopo quattro iterazioni, pertanto il periodo 
 
 Abbiamo così ottenuto la fattorizzazione $15 = 3 \cdot 5$.
 
-\subsubsection{La complessità computazionale del metodo}
+\subsubsection*{La complessità computazionale del metodo}
 
 A questo punto è importante sottolineare quali passaggi del metodo siano effettivamente computazionalmente trattabili e quale rappresenti invece il collo di bottiglia. I passaggi che non presentano difficoltà computazionali significative includono il calcolo del massimo comun divisore, che può essere eseguito efficientemente tramite l'algoritmo di Euclide, e l'esecuzione di esponenziazioni modulari, che può essere realizzata in tempo polinomiale mediante l'algoritmo di esponenziazione veloce.
 
 Il passaggio critico dell'intero procedimento è la determinazione del periodo $r$. Nel contesto della computazione classica, il calcolo del periodo della funzione $a^x \bmod N$ richiede essenzialmente di valutare la funzione ripetutamente fino a quando non si osserva la ripetizione del valore iniziale. Il numero di valutazioni necessarie nel caso peggiore può essere dell'ordine di $N$, e anche nel caso medio il numero di operazioni cresce in modo tale da rendere il problema intrattabile per valori di $N$ sufficientemente grandi. È precisamente in questo passaggio che risiede il collo di bottiglia computazionale che impedisce alla fattorizzazione classica di essere efficiente.
 
-\subsubsection{Casi di fallimento e strategie di gestione}
+\subsubsection*{Casi di fallimento e strategie di gestione}
 
 È importante osservare che il metodo descritto non ha sempre successo. Possono verificarsi due situazioni in cui la procedura non produce una fattorizzazione: il periodo $r$ potrebbe risultare dispari, oppure potrebbe accadere che $a^{r/2} \equiv -1 \pmod{N}$. In entrambi questi casi, non è possibile applicare la fattorizzazione attraverso il massimo comun divisore nel modo descritto. Tuttavia, è possibile dimostrare che la probabilità di incorrere in uno di questi casi sfavorevoli è relativamente bassa. Inoltre, qualora si verifichi uno di questi casi, è sufficiente scegliere un valore diverso di $a$ e ripetere l'intero procedimento. Con alta probabilità, dopo pochi tentativi si otterrà un periodo che soddisfa le condizioni necessarie.
 
-\subsubsection{Sintesi del contributo matematico}
-
+\subsubsection*{Sintesi del contributo matematico}
 Ricapitolando quanto esposto, dal punto di vista strettamente matematico, l'algoritmo di Shor opera attraverso una sequenza logica di trasformazioni: in primo luogo, trasforma il problema della fattorizzazione in un problema di determinazione della periodicità di una funzione; in secondo luogo, sfrutta proprietà fondamentali dell'aritmetica modulare per collegare il periodo alla struttura dei fattori di $N$; in terzo luogo, riduce il problema al calcolo dell'ordine di un elemento modulo $N$; infine, estrae i fattori cercati attraverso il calcolo del massimo comun divisore.
 
 È fondamentale sottolineare che fino a questo punto non è stato introdotto alcun concetto di natura quantistica. Tutto quanto discusso appartiene al dominio della matematica classica e della teoria dei numeri. Il contributo essenziale della computazione quantistica risiede nella capacità di rendere efficiente il passaggio centrale, ovvero la determinazione del periodo. Mentre su un computer classico questo passaggio è computazionalmente intrattabile per numeri di grandi dimensioni, vedremo che un computer quantistico è in grado di eseguirlo in tempo polinomiale, rendendo così l'intero algoritmo efficiente e ponendo una seria minaccia alla sicurezza dei sistemi crittografici basati sulla difficoltà della fattorizzazione.
