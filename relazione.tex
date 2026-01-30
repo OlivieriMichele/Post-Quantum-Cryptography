@@ -205,17 +205,37 @@ Per farlo avremo prima bisogno di introdurre alcuni concetti di base della compu
 Una volta compresi questi concetti potremo procedere alla spiegazione dell'algoritmo vero e proprio.
 
 \input{capitolo3}
+\newpage
 
 \section{Crittografia post quantistica}
 
-\subsection{Definizione, requisiti e obiettivi}
+La crittografia post-quantistica\footnote{\href{https://en.wikipedia.org/wiki/Post-quantum_cryptography}{Wikipedia: Post-quantum cryptography}}, anche nota come crittografia quantum-safe o quantum-resistant, è quell'ambito della ricerca e dello sviluppo di algoritmi crittografici (solitamente a chiave pubblica) progettati per essere sicuri contro attacchi crittanalitici effettuati da computer quantistici.
+Ecco i pilastri fondamentali che compongono questa definizione:
+
+\begin{enumerate}
+    \item Indipendenza dall'hardware quantistico. A differenza della "crittografia quantistica"\footnote{\href{https://preprints.org/manuscript/202508.0555/v1}{Quantum Computing and Cryptography}} (che sfrutta i principi della fisica quantistica per proteggere le comunicazioni, come la distribuzione quantistica delle chiavi), la crittografia post-quantistica si basa su problemi matematici eseguiti su computer classici, ma strutturati in modo da essere resistenti anche ai futuri computer quantistici.
+    
+    \item Superamento della vulnerabilità agli algoritmi quantistici
+    
+    La crittografia post-quantistica deve essere immune alle due minacce principali rappresentate dai computer quantistici:
+    \begin{itemize}
+        \item Algoritmo di Shor: di cui abbiamo ampiamente discusso nel capitolo precedente.
+        \item Algoritmo di Grover: in grado di fornire un'accelerazione quadratica per le ricerche brute-force non strutturate. Per contrastare Grover, la PQC simmetrica richiede semplicemente il raddoppio della lunghezza delle chiavi (ad esempio, passare da AES-128 a AES-256) per mantenere lo stesso livello di sicurezza.
+    \end{itemize}
+
+    \item Fondazione su nuovi problemi matematici:
+    La PQC si basa su problemi matematici che, allo stato attuale della ricerca, non presentano vulnerabilità esponenziali quantistiche. Nel prossimo capitolo: \hyperref[cap:Algoritmi post-quantistici]{"Algoritmi post-quantistici"} esamineremo nel dettaglio le principali famiglie di problemi matematici su cui si basano gli algoritmi post-quantistici.
+
+    \item Obiettivo della "Forward Secrecy" e urgenza attuale
+    Una definizione completa di PQC include la necessità di proteggere i dati non solo in futuro, ma anche oggi. Il modello di minaccia "Harvest Now, Decrypt Later" (raccogli ora, decifra dopo) suggerisce che attori malintenzionati possano archiviare dati criptati oggi per decifrarli quando saranno disponibili computer quantistici sufficientemente potenti. La migrazione alla crittografia post-quantistica è quindi considerata una priorità di sicurezza nazionale e infrastrutturale immediata.
+\end{enumerate}
+
+\subsection{Requisiti e obiettivi}
 \paragraph{Requisiti pratici e tempistiche}
 
 Sebbene la minaccia sia teoricamente dimostrata, la realizzazione pratica di computer quantistici capaci di violare RSA ed ECC richiede risorse considerevoli. Secondo stime del NIST, per compromettere una chiave RSA-2048 sarebbero necessari diversi milioni di qubit logici affidabili, mentre le implementazioni attuali (2024) operano con centinaia di qubit fisici caratterizzati da elevati tassi di errore.
 
 La transizione da qubit fisici a qubit logici richiede tecniche di correzione degli errori quantistici che impongono un overhead significativo: potrebbero essere necessari da centinaia a migliaia di qubit fisici per realizzare un singolo qubit logico stabile.
-
-Nonostante queste difficoltà tecnologiche, il principio "harvest now, decrypt later" rappresenta una preoccupazione concreta: un attaccante potrebbe intercettare e archiviare oggi comunicazioni cifrate con RSA o ECC, per decifrarle in futuro quando disporrà di computer quantistici sufficientemente potenti. Questa considerazione è particolarmente rilevante per dati che richiedono riservatezza a lungo termine, come informazioni mediche, segreti industriali o comunicazioni governative.
 
 \subsection{Ruolo del Nist e processo di standardizzazione}
 \paragraph{La risposta: crittografia post-quantistica}
@@ -226,7 +246,15 @@ La migrazione verso la crittografia post-quantistica rappresenta una delle sfide
 
 \newpage
 
-\section{Panorama sugli algoritmi post-quantistici}
+\section{Algoritmi post-quantistici} \label{cap:Algoritmi post-quantistici}
+
+La PQC sposta la sicurezza dai problemi di fattorizzazione a nuove famiglie matematiche che, allo stato attuale della ricerca, non presentano vulnerabilità esponenziali quantistiche. Le fonti identificano i principali approcci di ricerca in:
+• Basata su reticoli (Lattice-based): Considerata una delle più promettenti per prestazioni e sicurezza, include schemi come CRYSTALS-Kyber e CRYSTALS-Dilithium.
+• Basata su codici (Code-based): Fondata sulla difficoltà di decodificare codici lineari casuali (es. l'algoritmo di McEliece).
+• Basata su hash (Hash-based): Utilizza funzioni hash crittografiche per creare firme digitali (es. SPHINCS+).
+• Multivariata: Basata sulla difficoltà di risolvere sistemi di equazioni multivariati.
+• Basata su isogenie: Utilizza le proprietà dei grafi di isogenia tra curve ellittiche.
+
 
 \section{Considerazioni finali}
 
