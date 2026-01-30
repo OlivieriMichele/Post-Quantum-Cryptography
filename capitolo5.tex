@@ -30,16 +30,136 @@ La crittografia post-quantistica sposta quindi la sua sicurezza dai problemmi di
 
 \subsection{Lattice-baces}
 
-Crittografia basata sui reticoli (Lattice-based)\footnote{\href{https://preprints.org/manuscript/202508.0555/v1}{Quantum Computing and Cryptography}}
+La crittografia basta sui reticoli (Lattice-based)\footnote{\href{https://csrc.nist.gov/pubs/fips/203/final}{NIST FIPS 203: Lattice-Based Cryptography}} è una delle famiglie più promettenti della crittografia post-quantistica. La sua sicurezza si basa sulle proprietà geometriche dei reticoli. Un reticolo è un insieme di punti nello spazio n-dimensionale che possono essere rappresentati come combinazioni lineari di vettori base con coeficenti interi.
 
-È considerata la famiglia più promettente grazie a un ottimo equilibrio tra sicurezza e prestazioni. Questi algoritmi si basano sulla difficoltà di problemi geometrici nei reticoli, come il Shortest Vector Problem (SVP).
+\paragraph{Il Problema matematico fondamentale}
+La sicurezza di questa famiglia di algoritmi si basa sulla difficoltà di risolvere problemi specifici all'interno di questi reticoli. Questo è il campo da gioco, i principali problemi che ne derivaono sono: 
+
+\paragraph{Learning With Errors (LWE)}
+Introdotto da Oded Regev nel 2005, per il quale ha ricevuto il premio Gödel nel 2018, LWE\footnote{\href{https://cims.nyu.edu/~regev/papers/qcrypto.pdf}{LWE}} consiste nel risalire ad un vettore segreto $\mathbf{s} \in \mathbb{Z}_q^n$ dato un insieme di equazioni lineari rumorose.
+
+Formalmente:
+\begin{itemize}
+\item si sceglie una matrice pubblica $\mathbf{A} \in \mathbb{Z}_q^{m \times n}$ con elementi scelti uniformemente a caso
+\item ognuno sceglie un vettore segreto $\mathbf{s} \in \mathbb{Z}_q^n$ (la chiave privata)
+\item e un vettore di errore $\mathbf{e} \in \mathbb{Z}_q^m$ con componenti piccole
+\end{itemize}
+
+Il problema fornisce coppie $(\mathbf{A}, \mathbf{b})$ dove:
+\begin{equation}
+\mathbf{b} = \mathbf{A} \cdot \mathbf{s} + \mathbf{e} \pmod{q}
+\end{equation}
+
+L'obiettivo, come abbiamo anticipato, è recuperare il vettore segreto conoscendo solo $\mathbf{A}$ e $\mathbf{b}$. Non conoscere l'errore  $\mathbf{e}$ rende il problema computazionalmente intrattabile. 
+La difficoltà del problema è stata dimostrato che è correlata alla risoluzione di problemi nel caso pessimo sui reticoli, come come il Shortest Vector Problem (SVP) e il Shortest Independent Vectors Problem (SIVP).
+Esisitono due versioni del problema: 
+\begin{itemize}
+\item \textbf{Search-LWE}: Trovare il vettore segreto $\mathbf{s}$ dato un insieme di campioni
+\item \textbf{Decision-LWE}: Distinguere campioni LWE $(A, \mathbf{A}\mathbf{s} + \mathbf{e})$ da campioni completamente casuali $(A, \mathbf{u})$ dove $\mathbf{u}$ è uniforme
+\end{itemize}
+È stato dimostrato che le due versioni sono equivalenti, risolvere il problema decisionale consente di risolvere anche quello di ricerca.
+
+\paragraph{Module Learning with Errors (MLWE)} È una generalizzazione di LWE che opera su strutture chiamate ``moduli'' su anelli polinomiali, tipicamente $R_q = \mathbb{Z}_q[x]/(x^n + 1)$ dove $n$ è una potenza di 2. Questa variante è utilizzata negli standard moderni perché permette una maggiore efficienza computazionale e chiavi di dimensioni significativamente ridotte rispetto al LWE standard.
+
+La formulazione MLWE sostituisce i vettori con vettori di polinomi e le matricrici con matrici di polinomi, mantenendo la stessa struttura generale ma sfruttando la struttura algebrica degli anelli per migliorare le prestazioni. L'equazione diventa:
+\begin{equation}
+\mathbf{t} = \mathbf{A} \cdot \mathbf{s} + \mathbf{e} \pmod{q}
+\end{equation}
+dove ora $\mathbf{A}$, $\mathbf{s}$ e $\mathbf{e}$ sono elementi del modulo su $R_q$.
+
+\paragraph{Short Integer Solution (SIS/MSIS)} Consiste nel trovare una soluzione ``piccola'' (con coefficienti bassi) per un sistema lineare. Data una matrice $\mathbf{A} \in \mathbb{Z}_q^{m \times n}$, trovare un vettore non nullo $\mathbf{x}$ con norma piccola tale che $\mathbf{A}\mathbf{x} = \mathbf{0} \pmod{q}$. Questo problema è utilizzato principalmente per schemi di firma digitale.
+
+\subsubsection*{Resistenza agli attacchi quantistici}
+
+I problemi basati sui reticoli (come MLWE e SIS) sono ritenuti difficili da risolvere anche per un avversario dotato di un computer quantistico a tolleranza d'errore. Al momento non sono noti algoritmi quantistici in grado di rompere efficientemente questi schemi. L'algoritmo quantistico di Grover può fornire solo un'accelerazione quadratica nella ricerca, che è significativa ma non sufficiente a rendere il problema trattabile.
+
+La resistenza quantistica deriva dalla natura ``disordinata'' e non strutturata dei problemi sui reticoli, in contrasto con la struttura periodica che caratterizza i problemi di fattorizzazione e logaritmo discreto.
+
+\subsubsection*{Key-Encapsulation Mechanism (KEM)}
+
+Un Key-Encapsulation Mechanism è un insieme di algoritmi che, sotto determinate condizioni, può essere utilizzato da due parti per stabilire una chiave segreta condivisa su un canale pubblico\footnote{\href{https://csrc.nist.gov/pubs/fips/203/final}{NIST FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard}}. A differenza della crittografia a chiave pubblica tradizionale come RSA, dove un messaggio può essere cifrato direttamente con la chiave pubblica, un KEM è progettato specificamente per lo scambio sicuro di chiavi simmetriche.
+
+Il protocollo KEM basato su MLWE funziona secondo il seguente schema:
+
+\paragraph{Generazione delle chiavi (KeyGen)} Alice genera una coppia di chiavi:
+\begin{enumerate}
+\item Sceglie un vettore segreto $\mathbf{s}$ (piccolo, campionato da una distribuzione di errore)
+\item Genera una matrice pubblica $\mathbf{A}$ (uniforme casuale)
+\item Campiona un vettore di errore $\mathbf{e}$ (piccolo)
+\item Calcola la chiave pubblica: $\mathbf{t} = \mathbf{A}\mathbf{s} + \mathbf{e} \pmod{q}$
+\end{enumerate}
+
+La \textbf{chiave di incapsulamento} (pubblica) è la coppia $(\mathbf{A}, \mathbf{t})$, mentre la \textbf{chiave di decapsulamento} (privata) è $\mathbf{s}$.
+
+\paragraph{Incapsulamento (Encaps)} Bob, ricevuta la chiave pubblica di Alice, vuole stabilire una chiave condivisa:
+\begin{enumerate}
+\item Campiona un nuovo vettore segreto temporaneo $\mathbf{r}$ e vettori di errore $\mathbf{e}_1$, $\mathbf{e}_2$
+\item Calcola il ciphertext: 
+\begin{align}
+\mathbf{u} &= \mathbf{A}^T\mathbf{r} + \mathbf{e}_1 \pmod{q} \\
+v &= \mathbf{t}^T\mathbf{r} + \mathbf{e}_2 + \text{Encode}(K) \pmod{q}
+\end{align}
+dove $K$ è la chiave segreta condivisa (tipicamente 256 bit) codificata opportunamente
+\item Invia il ciphertext $(\mathbf{u}, v)$ ad Alice
+\end{enumerate}
+
+\paragraph{Decapsulamento (Decaps)} Alice, ricevuto il ciphertext da Bob, recupera la chiave condivisa:
+\begin{enumerate}
+\item Calcola: $w = v - \mathbf{s}^T\mathbf{u} \pmod{q}$
+\item Decodifica $w$ per ottenere $K$
+\end{enumerate}
+
+\paragraph{Correttezza del protocollo} La correttezza si basa sul fatto che:
+\begin{align}
+w &= v - \mathbf{s}^T\mathbf{u} \\
+&= (\mathbf{t}^T\mathbf{r} + \mathbf{e}_2 + \text{Encode}(K)) - \mathbf{s}^T(\mathbf{A}^T\mathbf{r} + \mathbf{e}_1) \\
+&= ((\mathbf{A}\mathbf{s} + \mathbf{e})^T\mathbf{r} + \mathbf{e}_2 + \text{Encode}(K)) - \mathbf{s}^T\mathbf{A}^T\mathbf{r} - \mathbf{s}^T\mathbf{e}_1 \\
+&= \mathbf{e}^T\mathbf{r} + \mathbf{e}_2 - \mathbf{s}^T\mathbf{e}_1 + \text{Encode}(K)
+\end{align}
+
+Il termine di errore totale $\mathbf{e}^T\mathbf{r} + \mathbf{e}_2 - \mathbf{s}^T\mathbf{e}_1$ rimane sufficientemente piccolo (perché tutti i vettori coinvolti hanno componenti piccole) da permettere la decodifica corretta di $K$.
+
+\paragraph{Sicurezza} Un attaccante che intercetta $(\mathbf{A}, \mathbf{t})$ e $(\mathbf{u}, v)$ deve risolvere il problema MLWE per recuperare $K$, il che è computazionalmente intrattabile. La chiave segreta condivisa può poi essere utilizzata con algoritmi crittografici simmetrici (come AES) per cifrare e autenticare le comunicazioni.
+
+Per ottimizzare le prestazioni, questi algoritmi utilizzano la Trasformata Teoretica dei Numeri (NTT), che permette di eseguire moltiplicazioni polinomiali in $O(n \log n)$ anziché $O(n^2)$, rendendo il sistema molto più veloce rispetto ai metodi tradizionali.
+
+\subsubsection*{Firme Digitali basate su reticoli}
+
+Le firme digitali sono utilizzate per autenticare l'identità e l'integrità dei dati. Inoltre, il destinatario di dati firmati può utilizzare una firma digitale come prova per dimostrare a terzi che la firma è stata effettivamente generata dal firmatario dichiarato (proprietà di non ripudio)\footnote{\href{https://csrc.nist.gov/pubs/fips/204/final}{NIST FIPS 204: Module-Lattice-Based Digital Signature Standard}}.
+
+Gli schemi di firma basati su reticoli utilizzano tipicamente il problema SIS/MSIS come fondamento della loro sicurezza.
+
+\subsubsection*{Stato della standardizzazione}
+
+Il NIST (National Institute of Standards and Technology) ha avviato un processo di standardizzazione della crittografia post-quantistica nel 2016\footnote{\href{https://csrc.nist.gov/projects/post-quantum-cryptography}{NIST: Post-Quantum Cryptography Standardization}}. Il 13 agosto 2024 sono stati pubblicati i primi standard finali basati sui reticoli\footnote{\href{https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards}{NIST: NIST Releases First 3 Finalized Post-Quantum Encryption Standards}}:
 
 \begin{itemize}
-\item CRYSTALS-Kyber (ML-KEM): Standardizzato dal NIST per lo scambio di chiavi (Key Encapsulation Mechanism), offre chiavi di dimensioni ridotte (\textasciitilde1–2 KB).
-\item CRYSTALS-Dilithium (ML-DSA): Standardizzato per le firme digitali.
-\item Falcon (FN-DSA): Un altro schema di firma basato su reticoli, noto per la sua compattezza.
-\item NTRU: Uno dei sistemi basati su reticoli più longevi e studiati.
+\item \textbf{FIPS 203 (ML-KEM)}: Basato sull'algoritmo CRYSTALS-Kyber, è lo standard primario per lo scambio di chiavi. ML-KEM è l'acronimo di Module-Lattice-Based Key-Encapsulation Mechanism. La sicurezza di ML-KEM è correlata alla difficoltà computazionale del problema Module Learning with Errors. Attualmente si ritiene che ML-KEM sia sicuro anche contro avversari in possesso di un computer quantistico.
+
+\item \textbf{FIPS 204 (ML-DSA)}: Basato su CRYSTALS-Dilithium, è lo standard primario per le firme digitali. ML-DSA è l'acronimo di Module-Lattice-Based Digital Signature Algorithm. Si ritiene che ML-DSA sia sicuro anche contro avversari in possesso di un computer quantistico su larga scala.
+
+\item \textbf{FIPS 206 (FN-DSA)}: Basato sull'algoritmo FALCON, è un ulteriore standard per firme digitali attualmente in fase di standardizzazione finale. FN-DSA è l'acronimo di FFT (Fast-Fourier Transform) over NTRU-Lattice-Based Digital Signature Algorithm\footnote{\href{https://csrc.nist.gov/presentations/2025/fips-206-fn-dsa-falcon}{NIST: FIPS 206 FN-DSA (FALCON)}}. FALCON utilizza reticoli NTRU e, a differenza degli altri algoritmi selezionati, si basa sull'aritmetica in virgola mobile. Offre firme molto compatte e prestazioni elevate, rendendolo particolarmente adatto a scenari in cui la larghezza di banda è limitata o la velocità è critica.
 \end{itemize}
+
+Gli standard possono e devono essere messi in uso ora. Le organizzazioni sono incoraggiate a iniziare la migrazione verso questi sistemi per proteggersi dalla futura minaccia quantistica.
+
+\subsubsection*{Parametri e livelli di sicurezza}
+
+All'interno degli standard esistono diversi set di parametri che offrono compromessi tra sicurezza e prestazioni:
+
+\paragraph{ML-KEM (ex CRYSTALS-Kyber)} Questo standard specifica tre set di parametri per ML-KEM. In ordine di crescente forza di sicurezza e decrescente prestazione, questi sono ML-KEM-512, ML-KEM-768 e ML-KEM-1024:
+
+\begin{itemize}
+\item \textbf{ML-KEM-512}: Livello di sicurezza Categoria 1 (equivalente a AES-128), chiave di incapsulamento di 800 bytes, chiave di decapsulamento di 1632 bytes, ciphertext di 768 bytes.
+\item \textbf{ML-KEM-768}: Livello di sicurezza Categoria 3 (equivalente a AES-192), raccomandato come default dal NIST. Chiave di incapsulamento di 1184 bytes, chiave di decapsulamento di 2400 bytes, ciphertext di 1088 bytes. Offre un ottimo equilibrio tra sicurezza e velocità.
+\item \textbf{ML-KEM-1024}: Livello di sicurezza Categoria 5 (equivalente a AES-256), massima sicurezza. Chiave di incapsulamento di 1568 bytes, chiave di decapsulamento di 3168 bytes, ciphertext di 1568 bytes. Prestazioni ridotte e chiavi più grandi.
+\end{itemize}
+
+Tutti e tre i set di parametri producono una chiave segreta condivisa di 32 bytes (256 bit).
+
+\paragraph{ML-DSA (ex CRYSTALS-Dilithium)} Esistono tre versioni: ML-DSA-44, ML-DSA-65 e ML-DSA-87, dove i numeri si riferiscono alle dimensioni della matrice utilizzata nell'algoritmo (rispettivamente matrici $4 \times 4$, $6 \times 5$ e $8 \times 7$), corrispondenti a diversi livelli di sicurezza (rispettivamente Categorie 2, 3 e 5).
+
+\paragraph{Algoritmi alternativi} Esistono anche altri algoritmi basati sui reticoli che non sono stati selezionati come standard primari ma che sono serviti come candidati o alternative, come NTRU, SABER e FrodoKEM. Ad esempio, NTRU è basato su problemi di reticoli ma con una struttura matematica differente che lo rende una potenziale alternativa in caso di vulnerabilità scoperte in ML-KEM.
 \newpage
 
 \subsection{Code-based}
