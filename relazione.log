@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  30 JAN 2026 11:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  30 JAN 2026 18:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -346,17 +346,29 @@ Overfull \hbox (0.16887pt too wide) in paragraph at lines 224--225
 [20]
 
 [21]
-Overfull \hbox (3.29453pt too wide) in paragraph at lines 245--246
+Overfull \hbox (3.29453pt too wide) in paragraph at lines 249--250
 \OT1/cmr/m/n/12 pi-ani-fi-cazione per sos-ti-tuire l'infrastruttura crit-tografica es-istente man-te-nendo
  []
 
 
 
-[22]
+[22] (capitolo5.tex
 
 [23]
 
 [24]
+
+[25]
+
+[26]
+
+[27]
+
+[28])
+
+[29]
+
+[30]
 No file relazione.bbl.
 (relazione.aux)
  ***********
@@ -364,20 +376,20 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 5B5D239B1FBD6DB41B5E3F9A49873130;6243.
+(rerunfilecheck)             Checksum: F1891C31ECB25A2F8340DA386F35175B;6999.
  ) 
 Here is how much of TeX's memory you used:
- 9885 strings out of 473899
- 150400 string characters out of 5732122
- 543555 words of memory out of 5000000
- 32553 multiletter control sequences out of 15000+600000
+ 9923 strings out of 473899
+ 150980 string characters out of 5732122
+ 545558 words of memory out of 5000000
+ 32565 multiletter control sequences out of 15000+600000
  568520 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,884b,535s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,884b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\michele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazione.pdf (24 pages, 277485 bytes).
+Output written on relazione.pdf (30 pages, 302826 bytes).
 PDF statistics:
- 382 PDF objects out of 1000 (max. 8388607)
- 85 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 463 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
