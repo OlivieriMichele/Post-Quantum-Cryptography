@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{alagic2022nist}
+Gorjan Alagic, Daniel Apon, David Cooper, Quynh Dang, Thinh Dang, John Kelsey,
+  Jacob Lichtinger, Yi-Kai Liu, Carl Miller, Dustin Moody, et~al.
+\newblock Status report on the third round of the nist post-quantum
+  cryptography standardization process.
+\newblock NIST Interagency Report NISTIR 8413, National Institute of Standards
+  and Technology, 2022.
+
+\bibitem{bindel2019transitioning}
+Nina Bindel, Jacqueline Brendel, Marc Fischlin, Brian Goncalves, and Douglas
+  Stebila.
+\newblock Transitioning to a quantum-resistant public key infrastructure.
+\newblock In {\em International Conference on Post-Quantum Cryptography}, pages
+  384--405. Springer, 2019.
+
+\bibitem{krantz2019quantum}
+Philip Krantz, Morten Kjaergaard, Fei Yan, Terry~P Orlando, Simon Gustavsson,
+  and William~D Oliver.
+\newblock A quantum engineer's guide to superconducting qubits.
+\newblock {\em Applied Physics Reviews}, 6(2):021318, 2019.
+
+\bibitem{mosca2018cybersecurity}
+Michele Mosca.
+\newblock Cybersecurity in an era with quantum computers: Will we be ready?
+\newblock {\em IEEE Security \& Privacy}, 16(5):38--41, 2018.
+
+\bibitem{preskill2018quantum}
+John Preskill.
+\newblock Quantum computing in the nisq era and beyond.
+\newblock {\em Quantum}, 2:79, 2018.
+
+\end{thebibliography}

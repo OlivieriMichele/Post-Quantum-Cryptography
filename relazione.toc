@@ -67,6 +67,6 @@
 \contentsline {subsubsection}{\numberline {5.5.2}Lo stato attuale}{35}{subsubsection.5.5.2}%
 \contentsline {subsection}{\numberline {5.6}Crittografia simmetrica}{35}{subsection.5.6}%
 \contentsline {section}{\numberline {6}Considerazioni finali}{36}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Stato attuale della tecnologia dei computer quantistici}{36}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Stato attuale dei protocolli post-quantistici}{36}{subsection.6.2}%
-\contentsline {paragraph}{Considerazioni sulla migrazione}{36}{section*.46}%
+\contentsline {subsection}{\numberline {6.1}Stato attuale dei computer quantistici}{36}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Stato attuale della crittografia post-quantistica}{36}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Prospettive future}{37}{subsection.6.3}%
