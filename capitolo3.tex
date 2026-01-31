@@ -50,7 +50,7 @@ I concetti introdotti in questa sezione costituiscono il fondamento teorico per 
 
 \subsection{Algoritmi quantistici rilevanti: Shor}
 
-L'algoritmo di Shor rappresenta uno dei risultati più significativi nel campo della computazione quantistica, non solo per le sue implicazioni sulla crittografia, ma anche per la profondità delle idee matematiche che lo compongono. Infatti per comprendere appieno il funzionamento di questo algoritmo, è necessario procedere con un'analisi rigorosa che parta dai fondamenti matematici, prescindendo inizialmente dagli aspetti quantistici. 
+L'algoritmo di Shor rappresenta uno dei risultati più significativi nel campo della computazione quantistica, non solo per le sue implicazioni sulla crittografia, ma anche per la profondità delle idee matematiche che lo compongono\footnote{\href{https://archive.org/details/QuantumComputationAndQuantumInformation10thAnniversaryEdition}{Nielsen \& Chuang, Sezione 5.3}}. Infatti per comprendere appieno il funzionamento di questo algoritmo, è necessario procedere con un'analisi rigorosa che parta dai fondamenti matematici, prescindendo inizialmente dagli aspetti quantistici. 
 
 L'obiettivo quindi di questa sezione è chiarire perché l'algoritmo funziona dal punto di vista matematico, e solo in una fase successiva dell'analisi vedremo come viene accelerato dal computer quantistico.
 
@@ -58,7 +58,7 @@ L'obiettivo quindi di questa sezione è chiarire perché l'algoritmo funziona da
 
 Il punto di partenza è il problema della fattorizzazione di interi. Dato un intero composto $N = p \cdot q$, dove $p$ e $q$ sono numeri primi di grandi dimensioni, il problema consiste nel determinare $p$ e $q$ conoscendo solamente $N$. La difficoltà computazionale della fattorizzazione deriva da due caratteristiche fondamentali: in primo luogo, non è noto alcun algoritmo classico in grado di fattorizzare un numero in tempo polinomiale rispetto alla dimensione dell'input; in secondo luogo, i tentativi diretti di fattorizzazione crescono rapidamente con l'aumentare della dimensione di $N$, rendendo il problema intrattabile per valori sufficientemente grandi.
 
-L'intuizione fondamentale di Shor consiste nel trasformare il problema della fattorizzazione in un problema di natura diversa, caratterizzato da una struttura matematica più favorevole. Questa trasformazione permette di ricondurre la ricerca dei fattori primi a un problema di teoria dei numeri che, come vedremo, può essere risolto in modo efficiente sfruttando le peculiarità della computazione quantistica.
+L'intuizione fondamentale di Shor consiste nel trasformare il problema della fattorizzazione in un problema di natura diversa, caratterizzato da una struttura matematica più favorevole\footnote{Ivi, Sezione 5.3.2}. Questa trasformazione permette di ricondurre la ricerca dei fattori primi a un problema di teoria dei numeri che, come vedremo, può essere risolto in modo efficiente sfruttando le peculiarità della computazione quantistica.
 
 \subsubsection{Dalla fattorizzazione alla teoria dei numeri}
 
@@ -74,23 +74,23 @@ Questa funzione possiede una proprietà fondamentale: è periodica. Più precisa
 a^r \equiv 1 \pmod{N}
 \]
 
-Questo valore $r$ è chiamato ordine di $a$ modulo $N$. L'esistenza di tale periodo è garantita dal teorema di Eulero, secondo cui $a^{\phi(N)} \equiv 1 \pmod{N}$, dove $\phi(N)$ è la funzione di Eulero. Il periodo cercato è dunque un divisore di $\phi(N)$.
+Questo valore $r$ è chiamato ordine di $a$ modulo $N$. L'esistenza di tale periodo è garantita dal teorema di Eulero, secondo cui $a^{\phi(N)} \equiv 1 \pmod{N}$, dove $\phi(N)$ è la funzione di Eulero\footnote{Ivi, Sezione A4.2}. Il periodo cercato è dunque un divisore di $\phi(N)$.
 
 \subsubsection{L'utilità del periodo per la fattorizzazione}
 
-A questo punto sorge naturale una domanda: perché la conoscenza del periodo $r$ dovrebbe aiutarci a fattorizzare $N$? La risposta risiede in una proprietà algebrica profonda che collega l'ordine di un elemento alla struttura moltiplicativa del gruppo $(\mathbb{Z}/N\mathbb{Z})^*$.
+A questo punto sorge naturale una domanda: perché la conoscenza del periodo $r$ dovrebbe aiutarci a fattorizzare $N$? La risposta risiede in una proprietà algebrica profonda che collega l'ordine di un elemento alla struttura moltiplicativa del gruppo $(\mathbb{Z}/N\mathbb{Z})^*$\footnote{Ivi, Sezione 5.3.2}.
 
 Se il periodo $r$ soddisfa due condizioni specifiche, ovvero se $r$ è pari e se $a^{r/2} \not\equiv -1 \pmod{N}$, allora è possibile estrarre fattori non banali di $N$ calcolando:
 \[
 \gcd(a^{r/2} - 1, N) \quad \text{e} \quad \gcd(a^{r/2} + 1, N)
 \]
 
-Questa è la chiave matematica dell'intero algoritmo. Per comprendere perché questa procedura funziona, è necessario esaminare più da vicino la struttura algebrica sottostante. Dalla relazione $a^r \equiv 1 \pmod{N}$ segue immediatamente che:
+Questa è la chiave matematica dell'intero algoritmo\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Fattorizzazione dei numeri interi"}}. Per comprendere perché questa procedura funziona, è necessario esaminare più da vicino la struttura algebrica sottostante. Dalla relazione $a^r \equiv 1 \pmod{N}$ segue immediatamente che:
 \[
 a^r - 1 \equiv 0 \pmod{N}
 \]
 
-Poiché $r$ è pari per ipotesi, possiamo fattorizzare il termine $a^r - 1$ utilizzando la differenza di quadrati:
+Poiché $r$ è pari per ipotesi, possiamo fattorizzare il termine $a^r - 1$ utilizzando la differenza di quadrati\footnote{Ivi, pag. 233}:
 \[
 a^r - 1 = (a^{r/2})^2 - 1 = (a^{r/2} - 1)(a^{r/2} + 1)
 \]
@@ -100,11 +100,11 @@ Ne consegue che:
 (a^{r/2} - 1)(a^{r/2} + 1) \equiv 0 \pmod{N}
 \]
 
-Questa congruenza ci dice che $N$ divide il prodotto $(a^{r/2} - 1)(a^{r/2} + 1)$. Tuttavia, per ipotesi, $a^{r/2} \not\equiv -1 \pmod{N}$, il che significa che $a^{r/2} + 1$ non è divisibile per $N$. Analogamente, poiché $r$ è il periodo minimo, anche $a^{r/2} - 1$ non può essere divisibile per $N$ (altrimenti $r/2$ sarebbe il periodo). Di conseguenza, $N$ divide il prodotto di due fattori senza dividere ciascun fattore singolarmente. Questo implica necessariamente che ciascuno dei due fattori condivide almeno un divisore primo con $N$, ma non tutti. Il calcolo del massimo comun divisore permette quindi di estrarre questi divisori non banali.
+Questa congruenza ci dice che $N$ divide il prodotto $(a^{r/2} - 1)(a^{r/2} + 1)$. Tuttavia, per ipotesi, $a^{r/2} \not\equiv -1 \pmod{N}$, il che significa che $a^{r/2} + 1$ non è divisibile per $N$. Analogamente, poiché $r$ è il periodo minimo, anche $a^{r/2} - 1$ non può essere divisibile per $N$ (altrimenti $r/2$ sarebbe il periodo). Di conseguenza, $N$ divide il prodotto di due fattori senza dividere ciascun fattore singolarmente. Questo implica necessariamente che ciascuno dei due fattori condivide almeno un divisore primo con $N$, ma non tutti\footnote{Ivi, Appendice 4.3, Teorema 5.2}. Il calcolo del massimo comun divisore permette quindi di estrarre questi divisori non banali.
 
 \subsubsection{Esempio numerico completo}
 
-Per rendere concreti i concetti esposti, consideriamo un esempio numerico completo. Supponiamo di voler fattorizzare $N = 15$. Scegliamo $a = 2$ e verifichiamo che $\gcd(2, 15) = 1$, come richiesto. Procediamo quindi al calcolo della sequenza di potenze di $a$ modulo $N$:
+Per rendere concreti i concetti esposti, consideriamo un esempio numerico completo. Supponiamo di voler fattorizzare $N = 15$. Scegliamo $a = 2$ e verifichiamo che $\gcd(2, 15) = 1$, come richiesto\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Esempio specifico con N = 15 e a = 2"}}. Procediamo quindi al calcolo della sequenza di potenze di $a$ modulo $N$:
 
 \begin{center}
 \begin{tabular}{c|c}
@@ -117,7 +117,7 @@ $x$ & $2^x \bmod 15$ \\
 \end{tabular}
 \end{center}
 
-Osserviamo che il valore si ripete dopo quattro iterazioni, pertanto il periodo è $r = 4$. Verifichiamo ora le condizioni necessarie: il periodo è effettivamente pari, e calcoliamo $a^{r/2} = 2^2 = 4$. Poiché $4 \not\equiv -1 \pmod{15}$ (infatti $4 \equiv 4 \pmod{15}$), entrambe le condizioni sono soddisfatte. Possiamo quindi applicare la formula per estrarre i fattori:
+Osserviamo che il valore si ripete dopo quattro iterazioni, pertanto il periodo è $r = 4$. Verifichiamo ora le condizioni necessarie: il periodo è effettivamente pari, e calcoliamo $a^{r/2} = 2^2 = 4$. Poiché $4 \not\equiv -1 \pmod{15}$ (infatti $4 \equiv 4 \pmod{15}$), entrambe le condizioni sono soddisfatte\footnote{Ivi, Box 5.4}. Possiamo quindi applicare la formula per estrarre i fattori:
 \begin{align*}
 \gcd(4 - 1, 15) &= \gcd(3, 15) = 3 \\
 \gcd(4 + 1, 15) &= \gcd(5, 15) = 5
@@ -127,22 +127,22 @@ Abbiamo così ottenuto la fattorizzazione $15 = 3 \cdot 5$.
 
 \subsubsection*{La complessità computazionale del metodo}
 
-A questo punto è importante sottolineare quali passaggi del metodo siano effettivamente computazionalmente trattabili e quale rappresenti invece il collo di bottiglia. I passaggi che non presentano difficoltà computazionali significative includono il calcolo del massimo comun divisore, che può essere eseguito efficientemente tramite l'algoritmo di Euclide, e l'esecuzione di esponenziazioni modulari, che può essere realizzata in tempo polinomiale mediante l'algoritmo di esponenziazione veloce.
+A questo punto è importante sottolineare quali passaggi del metodo siano effettivamente computazionalmente trattabili e quale rappresenti invece il collo di bottiglia. I passaggi che non presentano difficoltà computazionali significative includono il calcolo del massimo comun divisore, che può essere eseguito efficientemente tramite l'algoritmo di Euclide\footnote{Ivi, Sezione A4.2}, e l'esecuzione di esponenziazioni modulari, che può essere realizzata in tempo polinomiale mediante l'algoritmo di esponenziazione veloce\footnote{Ivi, Box 5.2}.
 
-Il passaggio critico dell'intero procedimento è la determinazione del periodo $r$. Nel contesto della computazione classica, il calcolo del periodo della funzione $a^x \bmod N$ richiede essenzialmente di valutare la funzione ripetutamente fino a quando non si osserva la ripetizione del valore iniziale. Il numero di valutazioni necessarie nel caso peggiore può essere dell'ordine di $N$, e anche nel caso medio il numero di operazioni cresce in modo tale da rendere il problema intrattabile per valori di $N$ sufficientemente grandi. È precisamente in questo passaggio che risiede il collo di bottiglia computazionale che impedisce alla fattorizzazione classica di essere efficiente.
+Il passaggio critico dell'intero procedimento è la determinazione del periodo $r$. Nel contesto della computazione classica, il calcolo del periodo della funzione $a^x \bmod N$ richiede essenzialmente di valutare la funzione ripetutamente fino a quando non si osserva la ripetizione del valore iniziale\footnote{Ivi, Sezione 5.3.1}. Il numero di valutazioni necessarie nel caso peggiore può essere dell'ordine di $N$, e anche nel caso medio il numero di operazioni cresce in modo tale da rendere il problema intrattabile per valori di $N$ sufficientemente grandi\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Problema con l'ordine"}}. È precisamente in questo passaggio che risiede il collo di bottiglia computazionale che impedisce alla fattorizzazione classica di essere efficiente.
 
 \subsubsection*{Casi di fallimento e strategie di gestione}
 
-È importante osservare che il metodo descritto non ha sempre successo. Possono verificarsi due situazioni in cui la procedura non produce una fattorizzazione: il periodo $r$ potrebbe risultare dispari, oppure potrebbe accadere che $a^{r/2} \equiv -1 \pmod{N}$. In entrambi questi casi, non è possibile applicare la fattorizzazione attraverso il massimo comun divisore nel modo descritto. Tuttavia, è possibile dimostrare che la probabilità di incorrere in uno di questi casi sfavorevoli è relativamente bassa. Inoltre, qualora si verifichi uno di questi casi, è sufficiente scegliere un valore diverso di $a$ e ripetere l'intero procedimento. Con alta probabilità, dopo pochi tentativi si otterrà un periodo che soddisfa le condizioni necessarie.
+È importante osservare che il metodo descritto non ha sempre successo. Possono verificarsi due situazioni in cui la procedura non produce una fattorizzazione: il periodo $r$ potrebbe risultare dispari, oppure potrebbe accadere che $a^{r/2} \equiv -1 \pmod{N}$. In entrambi questi casi, non è possibile applicare la fattorizzazione attraverso il massimo comun divisore nel modo descritto. Tuttavia, è possibile dimostrare che la probabilità di incorrere in uno di questi casi sfavorevoli è relativamente bassa\footnote{Ivi, Teorema A4.13}. Inoltre, qualora si verifichi uno di questi casi, è sufficiente scegliere un valore diverso di $a$ e ripetere l'intero procedimento\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Post-elaborazione"}}. Con alta probabilità, dopo pochi tentativi si otterrà un periodo che soddisfa le condizioni necessarie.
 
 \subsubsection*{Sintesi del contributo matematico}
-Ricapitolando quanto esposto, dal punto di vista strettamente matematico, l'algoritmo di Shor opera attraverso una sequenza logica di trasformazioni: in primo luogo, trasforma il problema della fattorizzazione in un problema di determinazione della periodicità di una funzione; in secondo luogo, sfrutta proprietà fondamentali dell'aritmetica modulare per collegare il periodo alla struttura dei fattori di $N$; in terzo luogo, riduce il problema al calcolo dell'ordine di un elemento modulo $N$; infine, estrae i fattori cercati attraverso il calcolo del massimo comun divisore.
+Ricapitolando quanto esposto, dal punto di vista strettamente matematico, l'algoritmo di Shor opera attraverso una sequenza logica di trasformazioni: in primo luogo, trasforma il problema della fattorizzazione in un problema di determinazione della periodicità di una funzione; in secondo luogo, sfrutta proprietà fondamentali dell'aritmetica modulare per collegare il periodo alla struttura dei fattori di $N$; in terzo luogo, riduce il problema al calcolo dell'ordine di un elemento modulo $N$; infine, estrae i fattori cercati attraverso il calcolo del massimo comun divisore\footnote{Ivi, Sezioni 5.3.1, 5.3.2, Teorema A4.11}.
 
-È fondamentale sottolineare che fino a questo punto non è stato introdotto alcun concetto di natura quantistica. Tutto quanto discusso appartiene al dominio della matematica classica e della teoria dei numeri. Il contributo essenziale della computazione quantistica risiede nella capacità di rendere efficiente il passaggio centrale, ovvero la determinazione del periodo. Mentre su un computer classico questo passaggio è computazionalmente intrattabile per numeri di grandi dimensioni, vedremo che un computer quantistico è in grado di eseguirlo in tempo polinomiale, rendendo così l'intero algoritmo efficiente e ponendo una seria minaccia alla sicurezza dei sistemi crittografici basati sulla difficoltà della fattorizzazione.
+È fondamentale sottolineare che fino a questo punto non è stato introdotto alcun concetto di natura quantistica. Tutto quanto discusso appartiene al dominio della matematica classica e della teoria dei numeri. Il contributo essenziale della computazione quantistica risiede nella capacità di rendere efficiente il passaggio centrale, ovvero la determinazione del periodo\footnote{Ivi, Sezione 5.3.1}. Mentre su un computer classico questo passaggio è computazionalmente intrattabile per numeri di grandi dimensioni, vedremo che un computer quantistico è in grado di eseguirlo in tempo polinomiale\footnote{Ivi, pag. 216}, rendendo così l'intero algoritmo efficiente e ponendo una seria minaccia alla sicurezza dei sistemi crittografici basati sulla difficoltà della fattorizzazione.
 
 \subsubsection{La trasformata di Fourier quantistica}
 
-Per comprendere come un computer quantistico risolva efficientemente il problema della determinazione del periodo, è necessario introdurre uno strumento matematico fondamentale: la trasformata di Fourier. L'obiettivo di questa parte dell'analisi è chiarire perché la trasformata di Fourier rappresenti lo strumento naturale per affrontare problemi di periodicità e come la sua versione quantistica costituisca l'elemento centrale dell'algoritmo di Shor. Procederemo costruendo il ragionamento a partire da concetti elementari, senza assumere familiarità con gli aspetti tecnici della trasformata.
+Per comprendere come un computer quantistico risolva efficientemente il problema della determinazione del periodo, è necessario introdurre uno strumento matematico fondamentale: la trasformata di Fourier\footnote{Ivi, Sezione 5.1}. L'obiettivo di questa parte dell'analisi è chiarire perché la trasformata di Fourier rappresenti lo strumento naturale per affrontare problemi di periodicità e come la sua versione quantistica costituisca l'elemento centrale dell'algoritmo di Shor. Procederemo costruendo il ragionamento a partire da concetti elementari, senza assumere familiarità con gli aspetti tecnici della trasformata.
 
 \paragraph{Il ruolo della trasformata di Fourier nell'analisi della periodicità}
 
@@ -165,7 +165,7 @@ Nel dominio temporale, questo segnale appare come un'onda dalla forma piuttosto 
 
 \paragraph{La trasformata di Fourier discreta}
 
-Nel contesto dell'algoritmo di Shor, non abbiamo a che fare con segnali continui nel tempo, ma piuttosto con sequenze discrete di valori. La funzione $f(x) = a^x \bmod N$ produce una sequenza di valori interi $f(0), f(1), f(2), \ldots$ che si ripete con periodo $r$. Per analizzare questo tipo di segnali discreti è necessario utilizzare la trasformata di Fourier discreta, comunemente indicata con l'acronimo DFT (Discrete Fourier Transform).
+Nel contesto dell'algoritmo di Shor, non abbiamo a che fare con segnali continui nel tempo, ma piuttosto con sequenze discrete di valori. La funzione $f(x) = a^x \bmod N$ produce una sequenza di valori interi $f(0), f(1), f(2), \ldots$ che si ripete con periodo $r$. Per analizzare questo tipo di segnali discreti è necessario utilizzare la trasformata di Fourier discreta, comunemente indicata con l'acronimo DFT (Discrete Fourier Transform)\footnote{Ivi, Sezione 5.1}.
 
 La trasformata di Fourier discreta opera su una sequenza finita di valori $x_0, x_1, \ldots, x_{N-1}$ e la trasforma in un'altra sequenza $X_0, X_1, \ldots, X_{N-1}$, dove ciascun coefficiente $X_k$ misura l'intensità con cui la frequenza $k$ è presente nel segnale originale. La definizione formale della trasformata di Fourier discreta è data da:
 \[
@@ -182,7 +182,7 @@ Questa proprietà implica che, osservando il risultato della trasformata di Four
 
 \paragraph{Dalla DFT alla trasformata di Fourier quantistica}
 
-La trasformata di Fourier quantistica, comunemente indicata con l'acronimo QFT (Quantum Fourier Transform), rappresenta l'adattamento della trasformata di Fourier discreta al contesto della computazione quantistica. È fondamentale comprendere che la QFT non introduce nuove idee matematiche: si tratta essenzialmente della stessa trasformazione matematica definita dalla DFT, ma applicata a stati quantistici invece che a sequenze di numeri classici.
+La trasformata di Fourier quantistica, comunemente indicata con l'acronimo QFT (Quantum Fourier Transform), rappresenta l'adattamento della trasformata di Fourier discreta al contesto della computazione quantistica\footnote{Ivi, Sezione 5.2}. È fondamentale comprendere che la QFT non introduce nuove idee matematiche: si tratta essenzialmente della stessa trasformazione matematica definita dalla DFT, ma applicata a stati quantistici invece che a sequenze di numeri classici.
 
 In un computer quantistico, una sequenza di valori viene rappresentata attraverso una sovrapposizione quantistica, ovvero uno stato della forma:
 \[
@@ -198,11 +198,11 @@ dove i coefficienti $\beta_k$ sono esattamente la trasformata di Fourier dei coe
 
 \paragraph{Il vantaggio computazionale della QFT}
 
-La ragione per cui la QFT rappresenta un avanzamento rivoluzionario rispetto alla DFT classica risiede in una proprietà fondamentale della computazione quantistica: la capacità di operare simultaneamente su una sovrapposizione di stati. Nel computer quantistico, tutti i coefficienti $\alpha_x$ esistono contemporaneamente nella sovrapposizione, e la QFT agisce sull'intera sovrapposizione in un'unica operazione coerente.
+La ragione per cui la QFT rappresenta un avanzamento rivoluzionario rispetto alla DFT classica risiede in una proprietà fondamentale della computazione quantistica: la capacità di operare simultaneamente su una sovrapposizione di stati\footnote{Ivi, Sezioni 5.2.1, 5.2.2}. Nel computer quantistico, tutti i coefficienti $\alpha_x$ esistono contemporaneamente nella sovrapposizione, e la QFT agisce sull'intera sovrapposizione in un'unica operazione coerente.
 
 Il risultato di questa applicazione coerente della trasformata è che le ampiezze dei diversi stati interferiscono tra loro secondo le leggi della meccanica quantistica. Le frequenze che sono compatibili con la periodicità della funzione originale vengono amplificate attraverso interferenza costruttiva, mentre le frequenze incompatibili vengono soppresse attraverso interferenza distruttiva. Quando si effettua una misura sullo stato risultante, si ottiene con alta probabilità un valore che contiene informazione sul periodo cercato.
 
-È importante sottolineare che la misura non fornisce direttamente il periodo $r$, ma piuttosto un valore dal quale è possibile estrarre $r$ utilizzando tecniche matematiche classiche. In particolare, si utilizza l'algoritmo delle frazioni continue per approssimare il rapporto misurato con una frazione che ha il periodo come denominatore. Questa fase di post-elaborazione classica è essenziale per completare l'algoritmo.
+È importante sottolineare che la misura non fornisce direttamente il periodo $r$, ma piuttosto un valore dal quale è possibile estrarre $r$ utilizzando tecniche matematiche classiche. In particolare, si utilizza l'algoritmo delle frazioni continue per approssimare il rapporto misurato con una frazione che ha il periodo come denominatore\footnote{Ivi, Sezione 5.3.3}. Questa fase di post-elaborazione classica è essenziale per completare l'algoritmo.
 
 \paragraph{Esempio concettuale del meccanismo}
 
@@ -216,7 +216,7 @@ dove $m$ è un intero. Quando si effettua la misura, si ottiene con alta probabi
 \frac{k}{Q} \approx \frac{m}{r}
 \]
 
-è possibile ricostruire il periodo $r$ attraverso l'approssimazione con frazioni continue. Questo esempio illustra il collegamento diretto tra l'applicazione della QFT, l'estrazione di informazione sulla periodicità attraverso la misura quantistica, e il recupero finale del periodo che permette la fattorizzazione.
+è possibile ricostruire il periodo $r$ attraverso l'approssimazione con frazioni continue\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Fase 3: QFT"}}. Questo esempio illustra il collegamento diretto tra l'applicazione della QFT, l'estrazione di informazione sulla periodicità attraverso la misura quantistica, e il recupero finale del periodo che permette la fattorizzazione.
 
 \paragraph{La natura del vantaggio quantistico}
 
