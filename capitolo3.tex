@@ -1,57 +1,52 @@
 \subsection{Nozioni base di computazione quantistica}
 
-La computazione quantistica rappresenta un paradigma di calcolo che sfrutta i principi della meccanica quantistica per elaborare l'informazione in modi che non sono possibili con i computer classici.
+La computazione quantistica rappresenta un paradigma di calcolo che sfrutta i principi della meccanica quantistica per elaborare l'informazione in modi che non sono possibili con i computer classici\footnote{\href{https://archive.org/details/QuantumComputationAndQuantumInformation10thAnniversaryEdition}{Nielsen \& Chuang, Sezione 1.1}}.
 Di questi principi di meccanica quantistica non esiste un corrispettivo diretto nel modelli di calcolo classico, e proprio per questo motivo che ne analizziamo gli effetti e le conseguenze.
 
 \subsubsection{Richiami essenziali di meccanica quantistica}
 
 In questa sezione non si fornisce una trattazione formale della teoria, ma si introducono i concetti essenziali necessari a comprendere il funzionamento dei computer quantistici e dei meccanismi che consentono loro di superare i limiti della computazione classica.
 
-Il primo concetto fondamentale è quello di \textbf{\emph{stato quantistico}}. Mentre un bit classico può assumere esclusivamente i valori 0 o 1, un sistema quantistico può trovarsi in una \emph{sovrapposizione} di stati. Questo non significa che sia 0 e 1 "contemporaneamente" in senso magico ma semplicemente che lo stato di un qubit può essere descritto come una combinazione lineare degli stati base $\ket{0}$ e $\ket{1}$ : $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$$ con coefficienti complessi che ne determinano le probabilità di osservazione.
+Il primo concetto fondamentale è quello di \textbf{\emph{stato quantistico}}. Mentre un bit classico può assumere esclusivamente i valori 0 o 1, un sistema quantistico può trovarsi in una \emph{sovrapposizione} di stati\footnote{Ivi, Sezione 1.2}. Questo non significa che sia 0 e 1 "contemporaneamente" in senso magico ma semplicemente che lo stato di un qubit può essere descritto come una combinazione lineare degli stati base $\ket{0}$ e $\ket{1}$ : $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$$ con coefficienti complessi che ne determinano le probabilità di osservazione\footnote{Ivi, pag. 13}.
 
-Un secondo concetto chiave è l'\textbf{\emph{entanglement}}, una forma di correlazione quantistica tra più qubit per cui lo stato complessivo del sistema non può essere descritto come il prodotto degli stati dei singoli qubit. In presenza di entanglement, la misura di un qubit influisce istantaneamente sullo stato degli altri, indipendentemente dalla distanza che li separa. Questa proprietà consente di rappresentare e manipolare informazioni in modo non separabile, ciò significa che le operazioni su un qubit possono avere effetti immediati sugli altri qubit entangled con esso.
+Un secondo concetto chiave è l'\textbf{\emph{entanglement}}, una forma di correlazione quantistica tra più qubit per cui lo stato complessivo del sistema non può essere descritto come il prodotto degli stati dei singoli qubit\footnote{Ivi, Sezione 2.2.8}. In presenza di entanglement, la misura di un qubit influisce istantaneamente sullo stato degli altri, indipendentemente dalla distanza che li separa\footnote{Ivi, Sezione 1.2.1}. Questa proprietà consente di rappresentare e manipolare informazioni in modo non separabile, ciò significa che le operazioni su un qubit possono avere effetti immediati sugli altri qubit entangled con esso.
 
-Il terzo elemento fondamentale è la \textbf{\emph{misura}}. Quando uno stato quantistico viene misurato, la sovrapposizione collassa e il risultato ottenuto è un valore classico. L'esito della misura è probabilistico e dipende dallo stato del sistema immediatamente prima dell'osservazione.
+Il terzo elemento fondamentale è la \textbf{\emph{misura}}. Quando uno stato quantistico viene misurato, la sovrapposizione collassa e il risultato ottenuto è un valore classico\footnote{Ivi, Sezione 1.2}. L'esito della misura è probabilistico e dipende dallo stato del sistema immediatamente prima dell'osservazione\footnote{Ivi, Sezione 2.2.3}.
 
-Sovrapposizione, entanglement e misura costituiscono i principi alla base della differenza concettuale tra computazione classica e computazione quantistica, e determinano il modo in cui l'informazione viene elaborata in un sistema quantistico.
+Sovrapposizione, entanglement e misura costituiscono i principi alla base della differenza concettuale tra computazione classica e computazione quantistica, e determinano il modo in cui l'informazione viene elaborata in un sistema quantistico\footnote{Ivi, Sezione 1.3}.
 
 \subsubsection*{Qubit e operazioni quantistiche}
 
-L'unità fondamentale di informazione in un computer quantistico è quindi il qubit.
+L'unità fondamentale di informazione in un computer quantistico è quindi il qubit\footnote{Ivi, Sezione 1.2}.
 Dal punto di vista matematico, un qubit è rappresentato come un vettore unitario in uno spazio di Hilbert bidimensionale, mentre un registro composto da $n$ qubit è descritto in uno spazio di dimensione $2^n$.
 
 Le operazioni sui qubit sono realizzate mediante \emph{porte quantistiche}, che corrispondono a trasformazioni lineari e reversibili, descritte da operatori unitari. A differenza delle porte logiche classiche, le porte quantistiche agiscono su stati in sovrapposizione, modificando simultaneamente tutte le componenti dello stato quantistico.
 
 Matematicamente, queste porte sono rappresentate come matrici unitarie, il che conferisce loro due proprietà cruciali: la somma delle probabilità dei possibili stati deve essere sempre pari a 1 e ogni operazione deve essere reversibile (ovvero, ogni porta ha una sua inversa che può annullare l'operazione).
-Le principali porte quantistiche:
+Le principali porte quantistiche\footnote{Ivi, Sezioni 1.3.1, 1.3.2, 1.3.4, 1.3.6, 4.2, 4.5, 5.1}:
 \begin{itemize}
     \item porte a bit singolo come: la porta Hadamard (H), che viene usata per mettere i qubit in superposizioni, la porta Pauli-X (equivalente a una NOT classica), e le porte di Pauli(X, Y, Z) che ruotano il vettore.
     \item porte a più bit che realizzano operazioni condizionate tra due qubit, fondamentali per creare entanglement.
-    \item porta SWAP che scambia lo stato di due qubit, la porta di Fase Controllata (Rk) utile per la QFT
+    \item porta SWAP che scambia lo stato di due qubit, la porta di Fase Controllata (Rk) utile per la QFT.
     \item porte specializzate costruite per specifici algoritmi a partire da queste.
 \end{itemize}
-L'uso combinato di queste porte consente di elaborare, in un singolo passo computazionale, un insieme di stati che cresce esponenzialmente con il numero di qubit. Tale fenomeno è noto come \emph{parallelismo quantistico} e rappresenta una delle principali fonti di vantaggio rispetto al calcolo classico, pur non traducendosi automaticamente in un'accelerazione per qualsiasi problema.
+L'uso combinato di queste porte consente di elaborare, in un singolo passo computazionale, un insieme di stati che cresce esponenzialmente con il numero di qubit. Tale fenomeno è noto come \emph{parallelismo quantistico} e rappresenta una delle principali fonti di vantaggio rispetto al calcolo classico, pur non traducendosi automaticamente in un'accelerazione per qualsiasi problema\footnote{Ivi, Sezioni 1.4.2, 4.5.4}.
 
 \subsubsection*{Modello di calcolo quantistico}
 
 Il funzionamento di un computer quantistico segue un modello di calcolo specifico, distinto da quello deterministico utilizzato nei computer classici.
-Un algoritmo quantistico è generalmente articolato in tre fasi principali:
+Un algoritmo quantistico è generalmente articolato in tre fasi principali\footnote{Ivi, Sezioni 1.3.4, 4.6}:
 \begin{itemize}
     \item preparazione dello stato iniziale;
     \item applicazione di una sequenza di porte quantistiche;
     \item misura finale del sistema.
 \end{itemize}
-
 Durante la fase di evoluzione, lo stato quantistico del sistema viene trasformato in modo deterministico secondo le leggi della meccanica quantistica. La natura probabilistica emerge esclusivamente al momento della misura, quando lo stato viene proiettato su uno dei possibili risultati osservabili.
 
-La potenza del modello di calcolo quantistico non risiede nella possibilità di valutare esplicitamente tutte le soluzioni di un problema, bensì nella capacità di sfruttare il fenomeno dell'\emph{interferenza quantistica}. Attraverso opportune sequenze di operazioni, le ampiezze associate alle soluzioni corrette possono essere amplificate, mentre quelle delle soluzioni errate vengono attenuate.
+La potenza del modello di calcolo quantistico non risiede nella possibilità di valutare esplicitamente tutte le soluzioni di un problema, bensì nella capacità di sfruttare il fenomeno dell'\emph{interferenza quantistica}. Attraverso opportune sequenze di operazioni, le ampiezze associate alle soluzioni corrette possono essere amplificate, mentre quelle delle soluzioni errate vengono attenuate\footnote{Ivi, Sezioni 1.4.3, 6.1.3}.
 
 \subsubsection{Collegamento con la crittografia}
-
-I concetti introdotti in questa sezione costituiscono il fondamento teorico per analizzare l'impatto della computazione quantistica sulla crittografia moderna.
-In particolare, l'uso combinato di sovrapposizione, entanglement e interferenza consente di affrontare in modo efficiente problemi come la fattorizzazione di interi e il calcolo del logaritmo discreto.
-
-\newpage
+I concetti introdotti in questa sezione costituiscono il fondamento teorico per analizzare l'impatto della computazione quantistica sulla crittografia moderna. In particolare, l'uso combinato di sovrapposizione, entanglement e interferenza consente di affrontare in modo efficiente problemi come la fattorizzazione di interi e il calcolo del logaritmo discreto\footnote{Ivi, Sezioni 1.4, 5.3}.
 
 \subsection{Algoritmi quantistici rilevanti: Shor}
 
@@ -227,4 +222,4 @@ dove $m$ è un intero. Quando si effettua la misura, si ottiene con alta probabi
 
 È essenziale chiarire un aspetto concettuale che spesso genera confusione. Il computer quantistico non ottiene il suo vantaggio semplicemente ``provando tutte le frequenze in parallelo'' né ``calcolando la trasformata esplicitamente come farebbe una CPU classica''. Il meccanismo è qualitativamente diverso: il computer quantistico prepara uno stato quantistico con una struttura specifica, sfrutta le proprietà di interferenza e sovrapposizione per far emergere le frequenze rilevanti, e produce il periodo come risultato di un processo probabilistico governato dalle leggi della meccanica quantistica.
 
-La QFT è il meccanismo matematico che rende possibile questa interferenza controllata. Essa permette di organizzare le ampiezze quantistiche in modo tale che, al momento della misura, i valori che contengono informazione sul periodo abbiano probabilità di osservazione significativamente maggiore rispetto agli altri. Questa capacità di manipolare coerentemente le ampiezze di probabilità attraverso interfer
+La QFT è il meccanismo matematico che rende possibile questa interferenza controllata. Essa permette di organizzare le ampiezze quantistiche in modo tale che, al momento della misura, i valori che contengono informazione sul periodo abbiano probabilità di osservazione significativamente maggiore rispetto agli altri. Questa capacità di manipolare coerentemente le ampiezze di probabilità attraverso interferenza quantistica è ciò che consente al computer quantistico di ottenere un vantaggio esponenziale rispetto ai metodi classici.
