@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  31 JAN 2026 13:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.17)  31 JAN 2026 15:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -303,7 +303,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [6]
 
 [7]
-Overfull \hbox (3.87982pt too wide) in paragraph at lines 170--171
+Overfull \hbox (3.87982pt too wide) in paragraph at lines 175--176
 []\OT1/cmr/m/n/12 La molti-pli-cazione scalare $\OML/cmm/m/it/12 Q \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 kP$ \OT1/cmr/m/n/12 ^^Re com-putazional-mente ef-fi-ciente (tempo
  []
 
@@ -311,9 +311,9 @@ Overfull \hbox (3.87982pt too wide) in paragraph at lines 170--171
 
 [8]
 
-[9] (capitolo3.tex
+[9]
 
-[10]
+[10] (capitolo3.tex
 
 [11]
 
@@ -334,24 +334,24 @@ Overfull \hbox (3.87982pt too wide) in paragraph at lines 170--171
 [19]
 
 [20]
+
+[21]
 Overfull \hbox (0.16887pt too wide) in paragraph at lines 219--220
 []\OT1/cmr/m/n/12 ^^Re pos-si-bile ri-costru-ire il pe-ri-odo $\OML/cmm/m/it/12 r$ \OT1/cmr/m/n/12 at-traverso l'approssimazione con frazioni
  []
 
 )
 
-[21]
-
 [22]
-Overfull \hbox (3.29453pt too wide) in paragraph at lines 249--250
+
+[23]
+Overfull \hbox (3.29453pt too wide) in paragraph at lines 254--255
 \OT1/cmr/m/n/12 pi-ani-fi-cazione per sos-ti-tuire l'infrastruttura crit-tografica es-istente man-te-nendo
  []
 
 
 
-[23] (capitolo5.tex
-
-[24]
+[24] (capitolo5.tex
 
 [25]
 
@@ -362,26 +362,28 @@ Overfull \hbox (3.29453pt too wide) in paragraph at lines 249--250
 [28]
 
 [29]
+
+[30]
 Overfull \hbox (11.37593pt too wide) in paragraph at lines 155--156
 \OT1/cmr/m/n/12 ave di de-cap-su-la-mento di 3168 bytes, ci-pher-text di 1568 bytes. Prestazioni
  []
 
 
 
-[30]
+[31]
 Overfull \hbox (2.88734pt too wide) in paragraph at lines 175--176
 \OT1/cmr/m/n/12 curezza si basa sul prob-lema \OT1/cmr/bx/n/12 Quasi-Cyclic Syn-drome De-cod-ing (QCSD)\OT1/cmr/m/n/12 .
  []
 
 
 
-[31]
+[32]
 
-[32])
-
-[33]
+[33])
 
 [34]
+
+[35]
 No file relazione.bbl.
 (relazione.aux)
  ***********
@@ -392,17 +394,17 @@ Package rerunfilecheck Info: File `relazione.out' has not changed.
 (rerunfilecheck)             Checksum: 27292F7CC02B81C4D6384BB63A71F78B;8256.
  ) 
 Here is how much of TeX's memory you used:
- 10037 strings out of 473899
- 152393 string characters out of 5732122
+ 10056 strings out of 473899
+ 152607 string characters out of 5732122
  546570 words of memory out of 5000000
- 32580 multiletter control sequences out of 15000+600000
- 570068 words of font info for 81 fonts, out of 8000000 for 9000
+ 32583 multiletter control sequences out of 15000+600000
+ 570582 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,1053b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\michele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relazione.pdf (34 pages, 359777 bytes).
+ <C:\Users\michele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/utenti/michele/Programs/LaTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on relazione.pdf (35 pages, 400883 bytes).
 PDF statistics:
- 682 PDF objects out of 1000 (max. 8388607)
- 202 named destinations out of 1000 (max. 500000)
+ 727 PDF objects out of 1000 (max. 8388607)
+ 216 named destinations out of 1000 (max. 500000)
  305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
