@@ -33,18 +33,18 @@ per i quali non esistono algoritmi efficienti in grado di risolverli in tempi po
 Tuttavia, l'emergere dei computer quantistici ha introdotto una nuova dimensione nel panorama della sicurezza informatica.
 Questi dispositivi sfruttando i principi della meccanica quantistica sono in grado di eseguire calcoli in modo radicalmente diverso 
 rispetto ai computer classici, rendendoli potenzialmente capaci di risolvere in tempi polinomiali quei problemi matematici 
-che risultano intrattabili per le macchine convenzionali\footnote{\href{https://archive.org/details/QuantumComputationAndQuantumInformation10thAnniversaryEdition}{Nielsen \& Chuang, Sezione 1.1}}.
+che risultano intrattabili per le macchine convenzionali~\cite{nielsen2010quantum}.
 
 \subsection[Minaccia dei computer quantistici]{Minaccia dei computer quantistici: Perché è necessaria?}
 
-L'ipotesi di una minaccia quantistica emerge già nel ventesimo secolo, quando nel 1994 l'algoritmo di Shor dimostra che un 
+L'ipotesi di una minaccia quantistica emerge già nel ventesimo secolo, quando nel 1994 l'algoritmo di Shor~\cite{shor1994algorithms} dimostra che un 
 computer quantistico sufficientemente potente potrebbe fattorizzare grandi numeri interi e calcolare logaritmi discreti 
-in tempo polinomiale\footnote{P. Shor, "Algorithms for quantum computation: discrete logarithms and factoring", \textit{Proceedings 35th Annual Symposium on Foundations of Computer Science}, 1994, pp. 124-134}. Questo rende vulnerabili algoritmi come RSA, ECC e DSA, che costituiscono la base della sicurezza 
+in tempo polinomiale. Questo rende vulnerabili algoritmi come RSA, ECC e DSA, che costituiscono la base della sicurezza 
 informatica moderna.
 
 Per molti anni il problema è rimasto solo teorico, perché il calcolo quantistico non aveva applicazioni pratiche. 
 Lo scenario è cambiato con i recenti progressi tecnologici e lo sviluppo dei primi prototipi avanzati da parte di leader industriali come Google e Microsoft, 
-che hanno riportato risultati significativi con i loro progetti: Willow\footnote{Google Quantum AI, "Willow: A quantum computing milestone", Dicembre 2024. Disponibile su: \href{https://blog.google/innovation-and-ai/technology/research/google-willow-quantum-chip/}{blog.google}} di Google e il processore Maiorana 1\footnote{Microsoft Quantum, "Maiorana 1: The first milestone on the path to a quantum supercomputer", Ottobre 2024. Disponibile su: \href{https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/}{www.microsoft.com}} di Microsoft. 
+che hanno riportato risultati significativi con i loro progetti: Willow\footnote{Google Quantum AI, ``Willow: A quantum computing milestone'', Dicembre 2024. Disponibile su: \href{https://blog.google/innovation-and-ai/technology/research/google-willow-quantum-chip/}{blog.google}} di Google e il processore Maiorana 1\footnote{Microsoft Quantum, ``Maiorana 1: The first milestone on the path to a quantum supercomputer'', Ottobre 2024. Disponibile su: \href{https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/}{www.microsoft.com}} di Microsoft. 
 Questi progetti hanno quindi portato alla luce dei veri calcolatori quantistici funzionanti e nonostante il limitato numero di qbit 
 stabili sia insufficiente per applicazioni pratiche su larga scala, questo segna una svolta nel settore.
 
@@ -52,7 +52,7 @@ Sebbene le macchine quantistiche siano ancora in fase sperimentale, diversi scie
 su larga scala sia ormai una sfida principalmente ingegneristica, e alcuni prevedono la loro maturazione entro i prossimi vent'anni. 
 
 Considerando che l'attuale infrastruttura crittografica ha richiesto quasi due decenni per essere implementata, risulta necessario 
-iniziare da subito la transizione verso sistemi progettati per resistere al calcolo quantistico\footnote{D. J. Bernstein, "Introduction to post-quantum cryptography", \textit{Post-Quantum Cryptography}, Springer, 2009, pp. 1-14}.
+iniziare da subito la transizione verso sistemi progettati per resistere al calcolo quantistico~\cite{bernstein2009introduction}.
 
 \subsection{Obiettivi della crittografia post-quantistica}
 
@@ -63,7 +63,7 @@ anche in un'era dominata dai computer quantistici.
 La crittografia post-quantistica non si limita a sostituire gli algoritmi vulnerabili, 
 ma mira a costruire un'infrastruttura di sicurezza robusta e duratura, 
 capace di adattarsi alle sfide tecnologiche future mantenendo la compatibilità con 
-i protocolli e le reti esistenti\footnote{NIST, "Post-Quantum Cryptography Standardization", \url{https://csrc.nist.gov/projects/post-quantum-cryptography}}.
+i protocolli e le reti esistenti\footnote{NIST, ``Post-Quantum Cryptography Standardization'', \url{https://csrc.nist.gov/projects/post-quantum-cryptography}}.
 
 Lo scopo della relazione invece è quindi quello di fornire una panoramica completa, introducendo in 
 primo luogo i fondamenti della crittografia classica, per capire dove risiedono le vulnerabilità che 
@@ -81,7 +81,7 @@ ci concentreremo sui protocolli a chiave pubblica.
 
 \subsection{Crittografia a chiave pubblica: RSA, ECC}
 
-La crittografia a chiave pubblica, introdotta nel 1976 da Diffie, Hellman e Merkle\footnote{W. Diffie, M. Hellman, "New directions in cryptography", \textit{IEEE Transactions on Information Theory}, vol. 22, no. 6, 1976, pp. 644-654}, costituisce 
+La crittografia a chiave pubblica, introdotta nel 1976 da Diffie, Hellman e Merkle~\cite{diffie1976new}, costituisce 
 una svolta fondamentale nel panorama della sicurezza informatica moderna. A differenza dei sistemi 
 simmetrici, che vincolano mittente e destinatario alla condivisione di un unico segreto, i protocolli 
 asimmetrici impiegano una coppia di chiavi: una pubblica $k_{\text{pub}}$, liberamente distribuibile, 
@@ -95,7 +95,7 @@ D(C(m;k_{\text{pub}});k_{\text{prv}})=m.
 
 Il funzionamento di questo sistema si basa sulle funzioni one-way trapdoor: operazioni matematiche 
 semplici da eseguire in una direzione, ma computazionalmente intrattabili da invertire senza 
-la conoscenza di una informazione specifica (la "trappola").
+la conoscenza di una informazione specifica (la ``trappola'').
 
 La teoria dei numeri e l'algebra modulare forniscono il substrato matematico necessario per 
 generare tali funzioni; a seconda del problema matematico sottostante, si distinguono i 
@@ -125,7 +125,7 @@ ottenendo un valore sempre compreso tra $0$ e $b-1$, esempio: $6 \bmod 4 = 2$.
 
 \subsubsection{RSA}
 
-Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978\footnote{R. Rivest, A. Shamir, L. Adleman, "A method for obtaining digital signatures and public-key cryptosystems", \textit{Communications of the ACM}, vol. 21, no. 2, 1978, pp. 120-126}, è il sistema crittografico a 
+Il cifrario RSA, proposto da Rivest, Shamir e Adleman nel 1978~\cite{rivest1978method}, è il sistema crittografico a 
 chiave pubblica più diffuso e studiato. La sua sicurezza si fonda sulla difficoltà computazionale 
 della fattorizzazione di numeri interi molto grandi\footnote{Materiale didattico del corso di Crittografia, Università di Bologna, a.a. 2024/2025}.
 
@@ -153,11 +153,11 @@ $$m^{ed} \bmod n = m^{1+k\phi(n)} \bmod n = m \cdot (m^{\phi(n)})^k \bmod n = m 
 La sicurezza di RSA dipende da l'impossibilità pratica di fattorizzare $n$ quando questo è sufficientemente grande. 
 Conoscendo la fattorizzazione $n = pq$, un attaccante potrebbe infatti calcolare $\phi(n)$ e di conseguenza la chiave privata $d$.
 
-Attualmente, le dimensioni delle chiavi considerate sicure sono di almeno 2048 bit, con raccomandazioni crescenti verso 4096 bit per applicazioni che richiedono sicurezza a lungo termine\footnote{NIST Special Publication 800-57 Part 1 Rev. 5, "Recommendation for Key Management", 2020}. Chiavi di 1024 bit sono considerate obsolete e vulnerabili ad attacchi con risorse computazionali moderne.
+Attualmente, le dimensioni delle chiavi considerate sicure sono di almeno 2048 bit, con raccomandazioni crescenti verso 4096 bit per applicazioni che richiedono sicurezza a lungo termine~\cite{nist2020keymgmt}. Chiavi di 1024 bit sono considerate obsolete e vulnerabili ad attacchi con risorse computazionali moderne.
 
 \subsubsection{Crittografia su Curve Ellittiche (ECC)}
 
-La crittografia su curve ellittiche, sviluppata indipendentemente da Neal Koblitz e Victor Miller nel 1985\footnote{N. Koblitz, "Elliptic curve cryptosystems", \textit{Mathematics of Computation}, vol. 48, no. 177, 1987, pp. 203-209; V. Miller, "Use of elliptic curves in cryptography", \textit{CRYPTO}, 1985, pp. 417-426}, offre un'alternativa matematicamente elegante e computazionalmente efficiente a RSA.
+La crittografia su curve ellittiche, sviluppata indipendentemente da Neal Koblitz e Victor Miller nel 1985~\cite{koblitz1987elliptic,miller1985use}, offre un'alternativa matematicamente elegante e computazionalmente efficiente a RSA.
 
 \paragraph{Fondamenti matematici} Una curva ellittica su un campo finito $\mathbb{Z}_p$ (con $p$ primo e $p > 3$) è definita dall'equazione di Weierstrass in forma normale:
 $$y^2 = x^3 + ax + b$$
@@ -174,7 +174,7 @@ dove $S = P + Q = (x_S, y_S)$. Nel caso di raddoppio di un punto ($P = Q$), il c
 
 La moltiplicazione scalare $Q = kP$ è computazionalmente efficiente (tempo polinomiale), mentre il problema inverso è considerato intrattabile: tutti gli algoritmi classici noti hanno complessità esponenziale nella dimensione della chiave.
 
-\paragraph{Vantaggi rispetto a RSA} ECC offre lo stesso livello di sicurezza di RSA con chiavi significativamente più corte. Una chiave ECC di 256 bit fornisce una sicurezza paragonabile a una chiave RSA di 3072 bit\footnote{NIST Special Publication 800-57 Part 1 Rev. 5, "Recommendation for Key Management", 2020}. Questo si traduce in:
+\paragraph{Vantaggi rispetto a RSA} ECC offre lo stesso livello di sicurezza di RSA con chiavi significativamente più corte. Una chiave ECC di 256 bit fornisce una sicurezza paragonabile a una chiave RSA di 3072 bit~\cite{nist2020keymgmt}. Questo si traduce in:
 \begin{itemize}
     \item Minore occupazione di memoria e larghezza di banda
     \item Operazioni crittografiche più veloci
@@ -186,8 +186,8 @@ La moltiplicazione scalare $Q = kP$ è computazionalmente efficiente (tempo poli
 Entrambi gli algoritmi sono considerati sicuri nell'ambito del calcolo classico per dimensioni di chiave appropriate. La loro robustezza deriva dalla complessità computazionale dei problemi matematici sottostanti:
 
 \begin{itemize}
-    \item \textbf{Fattorizzazione per RSA}: il miglior algoritmo classico noto è il General Number Field Sieve (GNFS), con complessità sub-esponenziale $O(e^{(64/9)^{1/3}(\ln n)^{1/3}(\ln \ln n)^{2/3}})$\footnote{A. K. Lenstra, H. W. Lenstra Jr., "The development of the number field sieve", \textit{Lecture Notes in Mathematics}, vol. 1554, Springer, 1993}
-    \item \textbf{ECDLP per ECC}: gli algoritmi più efficienti, come il metodo rho di Pollard, hanno complessità completamente esponenziale $O(\sqrt{n})$, dove $n$ è l'ordine del gruppo\footnote{J. M. Pollard, "Monte Carlo methods for index computation (mod p)", \textit{Mathematics of Computation}, vol. 32, no. 143, 1978, pp. 918-924}
+    \item \textbf{Fattorizzazione per RSA}: il miglior algoritmo classico noto è il General Number Field Sieve (GNFS), con complessità sub-esponenziale~\cite{lenstra1993number}
+    \item \textbf{ECDLP per ECC}: gli algoritmi più efficienti, come il metodo rho di Pollard, hanno complessità completamente esponenziale $O(\sqrt{n})$, dove $n$ è l'ordine del gruppo~\cite{pollard1978monte}
 \end{itemize}
 
 Questa differenza nella complessità degli attacchi spiega perché ECC richiede chiavi più corte per garantire lo stesso livello di sicurezza.
@@ -218,7 +218,7 @@ La crittografia post-quantistica\footnote{\href{https://en.wikipedia.org/wiki/Po
 Ecco i pilastri fondamentali che compongono questa definizione:
 
 \begin{enumerate}
-    \item Indipendenza dall'hardware quantistico. A differenza della "crittografia quantistica"\footnote{\href{https://preprints.org/manuscript/202508.0555/v1}{Quantum Computing and Cryptography}} (che sfrutta i principi della fisica quantistica per proteggere le comunicazioni, come la distribuzione quantistica delle chiavi), la crittografia post-quantistica si basa su problemi matematici eseguiti su computer classici, ma strutturati in modo da essere resistenti anche ai futuri computer quantistici.
+    \item Indipendenza dall'hardware quantistico. A differenza della ``crittografia quantistica''\footnote{\href{https://preprints.org/manuscript/202508.0555/v1}{Quantum Computing and Cryptography}} (che sfrutta i principi della fisica quantistica per proteggere le comunicazioni, come la distribuzione quantistica delle chiavi), la crittografia post-quantistica si basa su problemi matematici eseguiti su computer classici, ma strutturati in modo da essere resistenti anche ai futuri computer quantistici.
     
     \item Superamento della vulnerabilità agli algoritmi quantistici
     
@@ -229,12 +229,12 @@ Ecco i pilastri fondamentali che compongono questa definizione:
     \end{itemize}
 
     \item Fondazione su nuovi problemi matematici:
-    La PQC si basa su problemi matematici che, allo stato attuale della ricerca, non presentano vulnerabilità esponenziali quantistiche. Nel prossimo capitolo: \hyperref[cap:Algoritmi post-quantistici]{"Algoritmi post-quantistici"} esamineremo nel dettaglio le principali famiglie di problemi matematici su cui si basano gli algoritmi post-quantistici.
+    La PQC si basa su problemi matematici che, allo stato attuale della ricerca, non presentano vulnerabilità esponenziali quantistiche. Nel prossimo capitolo: \hyperref[cap:Algoritmi post-quantistici]{``Algoritmi post-quantistici''} esamineremo nel dettaglio le principali famiglie di problemi matematici su cui si basano gli algoritmi post-quantistici.
 
-    \item "Forward Secrecy"
+    \item ``Forward Secrecy''
     Una definizione completa di PQC include la necessità di proteggere i dati non solo in futuro, ma anche oggi. 
     
-    Il modello di minaccia "Harvest Now, Decrypt Later" (raccogli ora, decifra dopo) suggerisce che attori malintenzionati possano archiviare dati criptati oggi per decifrarli quando saranno disponibili computer quantistici sufficientemente potenti. 
+    Il modello di minaccia ``Harvest Now, Decrypt Later'' (raccogli ora, decifra dopo) suggerisce che attori malintenzionati possano archiviare dati criptati oggi per decifrarli quando saranno disponibili computer quantistici sufficientemente potenti. 
     
     Per questo motivo è considerata una priorità di sicurezza nazionale e infrastrutturale immediatarisulta e non così lontana. Queste motivazioni infatti stanno guidando la comunità scentifica a standardizzare quanto prima possibile questi algoritmi in modo da iniziare una migrazione verso questi protocolli già oggi.
 \end{enumerate}
@@ -264,27 +264,27 @@ La migrazione verso la crittografia post-quantistica rappresenta una delle sfide
 
 \subsection{Stato attuale dei computer quantistici}
 
-Un computer quantistico reale è un sistema fisico composto da qubit che devono mantenere le loro proprietà quantistiche per tutta la durata del calcolo. Le tecnologie attualmente più diffuse si basano su qubit superconduttori, che operano a temperature estremamente basse, prossime allo zero assoluto, tipicamente dell'ordine di alcune decine di millikelvin, al fine di ridurre il rumore termico e preservare la coerenza quantistica\cite{krantz2019quantum}.
+Un computer quantistico reale è un sistema fisico composto da qubit che devono mantenere le loro proprietà quantistiche per tutta la durata del calcolo. Le tecnologie attualmente più diffuse si basano su qubit superconduttori, che operano a temperature estremamente basse, prossime allo zero assoluto, tipicamente dell'ordine di alcune decine di millikelvin, al fine di ridurre il rumore termico e preservare la coerenza quantistica~\cite{krantz2019quantum}.
 
 Il raggiungimento di tali condizioni richiede l'utilizzo di refrigeratori a diluizione, dispositivi complessi e costosi che rappresentano un primo limite alla scalabilità dei sistemi. Anche minime interferenze ambientali possono causare la \emph{decoerenza}, ovvero la perdita delle proprietà quantistiche dei qubit, compromettendo la correttezza del calcolo.
 
 Un'ulteriore difficoltà riguarda il controllo delle operazioni quantistiche. Le porte devono essere applicate con estrema precisione, poiché errori anche molto piccoli tendono ad accumularsi rapidamente con l'aumentare del numero di qubit e della profondità del circuito.
 
-Per mitigare questo problema si ricorre a tecniche di \emph{correzione d'errore quantistica}. Tuttavia, gli schemi attualmente noti richiedono l'impiego di un numero elevato di qubit fisici per realizzare un singolo qubit logico affidabile, tipicamente dell'ordine di centinaia o migliaia\cite{preskill2018quantum}.
+Per mitigare questo problema si ricorre a tecniche di \emph{correzione d'errore quantistica}. Tuttavia, gli schemi attualmente noti richiedono l'impiego di un numero elevato di qubit fisici per realizzare un singolo qubit logico affidabile, tipicamente dell'ordine di centinaia o migliaia~\cite{preskill2018quantum}.
 
-A causa dei limiti tecnologici attuali, in particolare dei tempi di coerenza ridotti e dell'elevato tasso di errore, l'esecuzione di algoritmi quantistici complessi su larga scala, come quelli necessari per rompere RSA a 2048 bit, non è ancora praticabile. Le stime più ottimistiche suggeriscono che potrebbero essere necessari dai 10 ai 20 anni prima che computer quantistici sufficientemente potenti diventino disponibili\cite{mosca2018cybersecurity}.
+A causa dei limiti tecnologici attuali, in particolare dei tempi di coerenza ridotti e dell'elevato tasso di errore, l'esecuzione di algoritmi quantistici complessi su larga scala, come quelli necessari per rompere RSA a 2048 bit, non è ancora praticabile. Le stime più ottimistiche suggeriscono che potrebbero essere necessari dai 10 ai 20 anni prima che computer quantistici sufficientemente potenti diventino disponibili~\cite{mosca2018cybersecurity}.
 
 \subsection{Stato attuale della crittografia post-quantistica}
 
-Il processo di standardizzazione del NIST, iniziato nel 2016, ha portato alla selezione di diversi algoritmi post-quantistici nel 2022\cite{alagic2022nist}. Tra questi, CRYSTALS-Kyber per lo scambio di chiavi e CRYSTALS-Dilithium per le firme digitali rappresentano i candidati principali per la sostituzione di RSA ed ECC.
+Il processo di standardizzazione del NIST, iniziato nel 2016, ha portato alla selezione di diversi algoritmi post-quantistici nel 2022~\cite{alagic2022nist}. Tra questi, CRYSTALS-Kyber per lo scambio di chiavi e CRYSTALS-Dilithium per le firme digitali rappresentano i candidati principali per la sostituzione di RSA ed ECC.
 
 Nonostante la disponibilità di questi standard, la transizione verso la crittografia post-quantistica presenta sfide significative. Molti algoritmi PQC richiedono chiavi più grandi e operazioni più costose rispetto ai loro equivalenti classici, il che può comportare problemi di compatibilità con l'infrastruttura esistente e impatti sulle prestazioni.
 
-Per mitigare i rischi durante la fase di transizione, molte organizzazioni stanno adottando un approccio di \emph{crittografia ibrida}, combinando un algoritmo classico con uno post-quantistico\cite{bindel2019transitioning}. Questo approccio garantisce sicurezza anche nel caso in cui uno dei due algoritmi si rivelasse vulnerabile in futuro. Implementazioni di questo tipo sono già state annunciate da grandi aziende tecnologiche come Apple (con il protocollo PQ3) e Google (con il supporto per algoritmi ibridi in Chrome).
+Per mitigare i rischi durante la fase di transizione, molte organizzazioni stanno adottando un approccio di \emph{crittografia ibrida}, combinando un algoritmo classico con uno post-quantistico~\cite{bindel2019transitioning}. Questo approccio garantisce sicurezza anche nel caso in cui uno dei due algoritmi si rivelasse vulnerabile in futuro. Implementazioni di questo tipo sono già state annunciate da grandi aziende tecnologiche come Apple (con il protocollo PQ3) e Google (con il supporto per algoritmi ibridi in Chrome).
 
 \subsection{Prospettive future}
 
-La minaccia quantistica alla crittografia classica, sebbene non immediata, è sufficientemente concreta da richiedere azioni preventive. Il concetto di "\emph{harvest now, decrypt later}" evidenzia come dati cifrati oggi potrebbero essere vulnerabili in futuro, rendendo urgente la protezione delle informazioni sensibili a lungo termine\cite{mosca2018cybersecurity}.
+La minaccia quantistica alla crittografia classica, sebbene non immediata, è sufficientemente concreta da richiedere azioni preventive. Il concetto di ``\emph{harvest now, decrypt later}'' evidenzia come dati cifrati oggi potrebbero essere vulnerabili in futuro, rendendo urgente la protezione delle informazioni sensibili a lungo termine~\cite{mosca2018cybersecurity}.
 
 L'adozione della crittografia post-quantistica non rappresenta semplicemente una sostituzione tecnica di algoritmi, ma un processo di trasformazione dell'intera infrastruttura di sicurezza digitale. La collaborazione tra enti di standardizzazione, comunità accademica e industria sarà fondamentale per garantire una transizione efficace e tempestiva verso sistemi crittografici resistenti al calcolo quantistico.
 

@@ -1,4 +1,73 @@
-% Crittografia Post-Quantistica - Generale
+% ==================== LIBRI ====================
+
+@book{nielsen2010quantum,
+  title={Quantum Computation and Quantum Information},
+  author={Nielsen, Michael A and Chuang, Isaac L},
+  year={2010},
+  publisher={Cambridge University Press},
+  edition={10th Anniversary},
+  url={https://archive.org/details/QuantumComputationAndQuantumInformation10thAnniversaryEdition}
+}
+
+% ==================== PAPER FONDAMENTALI ====================
+
+@inproceedings{shor1994algorithms,
+  title={Algorithms for quantum computation: discrete logarithms and factoring},
+  author={Shor, Peter W},
+  booktitle={Proceedings 35th Annual Symposium on Foundations of Computer Science},
+  pages={124--134},
+  year={1994},
+  organization={IEEE},
+  doi={10.1109/SFCS.1994.365700}
+}
+
+@article{diffie1976new,
+  title={New directions in cryptography},
+  author={Diffie, Whitfield and Hellman, Martin},
+  journal={IEEE Transactions on Information Theory},
+  volume={22},
+  number={6},
+  pages={644--654},
+  year={1976},
+  publisher={IEEE},
+  doi={10.1109/TIT.1976.1055638}
+}
+
+@article{rivest1978method,
+  title={A method for obtaining digital signatures and public-key cryptosystems},
+  author={Rivest, Ronald L and Shamir, Adi and Adleman, Leonard},
+  journal={Communications of the ACM},
+  volume={21},
+  number={2},
+  pages={120--126},
+  year={1978},
+  publisher={ACM},
+  doi={10.1145/359340.359342}
+}
+
+@article{koblitz1987elliptic,
+  title={Elliptic curve cryptosystems},
+  author={Koblitz, Neal},
+  journal={Mathematics of Computation},
+  volume={48},
+  number={177},
+  pages={203--209},
+  year={1987},
+  doi={10.1090/S0025-5718-1987-0866109-5}
+}
+
+@inproceedings{miller1985use,
+  title={Use of elliptic curves in cryptography},
+  author={Miller, Victor S},
+  booktitle={Conference on the Theory and Application of Cryptographic Techniques},
+  pages={417--426},
+  year={1985},
+  organization={Springer},
+  doi={10.1007/3-540-39799-X_31}
+}
+
+% ==================== CRITTOGRAFIA POST-QUANTISTICA ====================
+
 @article{bernstein2017post,
   title={Post-quantum cryptography},
   author={Bernstein, Daniel J and Lange, Tanja},
@@ -11,7 +80,18 @@
   doi={10.1038/nature23461}
 }
 
-% Computer Quantistici - Stato dell'arte
+@incollection{bernstein2009introduction,
+  title={Introduction to post-quantum cryptography},
+  author={Bernstein, Daniel J},
+  booktitle={Post-Quantum Cryptography},
+  pages={1--14},
+  year={2009},
+  publisher={Springer},
+  doi={10.1007/978-3-540-88702-7_1}
+}
+
+% ==================== COMPUTER QUANTISTICI ====================
+
 @article{krantz2019quantum,
   title={A quantum engineer's guide to superconducting qubits},
   author={Krantz, Philip and Kjaergaard, Morten and Yan, Fei and Orlando, Terry P and Gustavsson, Simon and Oliver, William D},
@@ -35,7 +115,6 @@
   doi={10.22331/q-2018-08-06-79}
 }
 
-% Minaccia quantistica e timeline
 @article{mosca2018cybersecurity,
   title={Cybersecurity in an era with quantum computers: Will we be ready?},
   author={Mosca, Michele},
@@ -48,17 +127,30 @@
   doi={10.1109/MSP.2018.3761723}
 }
 
-% Standardizzazione NIST
+% ==================== NIST STANDARDIZATION ====================
+
 @techreport{alagic2022nist,
   title={Status report on the third round of the NIST post-quantum cryptography standardization process},
   author={Alagic, Gorjan and Apon, Daniel and Cooper, David and Dang, Quynh and Dang, Thinh and Kelsey, John and Lichtinger, Jacob and Liu, Yi-Kai and Miller, Carl and Moody, Dustin and others},
   year={2022},
   institution={National Institute of Standards and Technology},
   type={NIST Interagency Report},
-  number={NISTIR 8413}
+  number={NISTIR 8413},
+  doi={10.6028/NIST.IR.8413}
 }
 
-% Transizione e crittografia ibrida
+@techreport{nist2020keymgmt,
+  title={Recommendation for Key Management: Part 1 -- General},
+  author={{National Institute of Standards and Technology}},
+  year={2020},
+  institution={NIST},
+  type={Special Publication},
+  number={800-57 Part 1 Rev. 5},
+  url={https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf}
+}
+
+% ==================== TRANSIZIONE E CRITTOGRAFIA IBRIDA ====================
+
 @inproceedings{bindel2019transitioning,
   title={Transitioning to a quantum-resistant public key infrastructure},
   author={Bindel, Nina and Brendel, Jacqueline and Fischlin, Marc and Goncalves, Brian and Stebila, Douglas},
@@ -67,4 +159,42 @@
   year={2019},
   organization={Springer},
   doi={10.1007/978-3-030-25510-7_21}
+}
+
+% ==================== COMPLESSITÀ ALGORITMI ====================
+
+@book{lenstra1993number,
+  title={The Development of the Number Field Sieve},
+  author={Lenstra, Arjen K and Lenstra, Hendrik W},
+  volume={1554},
+  year={1993},
+  publisher={Springer},
+  series={Lecture Notes in Mathematics},
+  doi={10.1007/BFb0091539}
+}
+
+@article{pollard1978monte,
+  title={Monte Carlo methods for index computation (mod p)},
+  author={Pollard, John M},
+  journal={Mathematics of Computation},
+  volume={32},
+  number={143},
+  pages={918--924},
+  year={1978},
+  publisher={American Mathematical Society},
+  doi={10.1090/S0025-5718-1978-0491431-9}
+}
+
+% ==================== LWE E LATTICE ====================
+
+@article{regev2009lattices,
+  title={On lattices, learning with errors, random linear codes, and cryptography},
+  author={Regev, Oded},
+  journal={Journal of the ACM},
+  volume={56},
+  number={6},
+  pages={1--40},
+  year={2009},
+  publisher={ACM},
+  doi={10.1145/1568318.1568324}
 }
