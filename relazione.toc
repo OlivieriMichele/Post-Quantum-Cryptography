@@ -24,48 +24,49 @@
 \contentsline {subsubsection}{\numberline {3.2.2}L'utilità del periodo per la fattorizzazione}{15}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Esempio numerico completo}{16}{subsubsection.3.2.3}%
 \contentsline {subsubsection}{\numberline {3.2.4}La trasformata di Fourier quantistica}{18}{subsubsection.3.2.4}%
-\contentsline {paragraph}{Il ruolo della trasformata di Fourier nell'analisi della periodicità}{18}{section*.15}%
+\contentsline {paragraph}{Il ruolo della trasformata di Fourier}{18}{section*.15}%
 \contentsline {paragraph}{Intuizione alla base della trasformata di Fourier}{19}{section*.16}%
 \contentsline {paragraph}{La trasformata di Fourier discreta}{19}{section*.17}%
 \contentsline {paragraph}{Periodicità e concentrazione spettrale}{20}{section*.18}%
-\contentsline {paragraph}{Dalla DFT alla trasformata di Fourier quantistica}{20}{section*.19}%
-\contentsline {paragraph}{Il vantaggio computazionale della QFT}{21}{section*.20}%
-\contentsline {paragraph}{Esempio concettuale del meccanismo}{22}{section*.21}%
-\contentsline {paragraph}{La natura del vantaggio quantistico}{22}{section*.22}%
-\contentsline {section}{\numberline {4}Crittografia post quantistica}{23}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Requisiti e obiettivi}{24}{subsection.4.1}%
-\contentsline {paragraph}{Requisiti pratici e tempistiche}{24}{section*.23}%
-\contentsline {subsection}{\numberline {4.2}Ruolo del Nist e processo di standardizzazione}{24}{subsection.4.2}%
-\contentsline {paragraph}{La risposta: crittografia post-quantistica}{24}{section*.24}%
-\contentsline {section}{\numberline {5}Algoritmi post-quantistici}{25}{section.5}%
-\contentsline {paragraph}{Classi di complessità e problemi matematici}{25}{section*.26}%
-\contentsline {paragraph}{BQP}{26}{section*.27}%
-\contentsline {paragraph}{PQC}{26}{section*.28}%
-\contentsline {subsection}{\numberline {5.1}Lattice-baces}{26}{subsection.5.1}%
-\contentsline {paragraph}{Il Problema matematico fondamentale}{26}{section*.29}%
-\contentsline {paragraph}{Learning With Errors (LWE)}{26}{section*.30}%
-\contentsline {paragraph}{Module Learning with Errors (MLWE)}{27}{section*.31}%
-\contentsline {paragraph}{Short Integer Solution (SIS/MSIS)}{28}{section*.32}%
-\contentsline {paragraph}{Generazione delle chiavi (KeyGen)}{28}{section*.35}%
-\contentsline {paragraph}{Incapsulamento (Encaps)}{29}{section*.36}%
-\contentsline {paragraph}{Decapsulamento (Decaps)}{29}{section*.37}%
-\contentsline {paragraph}{Correttezza del protocollo}{29}{section*.38}%
-\contentsline {paragraph}{Sicurezza}{29}{section*.39}%
-\contentsline {paragraph}{ML-KEM (ex CRYSTALS-Kyber)}{31}{section*.43}%
-\contentsline {paragraph}{ML-DSA (ex CRYSTALS-Dilithium)}{31}{section*.44}%
-\contentsline {paragraph}{Algoritmi alternativi}{31}{section*.45}%
-\contentsline {subsection}{\numberline {5.2}Code-based Cryptography}{32}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Classic McEliece}{32}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}HQC (Hamming Quasi-Cyclic)}{32}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Hash-based Cryptography}{33}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}SLH-DSA (SPHINCS+)}{33}{subsubsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.4}Multivariate Cryptography}{33}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Rainbow}{33}{subsubsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.5}Isogeny-based Cryptography}{34}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}SIKE e il suo fallimento}{34}{subsubsection.5.5.1}%
-\contentsline {subsubsection}{\numberline {5.5.2}Lo stato attuale}{34}{subsubsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.6}Crittografia simmetrica}{34}{subsection.5.6}%
-\contentsline {section}{\numberline {6}Considerazioni finali}{35}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Stato attuale della tecnologia dei computer quantistici}{35}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Stato attuale dei protocolli post-quantistici}{35}{subsection.6.2}%
-\contentsline {paragraph}{Considerazioni sulla migrazione}{35}{section*.46}%
+\contentsline {subsubsection}{\numberline {3.2.5}Dalla DFT alla trasformata di Fourier quantistica}{21}{subsubsection.3.2.5}%
+\contentsline {paragraph}{Il vantaggio computazionale della QFT}{21}{section*.19}%
+\contentsline {paragraph}{Esempio concettuale del meccanismo}{22}{section*.20}%
+\contentsline {paragraph}{La natura del vantaggio quantistico}{22}{section*.21}%
+\contentsline {paragraph}{Conclusioni}{23}{section*.22}%
+\contentsline {section}{\numberline {4}Crittografia post quantistica}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Requisiti e obiettivi}{25}{subsection.4.1}%
+\contentsline {paragraph}{Requisiti pratici e tempistiche}{25}{section*.23}%
+\contentsline {subsection}{\numberline {4.2}Ruolo del Nist e processo di standardizzazione}{25}{subsection.4.2}%
+\contentsline {paragraph}{La risposta: crittografia post-quantistica}{25}{section*.24}%
+\contentsline {section}{\numberline {5}Algoritmi post-quantistici}{26}{section.5}%
+\contentsline {paragraph}{Classi di complessità e problemi matematici}{26}{section*.26}%
+\contentsline {paragraph}{BQP}{27}{section*.27}%
+\contentsline {paragraph}{PQC}{27}{section*.28}%
+\contentsline {subsection}{\numberline {5.1}Lattice-baces}{27}{subsection.5.1}%
+\contentsline {paragraph}{Il Problema matematico fondamentale}{27}{section*.29}%
+\contentsline {paragraph}{Learning With Errors (LWE)}{27}{section*.30}%
+\contentsline {paragraph}{Module Learning with Errors (MLWE)}{28}{section*.31}%
+\contentsline {paragraph}{Short Integer Solution (SIS/MSIS)}{29}{section*.32}%
+\contentsline {paragraph}{Generazione delle chiavi (KeyGen)}{29}{section*.35}%
+\contentsline {paragraph}{Incapsulamento (Encaps)}{30}{section*.36}%
+\contentsline {paragraph}{Decapsulamento (Decaps)}{30}{section*.37}%
+\contentsline {paragraph}{Correttezza del protocollo}{30}{section*.38}%
+\contentsline {paragraph}{Sicurezza}{30}{section*.39}%
+\contentsline {paragraph}{ML-KEM (ex CRYSTALS-Kyber)}{32}{section*.43}%
+\contentsline {paragraph}{ML-DSA (ex CRYSTALS-Dilithium)}{32}{section*.44}%
+\contentsline {paragraph}{Algoritmi alternativi}{32}{section*.45}%
+\contentsline {subsection}{\numberline {5.2}Code-based Cryptography}{33}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Classic McEliece}{33}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}HQC (Hamming Quasi-Cyclic)}{33}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Hash-based Cryptography}{34}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}SLH-DSA (SPHINCS+)}{34}{subsubsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.4}Multivariate Cryptography}{34}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Rainbow}{34}{subsubsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.5}Isogeny-based Cryptography}{35}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}SIKE e il suo fallimento}{35}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Lo stato attuale}{35}{subsubsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.6}Crittografia simmetrica}{35}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Considerazioni finali}{36}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Stato attuale della tecnologia dei computer quantistici}{36}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Stato attuale dei protocolli post-quantistici}{36}{subsection.6.2}%
+\contentsline {paragraph}{Considerazioni sulla migrazione}{36}{section*.46}%

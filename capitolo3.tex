@@ -129,7 +129,7 @@ Abbiamo così ottenuto la fattorizzazione $15 = 3 \cdot 5$.
 
 A questo punto è importante sottolineare quali passaggi del metodo siano effettivamente computazionalmente trattabili e quale rappresenti invece il collo di bottiglia. I passaggi che non presentano difficoltà computazionali significative includono il calcolo del massimo comun divisore, che può essere eseguito efficientemente tramite l'algoritmo di Euclide\footnote{Ivi, Sezione A4.2}, e l'esecuzione di esponenziazioni modulari, che può essere realizzata in tempo polinomiale mediante l'algoritmo di esponenziazione veloce\footnote{Ivi, Box 5.2}.
 
-Il passaggio critico dell'intero procedimento è la determinazione del periodo $r$. Nel contesto della computazione classica, il calcolo del periodo della funzione $a^x \bmod N$ richiede essenzialmente di valutare la funzione ripetutamente fino a quando non si osserva la ripetizione del valore iniziale\footnote{Ivi, Sezione 5.3.1}. Il numero di valutazioni necessarie nel caso peggiore può essere dell'ordine di $N$, e anche nel caso medio il numero di operazioni cresce in modo tale da rendere il problema intrattabile per valori di $N$ sufficientemente grandi\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Problema con l'ordine"}}. È precisamente in questo passaggio che risiede il collo di bottiglia computazionale che impedisce alla fattorizzazione classica di essere efficiente.
+Il passaggio critico dell'intero procedimento è la determinazione del periodo $r$. Nel contesto della computazione classica, il calcolo del periodo della funzione $a^x \bmod N$ richiede essenzialmente di valutare la funzione ripetutamente fino a quando non si osserva la ripetizione del valore iniziale. Il numero di valutazioni necessarie nel caso peggiore può essere dell'ordine di $N$, e anche nel caso medio il numero di operazioni cresce in modo tale da rendere il problema intrattabile per valori di $N$ sufficientemente grandi. È precisamente in questo passaggio che risiede il collo di bottiglia computazionale che impedisce alla fattorizzazione classica di essere efficiente.
 
 \subsubsection*{Casi di fallimento e strategie di gestione}
 
@@ -144,15 +144,15 @@ Ricapitolando quanto esposto, dal punto di vista strettamente matematico, l'algo
 
 Per comprendere come un computer quantistico risolva efficientemente il problema della determinazione del periodo, è necessario introdurre uno strumento matematico fondamentale: la trasformata di Fourier\footnote{Ivi, Sezione 5.1}. L'obiettivo di questa parte dell'analisi è chiarire perché la trasformata di Fourier rappresenti lo strumento naturale per affrontare problemi di periodicità e come la sua versione quantistica costituisca l'elemento centrale dell'algoritmo di Shor. Procederemo costruendo il ragionamento a partire da concetti elementari, senza assumere familiarità con gli aspetti tecnici della trasformata.
 
-\paragraph{Il ruolo della trasformata di Fourier nell'analisi della periodicità}
+\paragraph{Il ruolo della trasformata di Fourier}
 
-Dall'analisi matematica precedente è emerso che il problema centrale consiste nel determinare il periodo di una funzione della forma $f(x) = a^x \bmod N$. È importante chiarire che il calcolo dei singoli valori di $f(x)$ non presenta difficoltà computazionali: dato un valore specifico di $x$, è possibile calcolare $f(x)$ in modo efficiente. La difficoltà risiede nella determinazione della frequenza con cui i valori della funzione si ripetono.
+Siamo quindi arrivati al problema centrale: determinare il periodo della funzione $f(x) = a^x \bmod N$. Ricordiamo che il calcolo dei singoli valori di $f(x)$ non presenta difficoltà computazionali: dato un valore specifico di $x$, è possibile calcolare $f(x)$ in modo efficiente. La difficoltà risiede nella determinazione della frequenza con cui i valori della funzione si ripetono.
 
 La trasformata di Fourier è uno strumento matematico che permette di operare un cambio di prospettiva fondamentale. Concettualmente, essa consente di passare da una descrizione di un segnale o di una funzione nel cosiddetto ``dominio del tempo'' a una descrizione nel ``dominio delle frequenze''. Il periodo di una funzione è intrinsecamente una proprietà legata alle frequenze: una funzione periodica con periodo $r$ può essere interpretata come un segnale che oscilla con frequenza fondamentale $1/r$. Questa osservazione costituisce la chiave per comprendere perché la trasformata di Fourier sia lo strumento appropriato per estrarre informazioni sulla periodicità.
 
 \paragraph{Intuizione alla base della trasformata di Fourier}
 
-Prima di procedere con la formulazione matematica precisa, è utile sviluppare un'intuizione del funzionamento della trasformata di Fourier attraverso un esempio semplice. Si consideri un segnale periodico, che potrebbe rappresentare un'onda sonora, una vibrazione meccanica o qualsiasi altra grandezza fisica che varia nel tempo secondo un pattern ripetitivo. Nel dominio temporale, osserviamo come il segnale evolve istante per istante, registrando il valore della grandezza in funzione del tempo.
+Visto che l'ottica di questa ricerca è capire l'idea di fondo che si cela dietro shor, prima di vedere la formulazione matematica precisa, è utile sviluppare un'intuizione del funzionamento della trasformata di Fourier attraverso un esempio più semplice. Consideriamo un segnale periodico, che potrebbe rappresentare un'onda sonora, una vibrazione meccanica o qualsiasi altra grandezza fisica che varia nel tempo secondo un pattern ripetitivo. Nel dominio temporale, osserviamo come il segnale evolve istante per istante, registrando il valore della grandezza in funzione del tempo.
 
 La trasformata di Fourier effettua un'operazione concettualmente diversa: prende il segnale nel dominio temporale e lo scompone in una somma di oscillazioni elementari, ciascuna caratterizzata da una frequenza ben definita. In altre parole, invece di descrivere quando il segnale assume determinati valori, la trasformata descrive quali frequenze compongono il segnale e con quale intensità ciascuna frequenza contribuisce. Il periodo del segnale originale emerge naturalmente da questa rappresentazione in termini di frequenze.
 
@@ -180,7 +180,9 @@ Il collegamento diretto tra periodicità e trasformata di Fourier emerge quando 
 
 Questa proprietà implica che, osservando il risultato della trasformata di Fourier, è possibile ricavare informazioni precise sul periodo $r$. I picchi nella trasformata identificano le frequenze caratteristiche, e da queste frequenze si può risalire al periodo. Tuttavia, nel contesto della computazione classica, il calcolo della trasformata di Fourier discreta richiede un numero di operazioni che, anche utilizzando algoritmi efficienti come la FFT (Fast Fourier Transform), cresce almeno proporzionalmente al numero di campioni. Per sequenze di lunghezza comparabile a $N$, questo rappresenta comunque un costo computazionale significativo che non risolve il problema della complessità della fattorizzazione.
 
-\paragraph{Dalla DFT alla trasformata di Fourier quantistica}
+\newpage
+
+\subsubsection{Dalla DFT alla trasformata di Fourier quantistica}
 
 La trasformata di Fourier quantistica, comunemente indicata con l'acronimo QFT (Quantum Fourier Transform), rappresenta l'adattamento della trasformata di Fourier discreta al contesto della computazione quantistica\footnote{Ivi, Sezione 5.2}. È fondamentale comprendere che la QFT non introduce nuove idee matematiche: si tratta essenzialmente della stessa trasformazione matematica definita dalla DFT, ma applicata a stati quantistici invece che a sequenze di numeri classici.
 
@@ -200,9 +202,11 @@ dove i coefficienti $\beta_k$ sono esattamente la trasformata di Fourier dei coe
 
 La ragione per cui la QFT rappresenta un avanzamento rivoluzionario rispetto alla DFT classica risiede in una proprietà fondamentale della computazione quantistica: la capacità di operare simultaneamente su una sovrapposizione di stati\footnote{Ivi, Sezioni 5.2.1, 5.2.2}. Nel computer quantistico, tutti i coefficienti $\alpha_x$ esistono contemporaneamente nella sovrapposizione, e la QFT agisce sull'intera sovrapposizione in un'unica operazione coerente.
 
-Il risultato di questa applicazione coerente della trasformata è che le ampiezze dei diversi stati interferiscono tra loro secondo le leggi della meccanica quantistica. Le frequenze che sono compatibili con la periodicità della funzione originale vengono amplificate attraverso interferenza costruttiva, mentre le frequenze incompatibili vengono soppresse attraverso interferenza distruttiva. Quando si effettua una misura sullo stato risultante, si ottiene con alta probabilità un valore che contiene informazione sul periodo cercato.
+Il risultato di questa applicazione coerente della trasformata è che le ampiezze dei diversi stati interferiscono tra loro secondo le leggi della meccanica quantistica. Le frequenze che sono compatibili con la periodicità della funzione originale vengono amplificate attraverso \textbf{interferenza costruttiva}, mentre le frequenze incompatibili vengono soppresse attraverso \textbf{interferenza distruttiva}. 
 
-È importante sottolineare che la misura non fornisce direttamente il periodo $r$, ma piuttosto un valore dal quale è possibile estrarre $r$ utilizzando tecniche matematiche classiche. In particolare, si utilizza l'algoritmo delle frazioni continue per approssimare il rapporto misurato con una frazione che ha il periodo come denominatore\footnote{Ivi, Sezione 5.3.3}. Questa fase di post-elaborazione classica è essenziale per completare l'algoritmo.
+Quando si effettua una misura sullo stato risultante, si ottiene con alta probabilità un valore che contiene informazione sul periodo cercato.
+
+Difatti questo è il principale snodo del teorema, il punto in cui interviene positivamente l'utilizzo dela quantistica, da qui in poi sarà necessario fare altre operazioni per estrarre correttamemnte l'informazione, infatti è importante sottolineare che la misura non fornisce direttamente il periodo $r$, ma piuttosto un valore dal quale è possibile estrarre $r$, ma il tutto semplicemente utilizzando tecniche matematiche classiche. In particolare, si utilizza l'algoritmo delle frazioni continue per approssimare il rapporto misurato con una frazione che ha il periodo come denominatore\footnote{Ivi, Sezione 5.3.3}. Questa fase di post-elaborazione classica ci serve per completare l'algoritmo.
 
 \paragraph{Esempio concettuale del meccanismo}
 
@@ -215,11 +219,21 @@ dove $m$ è un intero. Quando si effettua la misura, si ottiene con alta probabi
 \[
 \frac{k}{Q} \approx \frac{m}{r}
 \]
-
-è possibile ricostruire il periodo $r$ attraverso l'approssimazione con frazioni continue\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Fase 3: QFT"}}. Questo esempio illustra il collegamento diretto tra l'applicazione della QFT, l'estrazione di informazione sulla periodicità attraverso la misura quantistica, e il recupero finale del periodo che permette la fattorizzazione.
+è possibile ricostruire il periodo $r$ attraverso l'approssimazione con frazioni continue\footnote{\href{https://learning.quantum.ibm.com/tutorial/shors-algorithm}{IBM Quantum Documentation, Sezione "Fase 3: QFT"}}.
+Questo esempio illustra il collegamento diretto tra l'applicazione della QFT, l'estrazione di informazione sulla periodicità attraverso la misura quantistica, e il recupero finale del periodo che permette la fattorizzazione.
 
 \paragraph{La natura del vantaggio quantistico}
 
-È essenziale chiarire un aspetto concettuale che spesso genera confusione. Il computer quantistico non ottiene il suo vantaggio semplicemente ``provando tutte le frequenze in parallelo'' né ``calcolando la trasformata esplicitamente come farebbe una CPU classica''. Il meccanismo è qualitativamente diverso: il computer quantistico prepara uno stato quantistico con una struttura specifica, sfrutta le proprietà di interferenza e sovrapposizione per far emergere le frequenze rilevanti, e produce il periodo come risultato di un processo probabilistico governato dalle leggi della meccanica quantistica.
+Avendo capito il principio di funzionamento di shor possiamo chiarire meglio un aspetto concettuale che spesso genera confusione. Il computer quantistico non ottiene il suo vantaggio semplicemente ``provando tutte le frequenze in parallelo'' né ``calcolando la trasformata esplicitamente come farebbe una CPU classica''. Il meccanismo è qualitativamente diverso: il computer quantistico prepara uno stato quantistico con una struttura specifica, sfrutta le proprietà di interferenza e sovrapposizione per far emergere le frequenze rilevanti, e produce il periodo come risultato di un processo probabilistico governato dalle leggi della meccanica quantistica.
 
 La QFT è il meccanismo matematico che rende possibile questa interferenza controllata. Essa permette di organizzare le ampiezze quantistiche in modo tale che, al momento della misura, i valori che contengono informazione sul periodo abbiano probabilità di osservazione significativamente maggiore rispetto agli altri. Questa capacità di manipolare coerentemente le ampiezze di probabilità attraverso interferenza quantistica è ciò che consente al computer quantistico di ottenere un vantaggio esponenziale rispetto ai metodi classici.
+
+\paragraph{Conclusioni}
+
+Riassumendo brevemente, 
+\begin{itemize}
+    \item abbiamo introdotto i concetti di meccanica quantistica necessari a comprendere il funzionamento di un computer quantistico;
+    \item abbiamo convertito il problema della fattorizzazione in un problema di determinazione del periodo di una funzione esponenziale modulare;
+    \item abbiamo poi trovato un algoritmo per calcolarne il perido, e l'abbiamo ottimizzato sostituendo la DFT (che costituiva il contributo con complessità computazionalemnte non polinomiale) con la QFT per ottenere un vantaggio esponenziale rispetto ai metodi classici, permettendo così di risolvere il problema della fattorizzazione in tempo polinomiale su un computer quantistico.
+\end{itemize}
+Ora che conosciamo il funzionamento matematico/teorico dell'algoritmo di Shor, possiamo passare alla prossima fare della trattazione: analizzare la risposta della comunità crittografica a questa minaccia: la crittografia post-quantistica.
