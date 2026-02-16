@@ -1,5 +1,5 @@
 
-A questo punto della relazione,  abbiamo compreso come funziona la crittografia classica e come i computer quantisci sono in grado di violarla, ora possiamo quindi entrare nel secondo punto fondamentale di questo elaborato : le famiglie di algoritmi (PQC).
+A questo punto della relazione,  abbiamo compreso come funziona la crittografia classica e come i computer quantisci sono in grado di violarla, ora possiamo quindi entrare nel secondo punto fondamentale di questo elaborato: le famiglie di algoritmi (PQC).
 Prima però servirà un ultimo preambolo, visto che abbiamo compreso che l'interra crittografia si basa su problemi matematici, analizziamo in breve quali sono le classi di complessità computazionali dei nuovi problemi matematici che andremo poi ad analizzare per capirne la sicurezza. 
 
 \subsection*{Introduzione}
@@ -9,16 +9,16 @@ Prima però servirà un ultimo preambolo, visto che abbiamo compreso che l'inter
 Per comprendere perché la crittografia post-quantistica rappresenta una soluzione efficace, introduciamo la gerarchia delle classi di complessità computazionale per capire dove si collocano i diversi problemi che ci saranno utili in seguito. 
 
 \textbf{Il problema P vs NP}
-Uno dei problemmi ancora irrisolti nella matematica e informatica teorica è appunto il problema P vs NP, difatti è inserito tra i sette problemi del millennio dal \footnote{\href{https://www.claymath.org/millennium/p-vs-np/}{Clay Mathematic Institute}}. 
-La questione riguarda la differenza tra il "risolvere" un problema e il "verificare" una soluzione giò data. 
+Uno dei problemi ancora irrisolti nella matematica e informatica teorica è appunto il problema P vs NP, difatti è inserito tra i sette problemi del millennio dal (Clay Mathematic Institute)\footnote{\href{https://www.claymath.org/millennium/p-vs-np/}{Clay Mathematic Institute}}. 
+La questione riguarda la differenza tra il "risolvere" un problema e il "verificare" una soluzione già data. 
 
 \begin{itemize}
     \item \textbf{P (Polynomial time)}: Problemi che possono essere risolti in tempo polinomiale da un algoritmo deterministico. Questi problemi sono considerati "facili" da risolvere. Esempio: ordinamento di una lista.
     \item \textbf{NP (Nondeterministic Polynomial time)}: Problemi per i quali, data una possibile soluzione, è possibile verificare la correttezza in tempo polinomiale. Esempio: il problema del cammino hamiltoniano.
-    \item \textbf{Np-hard}: Problemi almeno difficili quanto i problemi più difficili in NP. Formalmente, un problema NP-hard è tale se può essere ridotto in tempo polinomiale a un qualisiasi problema in NP, percui risolvere un problema NP-hard significa dimmostrare che $P = NP$. Esempio: il problema del commesso viaggiatore (TSP).
+    \item \textbf{Np-hard}: Problemi almeno difficili quanto i problemi più difficili in NP. Formalmente, un problema NP-hard è tale se può essere ridotto in tempo polinomiale a un qualsiasi problema in NP, percui risolvere un problema NP-hard significa dimmostrare che $P = NP$. Esempio: il problema del commesso viaggiatore (TSP).
 \end{itemize}
 
-Da qui emerge una domanda cruciale: per ogni problema la cui soluzione è facile da verficare (NP) è anche facile trovare una solzuione (P)? Se $P = NP$, allora ogni volta che possiamo controllare rapidamente una soluzione deve esistere anche un modo veloce per trovarla. La comunità scientifica concorda che $P \neq NP$, il che implica che esistono problemi in intrinecamente difficili per i quali trovare la soluzione richiede tempi esponenziali, anche se verificarli è immediato, e questo rappresenta il fondamento della sicurezza crittografica.
+Da qui emerge una domanda cruciale: per ogni problema la cui soluzione è facile da verficare (NP) è anche facile trovare una solzuione (P)? Se $P = NP$, allora ogni volta che possiamo controllare rapidamente una soluzione deve esistere anche un modo veloce per trovarla. La comunità scientifica concorda che $P \neq NP$, il che implica che esistono problemi intrinsecamente difficili per i quali trovare la soluzione richiede tempi esponenziali, anche se verificarli è immediato, e questo rappresenta il fondamento della sicurezza crittografica.
 
 \paragraph{BQP}
 Nel caso della nostra analisi, è importante introdurre in questa gerarchia anche la classe BQP (Bounded-error Quantum Polynomial time), che rappresenta l'insieme dei problemi risolvibili efficientemente da un computer quantistico. 
@@ -51,7 +51,7 @@ Il problema fornisce coppie $(\mathbf{A}, \mathbf{b})$ dove:
 \end{equation}
 
 L'obiettivo, come abbiamo anticipato, è recuperare il vettore segreto conoscendo solo $\mathbf{A}$ e $\mathbf{b}$. Non conoscere l'errore  $\mathbf{e}$ rende il problema computazionalmente intrattabile. 
-La difficoltà del problema è stata dimostrato che è correlata alla risoluzione di problemi nel caso pessimo sui reticoli, come come il Shortest Vector Problem (SVP) e il Shortest Independent Vectors Problem (SIVP).
+La difficoltà del problema è stata dimostrato che è correlata alla risoluzione di problemi nel caso pessimo sui reticoli, come come il Shortest Vector Problem (SVP) e il Shortest Independent Vectors Problem (SIVP) classificati come NP-hard.
 Esisitono due versioni del problema: 
 \begin{itemize}
 \item \textbf{Search-LWE}: Trovare il vettore segreto $\mathbf{s}$ dato un insieme di campioni
