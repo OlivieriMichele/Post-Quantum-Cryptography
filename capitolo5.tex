@@ -74,6 +74,7 @@ Esisitono due versioni del problema:
 \item \textbf{Decision-LWE}: Distinguere campioni LWE $(A, \mathbf{A}\mathbf{s} + \mathbf{e})$ da campioni completamente casuali $(A, \mathbf{u})$ dove $\mathbf{u}$ è uniforme
 \end{itemize}
 È stato dimostrato che le due versioni sono equivalenti, risolvere il problema decisionale consente di risolvere anche quello di ricerca.
+\newpage
 
 \subsubsection{Module Learning with Errors (MLWE)} 
 
@@ -94,6 +95,8 @@ Consiste nel trovare una soluzione ``piccola'' (con coefficienti bassi) per un s
 I problemi basati sui reticoli (come MLWE e SIS) sono ritenuti difficili da risolvere anche per un avversario dotato di un computer quantistico a tolleranza d'errore. Al momento non sono noti algoritmi quantistici in grado di rompere efficientemente questi schemi. L'algoritmo quantistico di Grover può fornire solo un'accelerazione quadratica nella ricerca, che è significativa ma non sufficiente a rendere il problema trattabile.
 
 La resistenza quantistica deriva dalla natura ``disordinata'' e non strutturata dei problemi sui reticoli, in contrasto con la struttura periodica che caratterizza i problemi di fattorizzazione e logaritmo discreto.
+
+\newpage
 
 \subsubsection{Key-Encapsulation Mechanism (KEM)}
 
@@ -139,9 +142,173 @@ w &= v - \mathbf{s}^T\mathbf{u} \\
 
 Il termine di errore totale $\mathbf{e}^T\mathbf{r} + \mathbf{e}_2 - \mathbf{s}^T\mathbf{e}_1$ rimane sufficientemente piccolo (perché tutti i vettori coinvolti hanno componenti piccole) da permettere la decodifica corretta di $K$.
 
-\paragraph{Sicurezza} Un attaccante che intercetta $(\mathbf{A}, \mathbf{t})$ e $(\mathbf{u}, v)$ deve risolvere il problema MLWE per recuperare $K$, il che è computazionalmente intrattabile. La chiave segreta condivisa può poi essere utilizzata con algoritmi crittografici simmetrici (come AES) per cifrare e autenticare le comunicazioni.
+\subsubsection*{Esempio di Numerico semplificato}
 
-Per ottimizzare le prestazioni, questi algoritmi utilizzano la Trasformata Teoretica dei Numeri (NTT), che permette di eseguire moltiplicazioni polinomiali in $O(n \log n)$ anziché $O(n^2)$, rendendo il sistema molto più veloce rispetto ai metodi tradizionali.
+Per chiarire meglio come ML-KEM riesca a trasmettere dati in modo sicuro nonostante la presenza di "rumore" matematico proviamo ad analizzare in concreto l'algoritmo con un esempio numerico semplificato attraversando le tre fasi: generazione delle chiavi, incapsulamento e decapsulamento..
+
+Specifico che in ML-KEM, tutte le operazioni avvengono all'interno di un anello di polinomi con coefficienti nel campo $\mathbb{Z}_q$ dove $q = 3329$. Per semplicità di calcolo, consideriamo un sistema con modulo ridotto $q = 17$.
+
+\paragraph{Parametri dell'Esempio}
+Consideriamo un sistema semplificato con i seguenti parametri:
+\begin{itemize}
+    \item Modulo: $q = 17$
+    \item Segreto di Alice ($s$): $3$
+    \item Errore di Alice ($e$): $1$
+    \item Matrice pubblica ($A$): $7$ (nel mondo reale è una matrice, qui un singolo valore)
+\end{itemize}
+
+\paragraph{Fase 1: Generazione delle Chiavi (Alice)}
+Alice prepara la sua chiave pubblica secondo il protocollo ML-KEM:
+
+\begin{enumerate}
+    \item Calcola $t = As + e \pmod{q}$:
+    \begin{align*}
+        t &= (7 \times 3) + 1 = 21 + 1 = 22 \\
+        t &\equiv 5 \pmod{17}
+    \end{align*}
+    
+    \item La \textbf{chiave pubblica} è $(A=7, t=5)$
+    \item La \textbf{chiave privata} è $s=3$
+\end{enumerate}
+
+\paragraph{Fase 2: Incapsulamento (Bob)}
+Bob vuole stabilire una chiave condivisa con Alice inviando il bit $K = 1$.
+
+\begin{enumerate}
+    \item Codifica il messaggio: $\text{Encode}(1) = \lfloor q/2 \rfloor = 8$
+    
+    \item Sceglie parametri casuali:
+    \begin{itemize}
+        \item Numero segreto temporaneo: $r = 2$
+        \item Errori: $e_1 = 1$, $e_2 = 1$
+    \end{itemize}
+    
+    \item Calcola il ciphertext $(u, v)$:
+    \begin{align*}
+        u &= Ar + e_1 = (7 \times 2) + 1 = 14 + 1 = 15 \\
+        v &= tr + e_2 + \text{Encode}(K) \\
+          &= (5 \times 2) + 1 + 8 = 10 + 1 + 8 = 19 \\
+          &\equiv 2 \pmod{17}
+    \end{align*}
+    
+    \item Invia ad Alice il ciphertext: $(u=15, v=2)$
+\end{enumerate}
+
+\paragraph{Fase 3: Decapsulamento (Alice)}
+Alice riceve $(u=15, v=2)$ e usa la sua chiave privata $s=3$ per recuperare il bit originale.
+
+\begin{enumerate}
+    \item Calcola $w = v - su \pmod{q}$:
+    \begin{align*}
+        w &= 2 - (3 \times 15) \pmod{17} \\
+          &= 2 - 45 \pmod{17} \\
+          &= -43 \pmod{17} \\
+          &= 8 \pmod{17}
+    \end{align*}
+    
+    \item Decodifica $w$: Alice applica la funzione di decodifica confrontando $w=8$ con i valori attesi $0$ e $\lfloor q/2 \rfloor = 8$. Poiché $w$ corrisponde esattamente a $\text{Encode}(1) = 8$, la decodifica restituisce $K=1$.
+\end{enumerate}
+
+La chiave condivisa $K=1$ è stata trasmessa con successo!
+
+\paragraph{Analisi della Correttezza}
+Per comprendere perché il protocollo funziona, espandiamo il calcolo di Alice sostituendo $t = As + e$:
+
+\begin{align*}
+    w &= v - su \\
+  &= (tr + e_2 + \text{Encode}(K)) - s(Ar + e_1) \\
+  &= (As+e)r + e_2 + \text{Encode}(K) - sAr - se_1 \\
+  &= \text{Encode}(K) + \underbrace{(er + e_2 - se_1)}_{\text{Rumore Totale}}
+\end{align*}
+
+Verifichiamo il rumore totale nel nostro esempio:
+\begin{align*}
+\text{Rumore} &= er + e_2 - se_1 \\
+              &= (1 \times 2) + 1 - (3 \times 1) \\
+              &= 2 + 1 - 3 = 0
+\end{align*}
+
+Nel nostro esempio il rumore si è annullato perfettamente, producendo $w = 8 + 0 = 8$. Nella realtà, i parametri $e, r, e_1, e_2$ sono scelti da distribuzioni binomiali centrate che garantiscono che il rumore totale rimanga sempre al di sotto di una soglia critica (tipicamente $< q/4$), permettendo ad Alice di decodificare correttamente il bit anche in presenza di piccole perturbazioni.
+
+\paragraph{Gestione del Rumore e Affidabilità}
+Se il rumore fosse stato diverso da zero, ad esempio $+2$, Alice avrebbe ottenuto $w = 10$ invece di $8$. Applicando la funzione di decodifica:
+$$\text{Bit} = \left\lfloor \frac{2 \cdot 10}{17} \right\rceil \pmod{2} = \lfloor 1.17 \rceil = 1$$
+
+Il sistema sarebbe comunque riuscito a recuperare correttamente il bit grazie al margine di tolleranza integrato nel design. Solo se il rumore superasse la soglia di $q/4 \approx 4.25$ si verificherebbe un errore di decodifica (\emph{decapsulation failure}).
+
+\paragraph{Parametri Reali e Considerazioni Implementative}
+Nei sistemi ML-KEM reali (FIPS 203):
+\begin{itemize}
+    \item Il modulo è $q = 3329$ (non 17)
+    \item $A$ è una matrice di polinomi di grado 255 (non un singolo numero)
+    \item $s, e, r, e_1, e_2$ sono vettori di polinomi campionati da distribuzioni binomiali centrate
+    \item La probabilità di \emph{decapsulation failure} per ML-KEM-768 è circa $2^{-164.8}$
+    \item Le moltiplicazioni polinomiali sono ottimizzate usando la Number-Theoretic Transform (NTT)
+    \item Lo schema utilizza la trasformata di Fujisaki-Okamoto per raggiungere la sicurezza IND-CCA2
+\end{itemize}
+
+Per chiarire meglio come ML-KEM riesca a trasmettere dati in modo sicuro nonostante la presenza di "rumore" matematico proviamo ad analizzare in concreto l'algoritmo con un esempio numerico semplificato.
+
+Specifico che in ML-KEM, tutte le operazioni avvengono all'interno di un anello di polinomi con coefficienti nel campo $\mathbb{Z}_q$ dove $q = 3329$. Per semplicità di calcolo, consideriamo un sistema con modulo ridotto $q = 17$.
+
+La funzione di codifica trasforma un singolo bit di messaggio $K$ in un valore scalare posizionato al centro dello spazio del modulo:
+\begin{itemize}
+    \item Se $K = 0 \implies \text{Encode}(0) = 0$
+    \item Se $K = 1 \implies \text{Encode}(1) = \lfloor q/2 \rfloor = 8$
+\end{itemize}
+
+\paragraph{Cifratura e Trasmissione}
+Bob vuole inviare ad Alice il bit $K = 1$. Il valore codificato è quindi $\mu = 8$. 
+
+In ML-KEM, il ciphertext non è semplicemente il messaggio, ma una combinazione di equazioni lineari rumorose derivanti dalla struttura MLWE. Semplificando la formula dello standard, il valore finale $w$ che Bob invia ad Alice è:
+$$w = \text{Encode}(K) + \text{rumore}$$
+
+Supponiamo che il rumore totale introdotto dalle distribuzioni binomiali centrate (CBD) sia $+2$. Il valore trasmesso sarà:
+$$w = 8 + 2 = 10$$
+
+\paragraph{Decrittazione e Recupero del Bit}
+Alice riceve $w = 10$. Per recuperare il bit originale, deve determinare se questo valore è più vicino a $0$ oppure a $8$. Lo standard definisce questo processo attraverso una funzione di decompressione che mappa i valori del modulo $q$ nuovamente nei bit $\{0, 1\}$:
+$$\text{Bit recuperato} = \left\lfloor \frac{2w}{q} \right\rceil \pmod{2}$$
+
+Applicando la formula al nostro esempio:
+$$\left\lfloor \frac{2 \cdot 10}{17} \right\rceil = \left\lfloor \frac{20}{17} \right\rceil = \lfloor 1.17 \rceil = 1$$
+
+Il bit è stato recuperato correttamente: il rumore è stato "assorbito" dal processo di arrotondamento. Possiamo interpretare geometricamente questo meccanismo calcolando le distanze:
+\begin{itemize}
+    \item Distanza da $8$: $|10 - 8| = 2$
+    \item Distanza da $0$ (o $17$): $\min(|10 - 0|, |10 - 17|) = 7$
+\end{itemize}
+
+Poiché $10$ è significativamente più vicino a $8$, Alice conclude correttamente che il bit originale era $1$.
+
+\paragraph{Rischio di Errore e Decapsulation Failure}
+Cosa accadrebbe se il rumore fosse eccessivo? Se il rumore fosse stato $+5$ invece di $+2$:
+$$w = 8 + 5 = 13$$
+
+Applicando la decodifica:
+$$\left\lfloor \frac{2 \cdot 13}{17} \right\rceil = \left\lfloor \frac{26}{17} \right\rceil = \lfloor 1.53 \rceil = 2 \equiv 0 \pmod{2}$$
+
+In questo caso Alice otterrebbe erroneamente $K = 0$. Questo evento è noto come \emph{decapsulation failure}. Dal punto di vista geometrico, $13$ risulta più vicino a $17 \equiv 0$ (distanza $4$) che a $8$ (distanza $5$), causando l'errore di decodifica.
+
+\paragraph{Parametri Reali e Garanzie di Sicurezza}
+Nella realtà, i parametri di ML-KEM sono stati progettati dal NIST per rendere la probabilità di errore praticamente nulla:
+\begin{itemize}
+    \item Il modulo reale è $q = 3329$
+    \item Il valore per il bit $1$ è $\text{Encode}(1) = 1665$
+    \item Il rumore è progettato per rimanere molto al di sotto della soglia critica $q/4 \approx 832$
+    \item La probabilità di \emph{decapsulation failure} per ML-KEM-768 è circa $2^{-164.8}$, rendendo il sistema affidabile per applicazioni pratiche
+\end{itemize}
+
+\paragraph{Considerazioni Implementative}
+È importante notare che:
+\begin{itemize}
+    \item ML-KEM utilizza la versione IND-CCA2 (sicura contro attacchi a testo cifrato scelto), ottenuta applicando la trasformata di Fujisaki-Okamoto allo schema PKE di base
+    \item Nei calcoli reali, ML-KEM non opera su numeri singoli ma su polinomi di grado $255$
+    \item Per velocizzare le moltiplicazioni polinomiali (come $s^T u$) si utilizza la Number-Theoretic Transform (NTT), riducendo la complessità da $O(n^2)$ a $O(n \log n)$
+    \item ML-KEM è ora lo standard ufficiale FIPS 203, pubblicato il 13 agosto 2024, e il NIST ne raccomanda l'uso immediato per la migrazione post-quantum
+\end{itemize}
+
+\paragraph{Sicurezza} Un attaccante che intercetta $(\mathbf{A}, \mathbf{t})$ e $(\mathbf{u}, v)$ deve quindi risolvere il problema MLWE per recuperare $K$, che è computazionalmente intrattabile. La chiave segreta condivisa può poi essere utilizzata con algoritmi crittografici simmetrici (come AES) per cifrare e autenticare le comunicazioni.
 
 \subsubsection*{Firme Digitali basate su reticoli}
 
