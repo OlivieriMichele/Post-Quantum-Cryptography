@@ -9,6 +9,14 @@ In questa sezione non si fornisce una trattazione formale della teoria, ma si in
 
 Il primo concetto fondamentale è quello di \textbf{\emph{stato quantistico}}. Mentre un bit classico può assumere esclusivamente i valori 0 o 1, un sistema quantistico può trovarsi in una \emph{sovrapposizione} di stati\footnote{Ivi, Sezione 1.2}. Questo non significa che sia 0 e 1 "contemporaneamente" in senso magico ma semplicemente che lo stato di un qubit può essere descritto come una combinazione lineare degli stati base $\ket{0}$ e $\ket{1}$ : $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$$ con coefficienti complessi che ne determinano le probabilità di osservazione\footnote{Ivi, pag. 13}.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/bloch_sphere.png}
+    \caption{Bloch sphere representation of a qubit.}
+    \label{fig:bloch_sphere}
+\end{figure}
+
+\newpage
 Un secondo concetto chiave è l'\textbf{\emph{entanglement}}, una forma di correlazione quantistica tra più qubit per cui lo stato complessivo del sistema non può essere descritto come il prodotto degli stati dei singoli qubit\footnote{Ivi, Sezione 2.2.8}. In presenza di entanglement, la misura di un qubit influisce istantaneamente sullo stato degli altri, indipendentemente dalla distanza che li separa\footnote{Ivi, Sezione 1.2.1}. Questa proprietà consente di rappresentare e manipolare informazioni in modo non separabile, ciò significa che le operazioni su un qubit possono avere effetti immediati sugli altri qubit entangled con esso.
 
 Il terzo elemento fondamentale è la \textbf{\emph{misura}}. Quando uno stato quantistico viene misurato, la sovrapposizione collassa e il risultato ottenuto è un valore classico\footnote{Ivi, Sezione 1.2}. L'esito della misura è probabilistico e dipende dallo stato del sistema immediatamente prima dell'osservazione\footnote{Ivi, Sezione 2.2.3}.
