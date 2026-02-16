@@ -40,9 +40,18 @@ La crittografia post-quantistica sposta quindi la sua sicurezza dai problemi di 
 La crittografia basta sui reticoli (Lattice-based)\footnote{\href{https://csrc.nist.gov/pubs/fips/203/final}{NIST FIPS 203: Lattice-Based Cryptography}} è una delle famiglie più promettenti della crittografia post-quantistica. La sua sicurezza si basa sulle proprietà geometriche dei reticoli. Un reticolo è un insieme di punti nello spazio n-dimensionale che possono essere rappresentati come combinazioni lineari di vettori base con coeficenti interi.
 
 \paragraph{Il Problema matematico fondamentale}
-La sicurezza di questa famiglia di algoritmi si basa sulla difficoltà di risolvere problemi specifici all'interno di questi reticoli. Questo è il campo da gioco, i principali problemi che ne derivaono sono: 
+La sicurezza di questa famiglia di algoritmi si basa sulla difficoltà di risolvere problemi specifici all'interno di questi reticoli. Questo è il campo da gioco
 
-\paragraph{Learning With Errors (LWE)}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/lattice_2d.png}
+    \caption{Rappresentazione bidimensionale di un reticolo. I punti verdi rappresentano i vettori del reticolo, mentre i vettori blu rappresentano la base del reticolo.}
+    \label{fig:lattice_2d}
+\end{figure}
+
+I principali problemi che ne derivaono sono: 
+
+\subsubsection{Learning With Errors (LWE)}
 Introdotto da Oded Regev nel 2005, per il quale ha ricevuto il premio Gödel nel 2018, LWE\footnote{\href{https://cims.nyu.edu/~regev/papers/qcrypto.pdf}{LWE}} consiste nel risalire ad un vettore segreto $\mathbf{s} \in \mathbb{Z}_q^n$ dato un insieme di equazioni lineari rumorose.
 
 Formalmente:
@@ -66,7 +75,9 @@ Esisitono due versioni del problema:
 \end{itemize}
 È stato dimostrato che le due versioni sono equivalenti, risolvere il problema decisionale consente di risolvere anche quello di ricerca.
 
-\paragraph{Module Learning with Errors (MLWE)} È una generalizzazione di LWE che opera su strutture chiamate ``moduli'' su anelli polinomiali, tipicamente $R_q = \mathbb{Z}_q[x]/(x^n + 1)$ dove $n$ è una potenza di 2. Questa variante è utilizzata negli standard moderni perché permette una maggiore efficienza computazionale e chiavi di dimensioni significativamente ridotte rispetto al LWE standard.
+\subsubsection{Module Learning with Errors (MLWE)} 
+
+È una generalizzazione di LWE che opera su strutture chiamate ``moduli'' su anelli polinomiali, tipicamente $R_q = \mathbb{Z}_q[x]/(x^n + 1)$ dove $n$ è una potenza di 2. Questa variante è utilizzata negli standard moderni perché permette una maggiore efficienza computazionale e chiavi di dimensioni significativamente ridotte rispetto al LWE standard.
 
 La formulazione MLWE sostituisce i vettori con vettori di polinomi e le matricrici con matrici di polinomi, mantenendo la stessa struttura generale ma sfruttando la struttura algebrica degli anelli per migliorare le prestazioni. L'equazione diventa:
 \begin{equation}
@@ -74,7 +85,9 @@ La formulazione MLWE sostituisce i vettori con vettori di polinomi e le matricri
 \end{equation}
 dove ora $\mathbf{A}$, $\mathbf{s}$ e $\mathbf{e}$ sono elementi del modulo su $R_q$.
 
-\paragraph{Short Integer Solution (SIS/MSIS)} Consiste nel trovare una soluzione ``piccola'' (con coefficienti bassi) per un sistema lineare. Data una matrice $\mathbf{A} \in \mathbb{Z}_q^{m \times n}$, trovare un vettore non nullo $\mathbf{x}$ con norma piccola tale che $\mathbf{A}\mathbf{x} = \mathbf{0} \pmod{q}$. Questo problema è utilizzato principalmente per schemi di firma digitale.
+\subsubsection{Short Integer Solution (SIS/MSIS)} 
+
+Consiste nel trovare una soluzione ``piccola'' (con coefficienti bassi) per un sistema lineare. Data una matrice $\mathbf{A} \in \mathbb{Z}_q^{m \times n}$, trovare un vettore non nullo $\mathbf{x}$ con norma piccola tale che $\mathbf{A}\mathbf{x} = \mathbf{0} \pmod{q}$. Questo problema è utilizzato principalmente per schemi di firma digitale.
 
 \subsubsection*{Resistenza agli attacchi quantistici}
 
@@ -82,7 +95,7 @@ I problemi basati sui reticoli (come MLWE e SIS) sono ritenuti difficili da riso
 
 La resistenza quantistica deriva dalla natura ``disordinata'' e non strutturata dei problemi sui reticoli, in contrasto con la struttura periodica che caratterizza i problemi di fattorizzazione e logaritmo discreto.
 
-\subsubsection*{Key-Encapsulation Mechanism (KEM)}
+\subsubsection{Key-Encapsulation Mechanism (KEM)}
 
 Un Key-Encapsulation Mechanism è un insieme di algoritmi che, sotto determinate condizioni, può essere utilizzato da due parti per stabilire una chiave segreta condivisa su un canale pubblico\footnote{\href{https://csrc.nist.gov/pubs/fips/203/final}{NIST FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard}}. A differenza della crittografia a chiave pubblica tradizionale come RSA, dove un messaggio può essere cifrato direttamente con la chiave pubblica, un KEM è progettato specificamente per lo scambio sicuro di chiavi simmetriche.
 

@@ -125,6 +125,15 @@ $x$ & $2^x \bmod 15$ \\
 \end{tabular}
 \end{center}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./images/shor_periodicity.png}
+    \caption{Visualizzazione della periodicità della funzione $f(x) = 2^x \bmod 15$. 
+    I colori evidenziano i cicli periodici di lunghezza $r = 4$. Elaborazione propria 
+    basata sull'esempio presentato da IBM Quantum Documentation.}
+    \label{fig:shor_periodicity}
+\end{figure}
+
 Osserviamo che il valore si ripete dopo quattro iterazioni, pertanto il periodo è $r = 4$. Verifichiamo ora le condizioni necessarie: il periodo è effettivamente pari, e calcoliamo $a^{r/2} = 2^2 = 4$. Poiché $4 \not\equiv -1 \pmod{15}$ (infatti $4 \equiv 4 \pmod{15}$), entrambe le condizioni sono soddisfatte\footnote{Ivi, Box 5.4}. Possiamo quindi applicare la formula per estrarre i fattori:
 \begin{align*}
 \gcd(4 - 1, 15) &= \gcd(3, 15) = 3 \\
