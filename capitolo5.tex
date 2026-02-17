@@ -142,14 +142,12 @@ w &= v - \mathbf{s}^T\mathbf{u} \\
 
 Il termine di errore totale $\mathbf{e}^T\mathbf{r} + \mathbf{e}_2 - \mathbf{s}^T\mathbf{e}_1$ rimane sufficientemente piccolo (perché tutti i vettori coinvolti hanno componenti piccole) da permettere la decodifica corretta di $K$.
 
-\subsubsection*{Esempio di Numerico semplificato}
+\subsubsection{Esempio di Numerico semplificato}
 
 Per chiarire meglio come ML-KEM riesca a trasmettere dati in modo sicuro nonostante la presenza di "rumore" matematico proviamo ad analizzare in concreto l'algoritmo con un esempio numerico semplificato attraversando le tre fasi: generazione delle chiavi, incapsulamento e decapsulamento..
 
-Specifico che in ML-KEM, tutte le operazioni avvengono all'interno di un anello di polinomi con coefficienti nel campo $\mathbb{Z}_q$ dove $q = 3329$. Per semplicità di calcolo, consideriamo un sistema con modulo ridotto $q = 17$.
+Specifico che in ML-KEM, tutte le operazioni avvengono all'interno di un anello di polinomi con coefficienti nel campo $\mathbb{Z}_q$ dove $q = 3329$. Per semplicità di calcolo, consideriamo un sistema con parametri semplificati:
 
-\paragraph{Parametri dell'Esempio}
-Consideriamo un sistema semplificato con i seguenti parametri:
 \begin{itemize}
     \item Modulo: $q = 17$
     \item Segreto di Alice ($s$): $3$
@@ -239,76 +237,17 @@ Il sistema sarebbe comunque riuscito a recuperare correttamente il bit grazie al
 \paragraph{Parametri Reali e Considerazioni Implementative}
 Nei sistemi ML-KEM reali (FIPS 203):
 \begin{itemize}
-    \item Il modulo è $q = 3329$ (non 17)
-    \item $A$ è una matrice di polinomi di grado 255 (non un singolo numero)
+    \item Il modulo è $q = 3329$
+    \item $A$ è una matrice di polinomi di grado 255
     \item $s, e, r, e_1, e_2$ sono vettori di polinomi campionati da distribuzioni binomiali centrate
+    \item Il valore per il bit $1$ è $\text{Encode}(1) = 1665$
+    \item Il rumore è progettato per rimanere molto al di sotto della soglia critica $q/4 \approx 832$
     \item La probabilità di \emph{decapsulation failure} per ML-KEM-768 è circa $2^{-164.8}$
-    \item Le moltiplicazioni polinomiali sono ottimizzate usando la Number-Theoretic Transform (NTT)
+    \item Per velocizzare le moltiplicazioni polinomiali (come $s^T u$) si utilizza la Number-Theoretic Transform (NTT), riducendo la complessità da $O(n^2)$ a $O(n \log n)$
     \item Lo schema utilizza la trasformata di Fujisaki-Okamoto per raggiungere la sicurezza IND-CCA2
 \end{itemize}
 
-Per chiarire meglio come ML-KEM riesca a trasmettere dati in modo sicuro nonostante la presenza di "rumore" matematico proviamo ad analizzare in concreto l'algoritmo con un esempio numerico semplificato.
-
-Specifico che in ML-KEM, tutte le operazioni avvengono all'interno di un anello di polinomi con coefficienti nel campo $\mathbb{Z}_q$ dove $q = 3329$. Per semplicità di calcolo, consideriamo un sistema con modulo ridotto $q = 17$.
-
-La funzione di codifica trasforma un singolo bit di messaggio $K$ in un valore scalare posizionato al centro dello spazio del modulo:
-\begin{itemize}
-    \item Se $K = 0 \implies \text{Encode}(0) = 0$
-    \item Se $K = 1 \implies \text{Encode}(1) = \lfloor q/2 \rfloor = 8$
-\end{itemize}
-
-\paragraph{Cifratura e Trasmissione}
-Bob vuole inviare ad Alice il bit $K = 1$. Il valore codificato è quindi $\mu = 8$. 
-
-In ML-KEM, il ciphertext non è semplicemente il messaggio, ma una combinazione di equazioni lineari rumorose derivanti dalla struttura MLWE. Semplificando la formula dello standard, il valore finale $w$ che Bob invia ad Alice è:
-$$w = \text{Encode}(K) + \text{rumore}$$
-
-Supponiamo che il rumore totale introdotto dalle distribuzioni binomiali centrate (CBD) sia $+2$. Il valore trasmesso sarà:
-$$w = 8 + 2 = 10$$
-
-\paragraph{Decrittazione e Recupero del Bit}
-Alice riceve $w = 10$. Per recuperare il bit originale, deve determinare se questo valore è più vicino a $0$ oppure a $8$. Lo standard definisce questo processo attraverso una funzione di decompressione che mappa i valori del modulo $q$ nuovamente nei bit $\{0, 1\}$:
-$$\text{Bit recuperato} = \left\lfloor \frac{2w}{q} \right\rceil \pmod{2}$$
-
-Applicando la formula al nostro esempio:
-$$\left\lfloor \frac{2 \cdot 10}{17} \right\rceil = \left\lfloor \frac{20}{17} \right\rceil = \lfloor 1.17 \rceil = 1$$
-
-Il bit è stato recuperato correttamente: il rumore è stato "assorbito" dal processo di arrotondamento. Possiamo interpretare geometricamente questo meccanismo calcolando le distanze:
-\begin{itemize}
-    \item Distanza da $8$: $|10 - 8| = 2$
-    \item Distanza da $0$ (o $17$): $\min(|10 - 0|, |10 - 17|) = 7$
-\end{itemize}
-
-Poiché $10$ è significativamente più vicino a $8$, Alice conclude correttamente che il bit originale era $1$.
-
-\paragraph{Rischio di Errore e Decapsulation Failure}
-Cosa accadrebbe se il rumore fosse eccessivo? Se il rumore fosse stato $+5$ invece di $+2$:
-$$w = 8 + 5 = 13$$
-
-Applicando la decodifica:
-$$\left\lfloor \frac{2 \cdot 13}{17} \right\rceil = \left\lfloor \frac{26}{17} \right\rceil = \lfloor 1.53 \rceil = 2 \equiv 0 \pmod{2}$$
-
-In questo caso Alice otterrebbe erroneamente $K = 0$. Questo evento è noto come \emph{decapsulation failure}. Dal punto di vista geometrico, $13$ risulta più vicino a $17 \equiv 0$ (distanza $4$) che a $8$ (distanza $5$), causando l'errore di decodifica.
-
-\paragraph{Parametri Reali e Garanzie di Sicurezza}
-Nella realtà, i parametri di ML-KEM sono stati progettati dal NIST per rendere la probabilità di errore praticamente nulla:
-\begin{itemize}
-    \item Il modulo reale è $q = 3329$
-    \item Il valore per il bit $1$ è $\text{Encode}(1) = 1665$
-    \item Il rumore è progettato per rimanere molto al di sotto della soglia critica $q/4 \approx 832$
-    \item La probabilità di \emph{decapsulation failure} per ML-KEM-768 è circa $2^{-164.8}$, rendendo il sistema affidabile per applicazioni pratiche
-\end{itemize}
-
-\paragraph{Considerazioni Implementative}
-È importante notare che:
-\begin{itemize}
-    \item ML-KEM utilizza la versione IND-CCA2 (sicura contro attacchi a testo cifrato scelto), ottenuta applicando la trasformata di Fujisaki-Okamoto allo schema PKE di base
-    \item Nei calcoli reali, ML-KEM non opera su numeri singoli ma su polinomi di grado $255$
-    \item Per velocizzare le moltiplicazioni polinomiali (come $s^T u$) si utilizza la Number-Theoretic Transform (NTT), riducendo la complessità da $O(n^2)$ a $O(n \log n)$
-    \item ML-KEM è ora lo standard ufficiale FIPS 203, pubblicato il 13 agosto 2024, e il NIST ne raccomanda l'uso immediato per la migrazione post-quantum
-\end{itemize}
-
-\paragraph{Sicurezza} Un attaccante che intercetta $(\mathbf{A}, \mathbf{t})$ e $(\mathbf{u}, v)$ deve quindi risolvere il problema MLWE per recuperare $K$, che è computazionalmente intrattabile. La chiave segreta condivisa può poi essere utilizzata con algoritmi crittografici simmetrici (come AES) per cifrare e autenticare le comunicazioni.
+\paragraph{Sicurezza} Un attaccante che intercetta $(\mathbf{A}, \mathbf{t})$ e $(\mathbf{u}, v)$ deve quindi riuscire a risolvere il problema MLWE per recuperare $K$, che è computazionalmente intrattabile. La chiave segreta condivisa può poi essere utilizzata con algoritmi crittografici simmetrici (come AES) per cifrare e autenticare le comunicazioni.
 
 \subsubsection*{Firme Digitali basate su reticoli}
 
